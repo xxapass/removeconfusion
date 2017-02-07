@@ -42,7 +42,7 @@ Partial Class Form1
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1375, 466)
+        Me.DataGridView1.Size = New System.Drawing.Size(1555, 466)
         Me.DataGridView1.TabIndex = 1
         '
         'Timer1
@@ -56,7 +56,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1040, 22)
+        Me.Label1.Location = New System.Drawing.Point(1364, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(201, 150)
         Me.Label1.TabIndex = 2
@@ -68,7 +68,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.ClientSize = New System.Drawing.Size(1375, 466)
+        Me.ClientSize = New System.Drawing.Size(1555, 466)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "Form1"

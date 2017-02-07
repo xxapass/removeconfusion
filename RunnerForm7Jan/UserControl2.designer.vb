@@ -164,9 +164,10 @@ Partial Class UserControl2
         '
         'BetButton
         '
-        Me.BetButton.Location = New System.Drawing.Point(557, 195)
+        Me.BetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BetButton.Location = New System.Drawing.Point(501, 195)
         Me.BetButton.Name = "BetButton"
-        Me.BetButton.Size = New System.Drawing.Size(75, 23)
+        Me.BetButton.Size = New System.Drawing.Size(131, 43)
         Me.BetButton.TabIndex = 16
         Me.BetButton.Text = "Bet"
         Me.BetButton.UseVisualStyleBackColor = True

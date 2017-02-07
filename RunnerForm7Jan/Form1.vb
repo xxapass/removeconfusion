@@ -88,7 +88,7 @@ Public Class Form1
         dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-
+        dataTable.Columns.Add("Event", GetType(System.String), Nothing)
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'needed to load events
 
@@ -225,6 +225,18 @@ Public Class Form1
             End With
             .Columns.Add(layColumn)
 
+            Dim EventColumn As New DataGridViewTextBoxColumn
+            With EventColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "Event"
+                .DataPropertyName = "marketName"
+                .DefaultCellStyle.BackColor = Color.Beige
+                .DefaultCellStyle.SelectionBackColor = Color.Pink
+                .Width = 200
+
+            End With
+            .Columns.Add(EventColumn)
+
         End With
 
 
@@ -280,13 +292,13 @@ Public Class Form1
 
         Dim marketTypeCodes As New List(Of String)
         marketTypeCodes.Add("MATCH_ODDS")
-        'marketTypeCodes.Add("OVER_UNDER_35")
-        'marketTypeCodes.Add("OVER_UNDER_45")
+        marketTypeCodes.Add("OVER_UNDER_35")
+        marketTypeCodes.Add("OVER_UNDER_45")
         'marketTypeCodes.Add("WIN")
         'marketTypeCodes.Add("HALF_TIME_FULL_TIME")
-        'marketTypeCodes.Add("CORRECT_SCORE")
-        'marketTypeCodes.Add("HALF_TIME_SCORE")
-        'marketTypeCodes.Add("FIRST_HALF_GOALS_15")
+        marketTypeCodes.Add("CORRECT_SCORE")
+        marketTypeCodes.Add("HALF_TIME_SCORE")
+        marketTypeCodes.Add("FIRST_HALF_GOALS_15")
 
         params.filter.marketTypeCodes = marketTypeCodes
 
@@ -334,7 +346,7 @@ Public Class Form1
                 'competitionIds = (allMarkets(0).result(n).competitionIds)
 
                 Try 'add runner to dataTable
-                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
+                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -701,7 +713,7 @@ Public Class Form1
     Private Sub UpdateRunnerForms()
         Dim pair As KeyValuePair(Of Integer, RunnerForm)
         For Each pair In runnerFormDictionary
-            runnerFormDictionary(pair.Key).MonitorBets()
+            'runnerFormDictionary(pair.Key).MonitorBets()
         Next
 
 
