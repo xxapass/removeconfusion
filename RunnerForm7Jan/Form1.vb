@@ -82,22 +82,23 @@ Public Class Form1
         dataTable.Columns.Add("marketId", GetType(System.String), Nothing)
         dataTable.Columns.Add("marketStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("inPlay", GetType(System.String), Nothing)
-        dataTable.Columns.Add("course", GetType(System.String), Nothing)
+        'dataTable.Columns.Add("course", GetType(System.String), Nothing)
+        dataTable.Columns.Add("Event", GetType(System.String), Nothing)
         dataTable.Columns.Add("selectionId", GetType(System.String), Nothing)
         dataTable.Columns.Add("runnerName", GetType(System.String), Nothing)
         dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-        dataTable.Columns.Add("Event", GetType(System.String), Nothing)
+        'dataTable.Columns.Add("Event", GetType(System.String), Nothing)
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'needed to load events
 
 
         Dim dataView As DataView = dataSet.Tables("Runners").DefaultView
 
-        'dataView.Sort = "marketStartTime" 'sort data by time
+        dataView.Sort = "marketStartTime" 'sort data by time
         'dataView.Sort = "marketId"
-        dataView.Sort = "course"
+        'dataView.Sort = "course"
         bindingSource = New BindingSource
 
         DataGridView1.DataSource = bindingSource
@@ -159,20 +160,29 @@ Public Class Form1
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 .Name = "inPlay"
                 .DataPropertyName = "inPlay"
-                .Width = 50
+                '.Width = 50
+                .Width = 200
             End With
             .Columns.Add(inPlayColumn)
 
-            Dim courseColumn As New DataGridViewTextBoxColumn
-            With courseColumn
+            'Dim courseColumn As New DataGridViewTextBoxColumn
+            'With courseColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "course"
+            '    .DataPropertyName = "course"
+            '    .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            '    .Width = 200
+            'End With
+            '.Columns.Add(courseColumn)
+            Dim EventColumn As New DataGridViewTextBoxColumn
+            With EventColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "course"
-                '.Name = "Event"
-                .DataPropertyName = "course"
+                .Name = "Event"
+                .DataPropertyName = "Event"
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
                 .Width = 200
             End With
-            .Columns.Add(courseColumn)
+            .Columns.Add(EventColumn)
 
             Dim selectionIdColumn As New DataGridViewTextBoxColumn
             With selectionIdColumn
@@ -225,17 +235,17 @@ Public Class Form1
             End With
             .Columns.Add(layColumn)
 
-            Dim EventColumn As New DataGridViewTextBoxColumn
-            With EventColumn
-                .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "Event"
-                .DataPropertyName = "marketName"
-                .DefaultCellStyle.BackColor = Color.Beige
-                .DefaultCellStyle.SelectionBackColor = Color.Pink
-                .Width = 200
+            'Dim EventColumn As New DataGridViewTextBoxColumn
+            'With EventColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "Event"
+            '    .DataPropertyName = "Event"
+            '    .DefaultCellStyle.BackColor = Color.Beige
+            '    .DefaultCellStyle.SelectionBackColor = Color.Pink
+            '    .Width = 200
 
-            End With
-            .Columns.Add(EventColumn)
+            'End With
+            '    .Columns.Add(EventColumn)
 
         End With
 
@@ -346,7 +356,10 @@ Public Class Form1
                 'competitionIds = (allMarkets(0).result(n).competitionIds)
 
                 Try 'add runner to dataTable
-                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
+                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
+
+                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
+
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -498,8 +511,8 @@ Public Class Form1
 
     Protected Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
 
-        ListMarketBook()
-        CheckMarkets()
+        ' ListMarketBook()
+        'CheckMarkets()
         UpdateRunnerForms()
 
     End Sub
