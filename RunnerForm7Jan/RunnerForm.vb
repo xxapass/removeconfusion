@@ -35,7 +35,7 @@
         AddHandler control.BetButton.Click, AddressOf betButton_Click
         control.cancelButton.Enabled = False
         AddHandler control.cancelButton.Click, AddressOf cancelButton_Click
-        AddHandler control.hedgeButton.Click, AddressOf hedgeButton_Click
+        AddHandler control.refreshButton.Click, AddressOf hedgeButton_Click
 
         openPosition = False
 

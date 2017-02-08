@@ -165,7 +165,7 @@ Partial Class UserControl2
         'BetButton
         '
         Me.BetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BetButton.Location = New System.Drawing.Point(501, 195)
+        Me.BetButton.Location = New System.Drawing.Point(501, 189)
         Me.BetButton.Name = "BetButton"
         Me.BetButton.Size = New System.Drawing.Size(131, 43)
         Me.BetButton.TabIndex = 16
@@ -174,15 +174,17 @@ Partial Class UserControl2
         '
         'cancelButtonlay
         '
-        Me.cancelButtonlay.Location = New System.Drawing.Point(73, 204)
+        Me.cancelButtonlay.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cancelButtonlay.Location = New System.Drawing.Point(73, 194)
         Me.cancelButtonlay.Name = "cancelButtonlay"
-        Me.cancelButtonlay.Size = New System.Drawing.Size(75, 23)
+        Me.cancelButtonlay.Size = New System.Drawing.Size(115, 33)
         Me.cancelButtonlay.TabIndex = 17
         Me.cancelButtonlay.Text = "Cancel"
         Me.cancelButtonlay.UseVisualStyleBackColor = True
         '
         'Button1
         '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Button1.Location = New System.Drawing.Point(268, 194)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(134, 33)

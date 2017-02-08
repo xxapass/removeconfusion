@@ -33,11 +33,11 @@ Partial Class UserControl1
         Me.BetButton = New System.Windows.Forms.Button()
         Me.cancelButton = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.priceTextBox = New System.Windows.Forms.TextBox()
         Me.sizeTextBox = New System.Windows.Forms.TextBox()
-        Me.hedgeButton = New System.Windows.Forms.Button()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.refreshButton = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -117,18 +117,19 @@ Partial Class UserControl1
         'BetButton
         '
         Me.BetButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BetButton.Location = New System.Drawing.Point(436, 190)
+        Me.BetButton.Location = New System.Drawing.Point(501, 187)
         Me.BetButton.Name = "BetButton"
-        Me.BetButton.Size = New System.Drawing.Size(75, 44)
+        Me.BetButton.Size = New System.Drawing.Size(103, 44)
         Me.BetButton.TabIndex = 16
         Me.BetButton.Text = "Bet"
         Me.BetButton.UseVisualStyleBackColor = True
         '
         'cancelButton
         '
-        Me.cancelButton.Location = New System.Drawing.Point(67, 206)
+        Me.cancelButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cancelButton.Location = New System.Drawing.Point(67, 190)
         Me.cancelButton.Name = "cancelButton"
-        Me.cancelButton.Size = New System.Drawing.Size(75, 23)
+        Me.cancelButton.Size = New System.Drawing.Size(89, 39)
         Me.cancelButton.TabIndex = 17
         Me.cancelButton.Text = "Cancel"
         Me.cancelButton.UseVisualStyleBackColor = True
@@ -148,6 +149,26 @@ Partial Class UserControl1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Side"
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(298, 24)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(51, 20)
+        Me.Label9.TabIndex = 5
+        Me.Label9.Text = "price"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(75, 22)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(44, 20)
+        Me.Label8.TabIndex = 4
+        Me.Label8.Text = "size"
+        '
         'priceTextBox
         '
         Me.priceTextBox.Location = New System.Drawing.Point(369, 21)
@@ -164,41 +185,22 @@ Partial Class UserControl1
         Me.sizeTextBox.TabIndex = 2
         Me.sizeTextBox.Text = "10"
         '
-        'hedgeButton
+        'refreshButton
         '
-        Me.hedgeButton.Location = New System.Drawing.Point(213, 206)
-        Me.hedgeButton.Name = "hedgeButton"
-        Me.hedgeButton.Size = New System.Drawing.Size(75, 23)
-        Me.hedgeButton.TabIndex = 21
-        Me.hedgeButton.Text = "Hedge"
-        Me.hedgeButton.UseVisualStyleBackColor = True
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(75, 22)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(44, 20)
-        Me.Label8.TabIndex = 4
-        Me.Label8.Text = "size"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(298, 24)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(51, 20)
-        Me.Label9.TabIndex = 5
-        Me.Label9.Text = "price"
+        Me.refreshButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.refreshButton.Location = New System.Drawing.Point(286, 190)
+        Me.refreshButton.Name = "refreshButton"
+        Me.refreshButton.Size = New System.Drawing.Size(100, 39)
+        Me.refreshButton.TabIndex = 21
+        Me.refreshButton.Text = "Refresh"
+        Me.refreshButton.UseVisualStyleBackColor = True
         '
         'UserControl1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Controls.Add(Me.hedgeButton)
+        Me.Controls.Add(Me.refreshButton)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.cancelButton)
         Me.Controls.Add(Me.BetButton)
@@ -233,7 +235,7 @@ Partial Class UserControl1
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents priceTextBox As TextBox
     Friend WithEvents sizeTextBox As TextBox
-    Friend WithEvents hedgeButton As Button
+    Friend WithEvents refreshButton As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
 End Class

@@ -88,6 +88,11 @@
         End With
     End Sub
 
+    Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
+        Form1.ListMarketBook()
+        Form1.CheckMarkets()
+    End Sub
+
 
     'Public Sub New()
     '    InitializeTimePicker()

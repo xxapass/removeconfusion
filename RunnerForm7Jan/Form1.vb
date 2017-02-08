@@ -96,8 +96,8 @@ Public Class Form1
 
         Dim dataView As DataView = dataSet.Tables("Runners").DefaultView
 
-        dataView.Sort = "marketStartTime" 'sort data by time
-        'dataView.Sort = "marketId"
+        'dataView.Sort = "marketStartTime" 'sort data by time
+        dataView.Sort = "Event"
         'dataView.Sort = "course"
         bindingSource = New BindingSource
 
@@ -160,8 +160,8 @@ Public Class Form1
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 .Name = "inPlay"
                 .DataPropertyName = "inPlay"
-                '.Width = 50
-                .Width = 200
+                .Width = 50
+
             End With
             .Columns.Add(inPlayColumn)
 
@@ -200,7 +200,7 @@ Public Class Form1
                 '.Name = "Selection"
                 .DataPropertyName = "runnerName"
                 .Width = 110
-                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+                '.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
             End With
             .Columns.Add(runnerNameColumn)
 
@@ -358,8 +358,8 @@ Public Class Form1
                 Try 'add runner to dataTable
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
 
-                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
-
+                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
+                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -685,14 +685,14 @@ Public Class Form1
 
         If e.ColumnIndex = 8 Then
             'If e.ColumnIndex = 5 Then
-            Dim runnerForm As New RunnerForm(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("course", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
+            Dim runnerForm As New RunnerForm(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
             runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm)
         End If
 
 
         If e.ColumnIndex = 9 Then
             'If e.ColumnIndex = 5 Then
-            Dim runnerForm2 As New RunnerForm2(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("course", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
+            Dim runnerForm2 As New RunnerForm2(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
 
             'runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm2)
         End If
