@@ -82,6 +82,7 @@ Public Class Form1
         dataTable.Columns.Add("marketId", GetType(System.String), Nothing)
         dataTable.Columns.Add("marketStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("inPlay", GetType(System.String), Nothing)
+        'dataTable.Columns.Add("country", GetType(System.String), Nothing)
         'dataTable.Columns.Add("course", GetType(System.String), Nothing)
         dataTable.Columns.Add("Event", GetType(System.String), Nothing)
         dataTable.Columns.Add("selectionId", GetType(System.String), Nothing)
@@ -89,7 +90,7 @@ Public Class Form1
         dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-        'dataTable.Columns.Add("Event", GetType(System.String), Nothing)
+        'dataTable.Columns.Add("country", GetType(System.String), Nothing)
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'needed to load events
 
@@ -155,15 +156,24 @@ Public Class Form1
             End With
             .Columns.Add(marketStatusColumn)
 
-            Dim inPlayColumn As New DataGridViewTextBoxColumn
-            With inPlayColumn
+            'Dim inPlayColumn As New DataGridViewTextBoxColumn
+            'With inPlayColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "inPlay"
+            '    .DataPropertyName = "inPlay"
+            '    '.DataPropertyName = "Country"
+            '    .Width = 50
+
+            Dim countryColumn As New DataGridViewTextBoxColumn
+            With countryColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "inPlay"
+                .Name = "country"
                 .DataPropertyName = "inPlay"
+                '.DataPropertyName = "Country"
                 .Width = 50
 
             End With
-            .Columns.Add(inPlayColumn)
+            .Columns.Add(countryColumn)
 
             'Dim courseColumn As New DataGridViewTextBoxColumn
             'With courseColumn
@@ -235,17 +245,17 @@ Public Class Form1
             End With
             .Columns.Add(layColumn)
 
-            'Dim EventColumn As New DataGridViewTextBoxColumn
-            'With EventColumn
+            'Dim CountryColumn As New DataGridViewTextBoxColumn
+            'With CountryColumn
             '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "Event"
-            '    .DataPropertyName = "Event"
+            '    .Name = "Country"
+            '    .DataPropertyName = "Country"
             '    .DefaultCellStyle.BackColor = Color.Beige
             '    .DefaultCellStyle.SelectionBackColor = Color.Pink
             '    .Width = 200
 
             'End With
-            '    .Columns.Add(EventColumn)
+            '.Columns.Add(CountryColumn)
 
         End With
 
@@ -285,13 +295,13 @@ Public Class Form1
         params.filter.competitionIds = competitionIds
 
         Dim marketCountries As New List(Of String)
-        ' marketCountries.Add("GB")
-        'marketCountries.Add("ES")
-        ' marketCountries.Add("FR")
-        'marketCountries.Add("IT")
-        'marketCountries.Add("NL")
-        'marketCountries.Add("DE")
-        ' marketCountries.Add("INT") 'International
+        marketCountries.Add("GB")
+        marketCountries.Add("ES")
+        marketCountries.Add("FR")
+        marketCountries.Add("IT")
+        marketCountries.Add("NL")
+        marketCountries.Add("DE")
+        marketCountries.Add("INT") 'International
         params.filter.marketCountries = marketCountries
 
         Dim marketProjection As New List(Of String)
@@ -359,7 +369,7 @@ Public Class Form1
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
 
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
-                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
+                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -474,11 +484,11 @@ Public Class Form1
 
                         marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
 
-                        If book(0).result(bookCount).inplay = True Then
-                            foundRow("inPlay") = "inPlay"
-                        Else
-                            foundRow("inPlay") = ""
-                        End If
+                        'If book(0).result(bookCount).inplay = True Then
+                        'foundRow("inPlay") = "inPlay"
+                        ' Else
+                        'foundRow("inPlay") = ""
+                        'End If
 
                         foundRow("runnerStatus") = .status
                         runnerDictionary(.selectionId).status = .status
