@@ -82,15 +82,14 @@ Public Class Form1
         dataTable.Columns.Add("marketId", GetType(System.String), Nothing)
         dataTable.Columns.Add("marketStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("inPlay", GetType(System.String), Nothing)
-        'dataTable.Columns.Add("country", GetType(System.String), Nothing)
-        'dataTable.Columns.Add("course", GetType(System.String), Nothing)
         dataTable.Columns.Add("Event", GetType(System.String), Nothing)
+        ' dataTable.Columns.Add("marketName", GetType(System.String), Nothing)
         dataTable.Columns.Add("selectionId", GetType(System.String), Nothing)
         dataTable.Columns.Add("runnerName", GetType(System.String), Nothing)
         dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-        'dataTable.Columns.Add("country", GetType(System.String), Nothing)
+        'dataTable.Columns.Add("marketName", GetType(System.String), Nothing)
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'needed to load events
 
@@ -115,8 +114,8 @@ Public Class Form1
             .AllowUserToAddRows = False
             .AllowUserToResizeColumns = False
             .AllowUserToResizeRows = False
-            .AutoGenerateColumns = False
-
+            '.AutoGenerateColumns = False
+            .AutoGenerateColumns = True
             .ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8, FontStyle.Regular)
 
             .ColumnHeadersVisible = True
@@ -190,9 +189,21 @@ Public Class Form1
                 .Name = "Event"
                 .DataPropertyName = "Event"
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-                .Width = 200
+                .Width = 150
             End With
             .Columns.Add(EventColumn)
+
+            'Dim marketNameColumn As New DataGridViewTextBoxColumn
+            'With marketNameColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "marketName"
+            '    .DataPropertyName = "marketName"
+            '    .DefaultCellStyle.BackColor = Color.AntiqueWhite
+            '    .DefaultCellStyle.SelectionBackColor = Color.Pink
+            '    .Width = 200
+
+            'End With
+            '.Columns.Add(marketNameColumn)
 
             Dim selectionIdColumn As New DataGridViewTextBoxColumn
             With selectionIdColumn
@@ -218,8 +229,9 @@ Public Class Form1
             With runnerStatusColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 .Name = "runnerStatus"
+                .Name = "marketName"
                 .DataPropertyName = "runnerStatus"
-                .Width = 70
+                .Width = 150
             End With
             .Columns.Add(runnerStatusColumn)
 
@@ -244,22 +256,7 @@ Public Class Form1
                 .Width = 40
             End With
             .Columns.Add(layColumn)
-
-            'Dim CountryColumn As New DataGridViewTextBoxColumn
-            'With CountryColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "Country"
-            '    .DataPropertyName = "Country"
-            '    .DefaultCellStyle.BackColor = Color.Beige
-            '    .DefaultCellStyle.SelectionBackColor = Color.Pink
-            '    .Width = 200
-
-            'End With
-            '.Columns.Add(CountryColumn)
-
         End With
-
-
     End Sub
 
 
@@ -369,7 +366,9 @@ Public Class Form1
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
 
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
-                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
+                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
+                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
+                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, "", "", allMarkets(0).result(n).marketName)
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -478,26 +477,26 @@ Public Class Form1
                         keys(1) = .selectionId
                         foundRow = dataSet.Tables("Runners").Rows.Find(keys)
 
-                        foundRow("marketStatus") = book(0).result(bookCount).status 'throws error
+                        'foundRow("marketStatus") = book(0).result(bookCount).status 'throws error
 
-                        marketDictionary.Item(book(0).result(bookCount).marketId).status = book(0).result(bookCount).status
+                        'marketDictionary.Item(book(0).result(bookCount).marketId).status = book(0).result(bookCount).status
 
-                        marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
+                        'marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
 
-                        'If book(0).result(bookCount).inplay = True Then
-                        'foundRow("inPlay") = "inPlay"
-                        ' Else
-                        'foundRow("inPlay") = ""
-                        'End If
+                        ''If book(0).result(bookCount).inplay = True Then
+                        ''foundRow("inPlay") = "inPlay"
+                        '' Else
+                        ''foundRow("inPlay") = ""
+                        ''End If
 
-                        foundRow("runnerStatus") = .status
-                        runnerDictionary(.selectionId).status = .status
+                        'foundRow("runnerStatus") = .status
+                        'runnerDictionary(.selectionId).status = .status
 
-                        If .status = "ACTIVE" Then
+                        'If .status = "ACTIVE" Then
 
-                            foundRow("runnerStatus") = "ACTIVE"
+                        '    foundRow("runnerStatus") = "ACTIVE"
 
-                            If .ex.availableToback.Count > 0 Then
+                        If .ex.availableToback.Count > 0 Then
                                 runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
                                 foundRow("back") = .ex.availableToback(0).price
                             End If
@@ -510,7 +509,7 @@ Public Class Form1
                             If .orders.Count > 0 Then
                                 ProcessOrders(.selectionId, .orders)
                             End If
-                        End If
+                        'End If
 
                     End With
                 Next
