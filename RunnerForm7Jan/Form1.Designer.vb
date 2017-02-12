@@ -28,6 +28,8 @@ Partial Class Form1
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,7 +44,7 @@ Partial Class Form1
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1555, 466)
+        Me.DataGridView1.Size = New System.Drawing.Size(1555, 516)
         Me.DataGridView1.TabIndex = 1
         '
         'Timer1
@@ -63,17 +65,41 @@ Partial Class Form1
         Me.Label1.Text = "Refresh"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Button1
+        '
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(1385, 246)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(123, 43)
+        Me.Button1.TabIndex = 4
+        Me.Button1.Text = "Start"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CheckBox1.Location = New System.Drawing.Point(1385, 167)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(118, 24)
+        Me.CheckBox1.TabIndex = 5
+        Me.CheckBox1.Text = "Save Data"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.ClientSize = New System.Drawing.Size(1555, 466)
+        Me.ClientSize = New System.Drawing.Size(1555, 516)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents DataGridView1 As DataGridView
@@ -81,4 +107,6 @@ Partial Class Form1
     Friend WithEvents Timer2 As Timer
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents Label1 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

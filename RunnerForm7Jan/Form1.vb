@@ -440,21 +440,20 @@ Public Class Form1
 
     'Protected Sub ListMarketBook()
     Public Sub ListMarketBook()
-        Dim jsonResponse As String
 
         Dim keys(1) As Object
         Dim foundRow As DataRow
 
         For n As Integer = 0 To bookRequestList.Count - 1
 
-            'Dim jsonResponse As String = GetRawBook(bookRequestList.Item(n))
+            Dim jsonResponse As String = GetRawBook(bookRequestList.Item(n))
 
-            'If CheckBox1.CheckState = 1 Then
+            If CheckBox1.CheckState = 1 Then
 
-            ' Using writer As StreamWriter = File.AppendText("C:\Betfair\" & filename & ".json")
-            'writer.WriteLine(Now & "*" & jsonResponse)
-            'End Using
-            'End If
+                Using writer As StreamWriter = File.AppendText("C:\Betfair\" & filename & ".json")
+                    writer.WriteLine(Now & "*" & jsonResponse)
+                End Using
+            End If
 
             jsonResponse = ""
 
@@ -853,17 +852,17 @@ Public Class Form1
 
         For Each row As DataGridViewRow In DataGridView1.Rows
 
-            Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "runnerkeys-" & Format(Date.Now, "yyyy_MM-dd") & ".csv")
+            Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "runnerKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
-                writer.WriteLine(row.Cells.Item("selectionId").Value & "," & row.Cells.Item("runnerName").Value)
+                writer.WriteLine(row.Cells.Item("selectionId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
             End Using
 
             If Not row.Cells.Item("marketId").Value = market Then
 
                 Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "marketKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
-                    writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
-
+                    'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
+                    writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("Event").Value)
                 End Using
 
                 market = row.Cells.Item("marketId").Value
@@ -872,35 +871,66 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs)
-
-    End Sub
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
         ListMarketBook()
         CheckMarkets()
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'CheckTriggers()
+        If Button1.Text = "Start" Then
+
+            If CheckBox1.CheckState = 1 Then
+                BuildKeyFiles()
+            End If
+
+            Button1.Text = "stop"
+            Timer1.Enabled = True
+            CheckBox1.Enabled = False
+
+        Else
+
+            Button1.Text = "Start"
+            Timer1.Enabled = False
+            CheckBox1.Enabled = True
 
 
-    'Protected Sub Button1_Click(sender As Object, e As EventArgs)
-    '    Form2.Show()
-    '    Me.Hide()
+        End If
+    End Sub
+    'Private Sub CheckTriggers()
 
+    '    For Each row As DataGridViewRow In DataGridView1.Rows
+    '        If "country" = "ES" Then
+    '            Print("Trigger")
+    '        End If
+    '    Next
     'End Sub
 
-    'Private Sub Button2_Click(sender As Object, e As EventArgs)
 
+    'Public Sub buildbetList()
+
+    '    Dim betList As New List(Of String)
+    '    Dim marketCountries As New List(Of String)
+    '    Dim marketTypeCodes As New List(Of String)
+    '    Dim backPrice As Double
+
+    '    For Each row As DataGridViewRow In DataGridView1.Rows
+
+    '        If marketCountries = row.Cells.Item("GB").Value And
+    '            marketTypeCodes = row.Cells.Item("Correct Score").Value And
+    '            backPrice = ("+=18") Then
+    '            TextBox1.Text = ("EPL O4.5 Lay Max 6.9")
+    '            'Dim runner As New ChartDetail
+    '            '                    runner.runnerName = row.Cells.Item("runnerName").Value
+    '            '                    runner.selectionId = row.Cells.Item("selectionId").Value
+    '            '                    runner.ChartBot = False
+    '            '                    runnerList.Add(runner)
+    '        End If
+    '    Next
     'End Sub
 
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-    '    YourGridViewBindingSource.Filter = String.Format("runnerNameColumn = Monaco")
-    'End Sub
 
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-    '    Form2.Show()
-    '    Me.Hide()
-    'End Sub
 End Class
 
 
