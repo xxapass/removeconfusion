@@ -496,18 +496,18 @@ Public Class Form1
                         '    foundRow("runnerStatus") = "ACTIVE"
 
                         If .ex.availableToback.Count > 0 Then
-                                runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
-                                foundRow("back") = .ex.availableToback(0).price
-                            End If
+                            runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
+                            foundRow("back") = .ex.availableToback(0).price
+                        End If
 
-                            If .ex.availableToLay.Count > 0 Then
-                                runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
-                                foundRow("lay") = .ex.availableToLay(0).price
-                            End If
+                        If .ex.availableToLay.Count > 0 Then
+                            runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
+                            foundRow("lay") = .ex.availableToLay(0).price
+                        End If
 
-                            If .orders.Count > 0 Then
-                                ProcessOrders(.selectionId, .orders)
-                            End If
+                        If .orders.Count > 0 Then
+                            ProcessOrders(.selectionId, .orders)
+                        End If
                         'End If
 
                     End With
@@ -547,36 +547,36 @@ Public Class Form1
 
     Function PlaceOrders(ByVal selectionId As Integer, ByVal marketId As String, ByVal side As String, ByVal size As Double, ByVal price As Double)
 
-            Dim requestList As New List(Of PlaceOrdersRequest) 'request object
+        Dim requestList As New List(Of PlaceOrdersRequest) 'request object
 
-            Dim request As New PlaceOrdersRequest 'holds data for request object
+        Dim request As New PlaceOrdersRequest 'holds data for request object
 
-            Dim params As New PlaceOrdersParams
+        Dim params As New PlaceOrdersParams
 
-            params.marketId = marketId
+        params.marketId = marketId
 
-            Dim instructions As New PlaceInstructions
-            instructions.selectionId = selectionId
-            instructions.handicap = 0
-            instructions.side = side
-            instructions.orderType = "LIMIT"
+        Dim instructions As New PlaceInstructions
+        instructions.selectionId = selectionId
+        instructions.handicap = 0
+        instructions.side = side
+        instructions.orderType = "LIMIT"
 
-            Dim limitOrder As New LimitOrder
-            limitOrder.size = size
-            limitOrder.price = price
-            limitOrder.persistenceType = "LAPSE"
+        Dim limitOrder As New LimitOrder
+        limitOrder.size = size
+        limitOrder.price = price
+        limitOrder.persistenceType = "LAPSE"
 
-            instructions.limitOrder = limitOrder
+        instructions.limitOrder = limitOrder
 
-            params.instructions.Add(instructions)
+        params.instructions.Add(instructions)
 
-            request.params = params
+        request.params = params
 
-            requestList.Add(request)
+        requestList.Add(request)
 
-            Dim orders() As PlaceOrdersResponse
+        Dim orders() As PlaceOrdersResponse
 
-            orders = DeserializePlaceOrdersResponse(SerializePlaceOrdersRequest(requestList))
+        orders = DeserializePlaceOrdersResponse(SerializePlaceOrdersRequest(requestList))
 
         'Return (orders(0).result.instructionReports(0).betId)
         Return (orders(0).result.instructionReports(0).betId)
@@ -584,104 +584,104 @@ Public Class Form1
 
     Function PlaceSub2Orders(ByVal selectionId As Integer, ByVal marketId As String, ByVal side As String, ByVal preferredSize As Double, ByVal preferredprice As Double)
 
-            Dim requestList As New List(Of PlaceOrdersRequest)
-            Dim request As New PlaceOrdersRequest
-            Dim params As New PlaceOrdersParams
-            params.marketId = marketId
+        Dim requestList As New List(Of PlaceOrdersRequest)
+        Dim request As New PlaceOrdersRequest
+        Dim params As New PlaceOrdersParams
+        params.marketId = marketId
 
-            Dim instructions As New PlaceInstructions
-            instructions.selectionId = selectionId
-            instructions.handicap = 0
-            instructions.side = side
-            instructions.orderType = "LIMIT"
+        Dim instructions As New PlaceInstructions
+        instructions.selectionId = selectionId
+        instructions.handicap = 0
+        instructions.side = side
+        instructions.orderType = "LIMIT"
 
-            Dim limitOrder As New LimitOrder
-            limitOrder.size = 2
+        Dim limitOrder As New LimitOrder
+        limitOrder.size = 2
 
-            If side = "BACK" Then
-                limitOrder.price = 1000
-            Else
-                limitOrder.price = 1.01
-            End If
+        If side = "BACK" Then
+            limitOrder.price = 1000
+        Else
+            limitOrder.price = 1.01
+        End If
 
-            limitOrder.persistenceType = "LAPSE"
-            instructions.limitOrder = limitOrder
-            params.instructions.Add(instructions)
+        limitOrder.persistenceType = "LAPSE"
+        instructions.limitOrder = limitOrder
+        params.instructions.Add(instructions)
 
-            request.params = params
-            requestList.Add(request)
+        request.params = params
+        requestList.Add(request)
 
-            Dim orders() As PlaceOrdersResponse
-            orders = DeserializePlaceOrdersResponse(SerializePlaceOrdersRequest(requestList))
+        Dim orders() As PlaceOrdersResponse
+        orders = DeserializePlaceOrdersResponse(SerializePlaceOrdersRequest(requestList))
 
-            Dim betId As String = orders(0).result.instructionReports(0).betId
-            betId = CancelOrders(betId, marketId, 2 - preferredSize)
-            betId = ReplaceOrders(betId, marketId, preferredprice)
+        Dim betId As String = orders(0).result.instructionReports(0).betId
+        betId = CancelOrders(betId, marketId, 2 - preferredSize)
+        betId = ReplaceOrders(betId, marketId, preferredprice)
 
-            Return betId
-        End Function
+        Return betId
+    End Function
 
-        Public Function CancelOrders(ByVal betId As String, ByVal marketId As String, ByVal sizereduction As Double)
+    Public Function CancelOrders(ByVal betId As String, ByVal marketId As String, ByVal sizereduction As Double)
 
-            Dim requestList As New List(Of CancelOrdersRequest)
-            Dim request As New CancelOrdersRequest
+        Dim requestList As New List(Of CancelOrdersRequest)
+        Dim request As New CancelOrdersRequest
 
-            Dim params As New CancelOrdersParams
-            params.marketId = marketId
+        Dim params As New CancelOrdersParams
+        params.marketId = marketId
 
-            Dim instructions As New CancelInstructions
-            instructions.betId = betId
-            instructions.sizeReduction = sizereduction
-            params.instructions.Add(instructions)
+        Dim instructions As New CancelInstructions
+        instructions.betId = betId
+        instructions.sizeReduction = sizereduction
+        params.instructions.Add(instructions)
 
-            request.params = params
+        request.params = params
 
-            requestList.Add(request)
+        requestList.Add(request)
 
-            Dim orders() As CancelOrdersResponse
+        Dim orders() As CancelOrdersResponse
 
-            orders = DeserializeCancelOrdersResponse(SerializeCancelOrdersRequest(requestList))
+        orders = DeserializeCancelOrdersResponse(SerializeCancelOrdersRequest(requestList))
 
-            Return orders(0).result.instructionReports(0).instruction.betId
+        Return orders(0).result.instructionReports(0).instruction.betId
 
-        End Function
+    End Function
 
-        Public Function ReplaceOrders(ByVal betId As String, ByVal marketId As String, ByVal newPrice As Double)
+    Public Function ReplaceOrders(ByVal betId As String, ByVal marketId As String, ByVal newPrice As Double)
 
-            Dim requestList As New List(Of ReplaceOrdersRequest)
-            Dim request As New ReplaceOrdersRequest
+        Dim requestList As New List(Of ReplaceOrdersRequest)
+        Dim request As New ReplaceOrdersRequest
 
-            Dim params As New ReplaceOrdersParams
-            params.marketId = marketId
+        Dim params As New ReplaceOrdersParams
+        params.marketId = marketId
 
-            Dim instructions As New ReplaceInstructions
-            instructions.betId = betId
-            instructions.newPrice = newPrice
-            params.instructions.Add(instructions)
+        Dim instructions As New ReplaceInstructions
+        instructions.betId = betId
+        instructions.newPrice = newPrice
+        params.instructions.Add(instructions)
 
-            request.params = params
+        request.params = params
 
-            requestList.Add(request)
+        requestList.Add(request)
 
-            Dim orders() As ReplaceOrdersResponse
+        Dim orders() As ReplaceOrdersResponse
 
-            orders = DeserializeReplaceOrdersResponse(SerializeReplaceOrdersRequest(requestList))
+        orders = DeserializeReplaceOrdersResponse(SerializeReplaceOrdersRequest(requestList))
 
-            Return orders(0).result.instructionReports(0).placeInstructionReport.betId
+        Return orders(0).result.instructionReports(0).placeInstructionReport.betId
 
-        End Function
-        Public Function SendBet(ByVal marketId As String, ByVal selectionId As Integer, ByVal side As String, ByVal size As Double, ByVal price As Double)
+    End Function
+    Public Function SendBet(ByVal marketId As String, ByVal selectionId As Integer, ByVal side As String, ByVal size As Double, ByVal price As Double)
 
-            Dim betId As String
+        Dim betId As String
 
-            If size < 2 Then
-                betId = PlaceSub2Orders(selectionId, marketId, side, size, price)
-            Else
-                betId = PlaceOrders(selectionId, marketId, side, size, price)
-            End If
+        If size < 2 Then
+            betId = PlaceSub2Orders(selectionId, marketId, side, size, price)
+        Else
+            betId = PlaceOrders(selectionId, marketId, side, size, price)
+        End If
 
-            Return betId
-        End Function
+        Return betId
+    End Function
 
     'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
     'ListMarketCatalogue()
@@ -694,7 +694,7 @@ Public Class Form1
         If e.ColumnIndex = 8 Then
             'If e.ColumnIndex = 5 Then
             Dim runnerForm As New RunnerForm(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
-            runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm)
+            'runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm)
         End If
 
 
@@ -883,6 +883,7 @@ Public Class Form1
 
             If CheckBox1.CheckState = 1 Then
                 BuildKeyFiles()
+                BuildcouponFiles()
             End If
 
             Button1.Text = "stop"
@@ -907,7 +908,30 @@ Public Class Form1
     '    Next
     'End Sub
 
+    Protected Sub BuildcouponFiles()
 
+        Dim market As String = ""
+
+        For Each row As DataGridViewRow In DataGridView1.Rows
+
+            Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "coupon-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
+
+                writer.WriteLine(row.Cells.Item("country").Value & "," & row.Cells.Item("Event").Value & row.Cells.Item("marketName").Value & "'" & row.Cells.Item("runnerName").Value)
+            End Using
+
+            'If Not row.Cells.Item("marketId").Value = market Then
+
+            '    Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "marketKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
+
+            '        'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
+            '        writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & "," & row.Cells.Item("Event").Value)
+            '    End Using
+
+            '    market = row.Cells.Item("marketId").Value
+
+            'End If
+        Next
+    End Sub
     'Public Sub buildbetList()
 
     '    Dim betList As New List(Of String)
