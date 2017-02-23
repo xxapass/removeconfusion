@@ -271,34 +271,34 @@ Public Class Form1
         params.filter.eventTypeIds = eventTypeIds
 
         Dim competitionIds As New List(Of String)
-        competitionIds.Add("31") 'EPL
-        competitionIds.Add("117") 'ESP
-        'competitionIds.Add("2005") 'Europa League
-        competitionIds.Add("9404054") 'Dutch Eredivisie
-        competitionIds.Add("59") 'Bundesliga 1
-        competitionIds.Add("81") 'Serie A
-        competitionIds.Add("7129730") 'The Championship
-        competitionIds.Add("99") 'Primeira Liga
-        competitionIds.Add("55") 'French Ligue One
-        competitionIds.Add("89979") 'Belgian Jupiler League
-        'competitionIds.Add("5984496") 'IT Pro Liga
-        'competitionIds.Add("7129730") 'Champ
-        'competitionIds.Add("228") 'Champions League
-        'competitionIds.Add("61") 'Bundesliga 2
-        'competitionIds.Add("35") 'League 1
-        'competitionIds.Add("37") 'League 2
-        competitionIds.Add(5614746) '2018 FIFA World Cup
-        'competitionIds.Add(801976) 'Egyptian Premier
-        params.filter.competitionIds = competitionIds
+        'competitionIds.Add("31") 'EPL
+        'competitionIds.Add("117") 'ESP
+        competitionIds.Add("2005") 'Europa League
+        'competitionIds.Add("9404054") 'Dutch Eredivisie
+        'competitionIds.Add("59") 'Bundesliga 1
+        'competitionIds.Add("81") 'Serie A
+        'competitionIds.Add("7129730") 'The Championship
+        'competitionIds.Add("99") 'Primeira Liga
+        'competitionIds.Add("55") 'French Ligue One
+        'competitionIds.Add("89979") 'Belgian Jupiler League
+        ''competitionIds.Add("5984496") 'IT Pro Liga
+        ''competitionIds.Add("7129730") 'Champ
+        ''competitionIds.Add("228") 'Champions League
+        ''competitionIds.Add("61") 'Bundesliga 2
+        ''competitionIds.Add("35") 'League 1
+        ''competitionIds.Add("37") 'League 2
+        'competitionIds.Add(5614746) '2018 FIFA World Cup
+        ''competitionIds.Add(801976) 'Egyptian Premier
+        'params.filter.competitionIds = competitionIds
 
         Dim marketCountries As New List(Of String)
-        marketCountries.Add("GB")
-        marketCountries.Add("ES")
-        marketCountries.Add("FR")
-        marketCountries.Add("IT")
-        marketCountries.Add("NL")
-        marketCountries.Add("DE")
-        marketCountries.Add("INT") 'International
+        'marketCountries.Add("GB")
+        'marketCountries.Add("ES")
+        'marketCountries.Add("FR")
+        'marketCountries.Add("IT")
+        'marketCountries.Add("NL")
+        'marketCountries.Add("DE")
+        'marketCountries.Add("INT") 'International
         params.filter.marketCountries = marketCountries
 
         Dim marketProjection As New List(Of String)
@@ -854,7 +854,8 @@ Public Class Form1
 
             Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "runnerKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
-                writer.WriteLine(row.Cells.Item("selectionId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
+                'writer.WriteLine(row.Cells.Item("selectionId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
+                writer.WriteLine(row.Cells.Item("selectionId").Value & row.Cells.Item("marketId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
             End Using
 
             If Not row.Cells.Item("marketId").Value = market Then
