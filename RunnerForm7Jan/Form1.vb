@@ -308,14 +308,14 @@ Public Class Form1
         params.marketProjection = marketProjection
 
         Dim marketTypeCodes As New List(Of String)
-        marketTypeCodes.Add("MATCH_ODDS")
-        marketTypeCodes.Add("OVER_UNDER_35")
-        marketTypeCodes.Add("OVER_UNDER_45")
+        ' marketTypeCodes.Add("MATCH_ODDS")
+        ' marketTypeCodes.Add("OVER_UNDER_35")
+        'marketTypeCodes.Add("OVER_UNDER_45")
         'marketTypeCodes.Add("WIN")
         'marketTypeCodes.Add("HALF_TIME_FULL_TIME")
         marketTypeCodes.Add("CORRECT_SCORE")
-        marketTypeCodes.Add("HALF_TIME_SCORE")
-        marketTypeCodes.Add("FIRST_HALF_GOALS_15")
+        'marketTypeCodes.Add("HALF_TIME_SCORE")
+        'marketTypeCodes.Add("FIRST_HALF_GOALS_15")
 
         params.filter.marketTypeCodes = marketTypeCodes
 
