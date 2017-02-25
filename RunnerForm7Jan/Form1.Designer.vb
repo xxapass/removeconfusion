@@ -58,7 +58,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1364, 0)
+        Me.Label1.Location = New System.Drawing.Point(1342, 168)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(201, 150)
         Me.Label1.TabIndex = 2
@@ -68,7 +68,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(1385, 246)
+        Me.Button1.Location = New System.Drawing.Point(1359, 82)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(123, 43)
         Me.Button1.TabIndex = 4
@@ -79,7 +79,7 @@ Partial Class Form1
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(1385, 167)
+        Me.CheckBox1.Location = New System.Drawing.Point(1359, 12)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(118, 24)
         Me.CheckBox1.TabIndex = 5

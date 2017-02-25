@@ -65,12 +65,12 @@ Public Class Form1
     'Public Property YourGridViewBindingSource As Object
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-            LoginForm.Show()
-        End Sub
+        LoginForm.Show()
+    End Sub
 
 
     Public Sub Initialise()
-            BuildDataGridView() 'build dataGridView
+        BuildDataGridView() 'build dataGridView
         BuildDataTable() 'build dataTable
         ListMarketCatalogue()
         BuildListMarketBookRequests()
@@ -271,16 +271,16 @@ Public Class Form1
         params.filter.eventTypeIds = eventTypeIds
 
         Dim competitionIds As New List(Of String)
-        'competitionIds.Add("31") 'EPL
-        'competitionIds.Add("117") 'ESP
-        competitionIds.Add("2005") 'Europa League
-        'competitionIds.Add("9404054") 'Dutch Eredivisie
-        'competitionIds.Add("59") 'Bundesliga 1
-        'competitionIds.Add("81") 'Serie A
-        'competitionIds.Add("7129730") 'The Championship
-        'competitionIds.Add("99") 'Primeira Liga
-        'competitionIds.Add("55") 'French Ligue One
-        'competitionIds.Add("89979") 'Belgian Jupiler League
+        competitionIds.Add("31") 'EPL
+        competitionIds.Add("117") 'ESP
+        'competitionIds.Add("2005") 'Europa League
+        competitionIds.Add("9404054") 'Dutch Eredivisie
+        competitionIds.Add("59") 'Bundesliga 1
+        competitionIds.Add("81") 'Serie A
+        competitionIds.Add("7129730") 'The Championship
+        competitionIds.Add("99") 'Primeira Liga
+        competitionIds.Add("55") 'French Ligue One
+        competitionIds.Add("89979") 'Belgian Jupiler League
         ''competitionIds.Add("5984496") 'IT Pro Liga
         ''competitionIds.Add("7129730") 'Champ
         ''competitionIds.Add("228") 'Champions League
@@ -289,7 +289,7 @@ Public Class Form1
         ''competitionIds.Add("37") 'League 2
         'competitionIds.Add(5614746) '2018 FIFA World Cup
         ''competitionIds.Add(801976) 'Egyptian Premier
-        'params.filter.competitionIds = competitionIds
+        params.filter.competitionIds = competitionIds
 
         Dim marketCountries As New List(Of String)
         'marketCountries.Add("GB")
@@ -854,8 +854,8 @@ Public Class Form1
 
             Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "runnerKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
-                'writer.WriteLine(row.Cells.Item("selectionId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
-                writer.WriteLine(row.Cells.Item("selectionId").Value & row.Cells.Item("marketId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
+                writer.WriteLine(row.Cells.Item("selectionId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
+                'writer.WriteLine(row.Cells.Item("selectionId").Value & row.Cells.Item("marketId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
             End Using
 
             If Not row.Cells.Item("marketId").Value = market Then
@@ -864,6 +864,8 @@ Public Class Form1
 
                     'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
                     writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("Event").Value)
+                    'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & "," & row.Cells.Item("Event").Value & " " & "'" & row.Cells.Item("runnerName").Value)
+
                 End Using
 
                 market = row.Cells.Item("marketId").Value
@@ -884,7 +886,7 @@ Public Class Form1
 
             If CheckBox1.CheckState = 1 Then
                 BuildKeyFiles()
-                BuildcouponFiles()
+                'BuildcouponFiles()
             End If
 
             Button1.Text = "stop"
@@ -909,30 +911,30 @@ Public Class Form1
     '    Next
     'End Sub
 
-    Protected Sub BuildcouponFiles()
+    'Protected Sub BuildcouponFiles()
 
-        Dim market As String = ""
+    '    Dim market As String = ""
 
-        For Each row As DataGridViewRow In DataGridView1.Rows
+    '    For Each row As DataGridViewRow In DataGridView1.Rows
 
-            Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "coupon-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
+    '        Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "coupon-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
-                writer.WriteLine(row.Cells.Item("country").Value & "," & row.Cells.Item("Event").Value & row.Cells.Item("marketName").Value & "'" & row.Cells.Item("runnerName").Value)
-            End Using
+    '            writer.WriteLine(row.Cells.Item("country").Value & "," & row.Cells.Item("Event").Value & row.Cells.Item("marketName").Value & "'" & row.Cells.Item("runnerName").Value)
+    '        End Using
 
-            'If Not row.Cells.Item("marketId").Value = market Then
+    '        'If Not row.Cells.Item("marketId").Value = market Then
 
-            '    Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "marketKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
+    '        '    Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "marketKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
-            '        'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
-            '        writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & "," & row.Cells.Item("Event").Value)
-            '    End Using
+    '        '        'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
+    '        '        writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & "," & row.Cells.Item("Event").Value)
+    '        '    End Using
 
-            '    market = row.Cells.Item("marketId").Value
+    '        '    market = row.Cells.Item("marketId").Value
 
-            'End If
-        Next
-    End Sub
+    '        'End If
+    '    Next
+    'End Sub
     'Public Sub buildbetList()
 
     '    Dim betList As New List(Of String)
