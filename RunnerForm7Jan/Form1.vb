@@ -2,9 +2,9 @@
 
 Public Class Form1
 
-        Private filename As String = Format(Date.Now, "yyyy-MM-dd")
+    Private filename As String = Format(Date.Now, "yyyy-MM-dd") 'declares to format for the json response saved to C:\Betfair etc line 453
 
-        Public dataSet As DataSet = New DataSet("RaceData")
+    Public dataSet As DataSet = New DataSet("RaceData")
     Protected dataTable As DataTable = dataSet.Tables.Add("Runners")
     Protected dataView As DataView
     Public bindingSource As New BindingSource
@@ -74,7 +74,7 @@ Public Class Form1
         BuildDataTable() 'build dataTable
         ListMarketCatalogue()
         BuildListMarketBookRequests()
-        Timer1.Enabled = True
+        'Timer1.Enabled = True Button1 now used to start and stop 
     End Sub
     Public Sub BuildDataTable()
 
@@ -96,8 +96,8 @@ Public Class Form1
 
         Dim dataView As DataView = dataSet.Tables("Runners").DefaultView
 
-        'dataView.Sort = "marketStartTime" 'sort data by time
-        dataView.Sort = "Event"
+        dataView.Sort = "marketStartTime" 'sort data by time
+        'dataView.Sort = "Event"
         'dataView.Sort = "course"
         bindingSource = New BindingSource
 
@@ -299,6 +299,8 @@ Public Class Form1
         'marketCountries.Add("NL")
         'marketCountries.Add("DE")
         'marketCountries.Add("INT") 'International
+        'marketCountries.Add("NZ")
+        'marketCountries.Add("AU")
         params.filter.marketCountries = marketCountries
 
         Dim marketProjection As New List(Of String)
@@ -308,14 +310,14 @@ Public Class Form1
         params.marketProjection = marketProjection
 
         Dim marketTypeCodes As New List(Of String)
-        ' marketTypeCodes.Add("MATCH_ODDS")
-        ' marketTypeCodes.Add("OVER_UNDER_35")
-        'marketTypeCodes.Add("OVER_UNDER_45")
+        marketTypeCodes.Add("MATCH_ODDS")
+        marketTypeCodes.Add("OVER_UNDER_35")
+        marketTypeCodes.Add("OVER_UNDER_45")
         'marketTypeCodes.Add("WIN")
         'marketTypeCodes.Add("HALF_TIME_FULL_TIME")
         marketTypeCodes.Add("CORRECT_SCORE")
-        'marketTypeCodes.Add("HALF_TIME_SCORE")
-        'marketTypeCodes.Add("FIRST_HALF_GOALS_15")
+        marketTypeCodes.Add("HALF_TIME_SCORE")
+        marketTypeCodes.Add("FIRST_HALF_GOALS_15")
 
         params.filter.marketTypeCodes = marketTypeCodes
 
@@ -517,9 +519,9 @@ Public Class Form1
         Next
     End Sub
 
-    Protected Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Protected Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick 'enabled by Start button
 
-        ' ListMarketBook()
+        ListMarketBook()
         'CheckMarkets()
         UpdateRunnerForms()
 
@@ -846,20 +848,30 @@ Public Class Form1
     '    End If
     'End Sub
 
-    Protected Sub BuildKeyFiles()
+    Protected Sub BuildKeyFiles() 'called by Start button 
 
         Dim market As String = ""
+        ' Dim row As DataGridViewRow
+        'Format(Now, "hh:mm")
+
+        'Dim Now As New DateTime()
+        'Dim NowFormat As String
+        ' NowFormat = Now.GetDateTimeFormats() '.......declare now in same format as marketStartTime
 
         For Each row As DataGridViewRow In DataGridView1.Rows
+
+            ' If Now = (row.Cells.Item("marketStartTime").Value) Then
 
             Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "runnerKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
                 writer.WriteLine(row.Cells.Item("selectionId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
                 'writer.WriteLine(row.Cells.Item("selectionId").Value & row.Cells.Item("marketId").Value & "," & "'" & row.Cells.Item("runnerName").Value)
+
             End Using
+            'End If
 
             If Not row.Cells.Item("marketId").Value = market Then
-
+                'If Now = (row.Cells.Item("marketStartTime").Value) Then
                 Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "marketKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
 
                     'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
@@ -869,35 +881,50 @@ Public Class Form1
                 End Using
 
                 market = row.Cells.Item("marketId").Value
-
+                ' End If
             End If
         Next
     End Sub
 
+    'Private Sub getData()
+    '    Format(Now, "hh:mm")
+    '    ' Dim NowFormat As String
+    '    'NowFormat = Now.GetDateTimeFormats() '.......declare now in same format as marketStartTime
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    '    For Each row As DataGridViewRow In DataGridView1.Rows
+
+    '        If Now = (row.Cells.Item("marketStartTime").Value) Then
+    '            ListMarketBook()
+    '            CheckMarkets()
+    '        End If
+    '    Next
+
+    'End Sub
+
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click 'Refresh button = takes a snapshot, loads prices in DGV and stores JSON response in C:\Betfair etc
         ListMarketBook()
         CheckMarkets()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'Start button starts and stops Timer1 and buildsKeyfiles if Save Data button checked
         'CheckTriggers()
         If Button1.Text = "Start" Then
 
-            If CheckBox1.CheckState = 1 Then
+            If CheckBox1.CheckState = 1 Then 'check whether "Save Data" is selected
                 BuildKeyFiles()
                 'BuildcouponFiles()
             End If
 
             Button1.Text = "stop"
-            Timer1.Enabled = True
-            CheckBox1.Enabled = False
+            Timer1.Enabled = True  'loads prices (calls "listMarketBook") streams the JSON data and updates DGV1 at 5 sec intervals
+            CheckBox1.Enabled = False 'disables "Save Data" to stop it being changed whilst JSON is being recorded
 
         Else
 
             Button1.Text = "Start"
-            Timer1.Enabled = False
-            CheckBox1.Enabled = True
+            Timer1.Enabled = False 'stops streaming the data
+            CheckBox1.Enabled = True 'enables Start button again
 
 
         End If

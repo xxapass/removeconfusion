@@ -49,7 +49,7 @@ Partial Class Form1
         '
         'Timer1
         '
-        Me.Timer1.Interval = 5000
+        Me.Timer1.Interval = 300000
         '
         'Timer2
         '
@@ -72,7 +72,7 @@ Partial Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(123, 43)
         Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Start"
+        Me.Button1.Text = "Start Timer"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'CheckBox1
