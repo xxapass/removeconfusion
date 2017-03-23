@@ -83,21 +83,21 @@ Public Class Form1
         dataTable.Columns.Add("marketStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("inPlay", GetType(System.String), Nothing)
         dataTable.Columns.Add("Event", GetType(System.String), Nothing)
-        ' dataTable.Columns.Add("marketName", GetType(System.String), Nothing)
         dataTable.Columns.Add("selectionId", GetType(System.String), Nothing)
         dataTable.Columns.Add("runnerName", GetType(System.String), Nothing)
         dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-        'dataTable.Columns.Add("marketName", GetType(System.String), Nothing)
+        dataTable.Columns.Add("countryCode", GetType(System.String), Nothing)
+        ' dataTable.Columns.Add("marketName", GetType(System.String), Nothing) 'causes exception and rearranges dgv
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'needed to load events
 
 
         Dim dataView As DataView = dataSet.Tables("Runners").DefaultView
 
-        dataView.Sort = "marketStartTime" 'sort data by time
-        'dataView.Sort = "Event"
+        'dataView.Sort = "marketStartTime" 'sort data by time
+        dataView.Sort = "Event"
         'dataView.Sort = "course"
         bindingSource = New BindingSource
 
@@ -132,8 +132,8 @@ Public Class Form1
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 .Name = "marketStartTime"
                 .DataPropertyName = "marketStartTime"
-                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-                .Width = 40
+                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Width = 80
             End With
             .Columns.Add(marketStartTimeColumn)
 
@@ -155,22 +155,23 @@ Public Class Form1
             End With
             .Columns.Add(marketStatusColumn)
 
-            'Dim inPlayColumn As New DataGridViewTextBoxColumn
-            'With inPlayColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "inPlay"
-            '    .DataPropertyName = "inPlay"
-            '    '.DataPropertyName = "Country"
-            '    .Width = 50
+            Dim inPlayColumn As New DataGridViewTextBoxColumn
+            With inPlayColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "inPlay"
+                .DataPropertyName = "inPlay"
+                '.DataPropertyName = "Country"
+                .Width = 50
+            End With
+            .Columns.Add(inPlayColumn)
 
             Dim countryColumn As New DataGridViewTextBoxColumn
             With countryColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 .Name = "country"
-                .DataPropertyName = "inPlay"
+                .DataPropertyName = "countryCode"
                 '.DataPropertyName = "Country"
                 .Width = 50
-
             End With
             .Columns.Add(countryColumn)
 
@@ -229,7 +230,7 @@ Public Class Form1
             With runnerStatusColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 .Name = "runnerStatus"
-                .Name = "marketName"
+                '.Name = "marketName"
                 .DataPropertyName = "runnerStatus"
                 .Width = 150
             End With
@@ -260,7 +261,7 @@ Public Class Form1
     End Sub
 
 
-    Protected Sub ListMarketCatalogue()
+    Protected Sub ListMarketCatalogue() 'data loaded automatically on initialise
         Dim requestList As New List(Of MarketCatalogueRequest)
         Dim request As New MarketCatalogueRequest
         Dim params As New Params
@@ -273,7 +274,7 @@ Public Class Form1
         Dim competitionIds As New List(Of String)
         competitionIds.Add("31") 'EPL
         competitionIds.Add("117") 'ESP
-        'competitionIds.Add("2005") 'Europa League
+        competitionIds.Add("2005") 'Europa League
         competitionIds.Add("9404054") 'Dutch Eredivisie
         competitionIds.Add("59") 'Bundesliga 1
         competitionIds.Add("81") 'Serie A
@@ -289,6 +290,7 @@ Public Class Form1
         ''competitionIds.Add("37") 'League 2
         'competitionIds.Add(5614746) '2018 FIFA World Cup
         ''competitionIds.Add(801976) 'Egyptian Premier
+        competitionIds.Add("10765348") 'International Friendly
         params.filter.competitionIds = competitionIds
 
         Dim marketCountries As New List(Of String)
@@ -307,6 +309,7 @@ Public Class Form1
         marketProjection.Add("MARKET_START_TIME")
         marketProjection.Add("RUNNER_DESCRIPTION")
         marketProjection.Add("EVENT")
+        marketProjection.Add("COMPETITION") 'added by me
         params.marketProjection = marketProjection
 
         Dim marketTypeCodes As New List(Of String)
@@ -326,7 +329,7 @@ Public Class Form1
         If Today.IsDaylightSavingTime() Then
 
             marketStartTime.from = Format(Date.Now, "yyyy-MM-dd") & "T" & Format(Now.AddHours(-1), "Long Time") & "Z"
-
+            'see what happens when clocks go forward
         Else
 
             marketStartTime.from = Format(Date.Now, "yyyy-MM-dd") & "T" & Format(Now, "Long Time") & "Z"
@@ -343,7 +346,7 @@ Public Class Form1
 
         allMarkets = DeserializeMarketCatalogueResponse(SerializeMarketCatalogueRequest(requestList))
 
-        For n = 0 To allMarkets(0).result.Count - 1 'something to do with columns
+        For n = 0 To allMarkets(0).result.Count - 1
 
             Dim detail As New MarketDetail
             detail.marketId = allMarkets(0).result(n).marketId
@@ -369,8 +372,8 @@ Public Class Form1
 
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
                     'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
+                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
                     dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
-                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, "", "", allMarkets(0).result(n).marketName)
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -425,7 +428,8 @@ Public Class Form1
 
             params.priceProjection.priceData.Add("EX_BEST_OFFERS")
             'params.priceProjection.priceData.Add("EX_TRADED")
-            params.orderProjection = "ALL"
+            'params.orderProjection = "ALL"
+            params.orderProjection = "EXECUTABLE"
 
             request.params = params
 
@@ -478,19 +482,19 @@ Public Class Form1
                         keys(1) = .selectionId
                         foundRow = dataSet.Tables("Runners").Rows.Find(keys)
 
-                        'foundRow("marketStatus") = book(0).result(bookCount).status 'throws error
+                        foundRow("marketStatus") = book(0).result(bookCount).status 'throws error
 
-                        'marketDictionary.Item(book(0).result(bookCount).marketId).status = book(0).result(bookCount).status
+                        marketDictionary.Item(book(0).result(bookCount).marketId).status = book(0).result(bookCount).status
 
-                        'marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
+                        marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
 
-                        ''If book(0).result(bookCount).inplay = True Then
-                        ''foundRow("inPlay") = "inPlay"
-                        '' Else
-                        ''foundRow("inPlay") = ""
-                        ''End If
+                        If book(0).result(bookCount).inplay = True Then
+                            foundRow("inPlay") = "inPlay"
+                        Else
+                            'foundRow("inPlay") = "" 'removes countryCode and replaces with "" (preplay)
+                        End If
 
-                        'foundRow("runnerStatus") = .status
+                        'foundRow("runnerStatus") = .status don't need runnerstatus, replaced with marketName
                         'runnerDictionary(.selectionId).status = .status
 
                         'If .status = "ACTIVE" Then
@@ -498,18 +502,18 @@ Public Class Form1
                         '    foundRow("runnerStatus") = "ACTIVE"
 
                         If .ex.availableToback.Count > 0 Then
-                            runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
-                            foundRow("back") = .ex.availableToback(0).price
-                        End If
+                                runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
+                                foundRow("back") = .ex.availableToback(0).price
+                            End If
 
-                        If .ex.availableToLay.Count > 0 Then
-                            runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
-                            foundRow("lay") = .ex.availableToLay(0).price
-                        End If
+                            If .ex.availableToLay.Count > 0 Then
+                                runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
+                                foundRow("lay") = .ex.availableToLay(0).price
+                            End If
 
-                        If .orders.Count > 0 Then
-                            ProcessOrders(.selectionId, .orders)
-                        End If
+                            If .orders.Count > 0 Then
+                                ProcessOrders(.selectionId, .orders)
+                            End If
                         'End If
 
                     End With
@@ -829,24 +833,6 @@ Public Class Form1
 
     End Sub
 
-    'Private Sub Button2_Click(sender As Object, e As EventArgs)
-    '    If Button2.Text = "Start" Then
-    '        If CheckBox1.CheckState = 1 Then
-    '            BuildKeyFiles()
-    '        End If
-
-    '        Button2.Text = "Stop"
-    '        Timer2.Enabled = True
-    '        CheckBox1.Enabled = False
-
-    '    Else
-
-    '        Button1.Text = "Start"
-    '        Timer2.Enabled = False
-    '        CheckBox1.Enabled = True
-
-    '    End If
-    'End Sub
 
     Protected Sub BuildKeyFiles() 'called by Start button 
 
@@ -962,29 +948,35 @@ Public Class Form1
     '        'End If
     '    Next
     'End Sub
+
+
     'Public Sub buildbetList()
 
     '    Dim betList As New List(Of String)
-    '    Dim marketCountries As New List(Of String)
-    '    Dim marketTypeCodes As New List(Of String)
+    '    Dim Country As New List(Of String)
+    '    'Dim marketCountries As New List(Of String)
+    '    Dim runnerName As New List(Of String)
+    '    'Dim marketTypeCodes As New List(Of String)
     '    Dim backPrice As Double
 
     '    For Each row As DataGridViewRow In DataGridView1.Rows
 
-    '        If marketCountries = row.Cells.Item("GB").Value And
-    '            marketTypeCodes = row.Cells.Item("Correct Score").Value And
-    '            backPrice = ("+=18") Then
+    '        If Country = row.Cells.Item("GB").Value And
+    '            runnerName = row.Cells.Item("Over 4.5 Goals").Value And
+    '            backPrice = row.Cells.Item("back").Value("6.8") Then
     '            TextBox1.Text = ("EPL O4.5 Lay Max 6.9")
-    '            'Dim runner As New ChartDetail
-    '            '                    runner.runnerName = row.Cells.Item("runnerName").Value
-    '            '                    runner.selectionId = row.Cells.Item("selectionId").Value
-    '            '                    runner.ChartBot = False
-    '            '                    runnerList.Add(runner)
-    '        End If
+    'Dim runner As New ChartDetail
+    '                    runner.runnerName = row.Cells.Item("runnerName").Value
+    '                    runner.selectionId = row.Cells.Item("selectionId").Value
+    '                    runner.ChartBot = False
+    '                    runnerList.Add(runner)
+    'End If
     '    Next
     'End Sub
 
-
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    '    buildbetList()
+    'End Sub
 End Class
 
 
