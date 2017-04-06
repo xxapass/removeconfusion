@@ -74,7 +74,7 @@ Module SportsAPI
         Public marketTypeCodes As New List(Of String)
         Public marketStartTime As New StartTime
         Public competitionName As New List(Of String)
-
+        'Public competition As New List(Of String)
     End Class
 
     Public Class StartTime
@@ -107,6 +107,7 @@ Module SportsAPI
         Public runners As New List(Of Runners)()
         Public [event] As New [Event]
         Public competitionName As String
+        'Public competition As String
     End Class
 
     Public Class Runners
@@ -124,6 +125,7 @@ Module SportsAPI
         Public venue As String
         Public openDate As String
         Public competitionName As String
+        'Public competition As String
     End Class
 
     Function DeserializeMarketCatalogueResponse(ByVal jsonResponse As String)

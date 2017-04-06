@@ -30,7 +30,6 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -81,22 +80,12 @@ Partial Class Form1
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CheckBox1.Location = New System.Drawing.Point(1359, 12)
+        Me.CheckBox1.Location = New System.Drawing.Point(1359, 33)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(118, 24)
         Me.CheckBox1.TabIndex = 5
         Me.CheckBox1.Text = "Save Data"
         Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(6, 378)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(1549, 140)
-        Me.TextBox1.TabIndex = 6
         '
         'Button2
         '
@@ -114,7 +103,6 @@ Partial Class Form1
         Me.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ClientSize = New System.Drawing.Size(1555, 516)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
@@ -132,6 +120,5 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button2 As Button
 End Class
