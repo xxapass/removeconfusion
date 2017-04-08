@@ -117,159 +117,159 @@ Public Class Form1
             .AllowUserToAddRows = False
             .AllowUserToResizeColumns = False
             .AllowUserToResizeRows = False
-            '.AutoGenerateColumns = False
-            .AutoGenerateColumns = True
+            .AutoGenerateColumns = False
+            '.AutoGenerateColumns = True
             .ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8, FontStyle.Regular)
 
-            '        .ColumnHeadersVisible = True
-            '        .DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8, FontStyle.Regular)
-            '        .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-            '        .DefaultCellStyle.SelectionBackColor = Color.White
-            '        .DefaultCellStyle.SelectionForeColor = Color.Black
-            '        .RowHeadersVisible = False
-            '        .RowTemplate.Height = 19
-            '        .ShowCellToolTips = False
+            .ColumnHeadersVisible = True
+            .DefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8, FontStyle.Regular)
+            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .DefaultCellStyle.SelectionBackColor = Color.White
+            .DefaultCellStyle.SelectionForeColor = Color.Black
+            .RowHeadersVisible = False
+            .RowTemplate.Height = 19
+            .ShowCellToolTips = False
 
-            '        Dim marketStartTimeColumn As New DataGridViewTextBoxColumn
-            '        With marketStartTimeColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            ' .Name = "marketStartTime"
-            '            .Name = "Time"
-            '            .DataPropertyName = "marketStartTime" 'gets updated data from DataView
-            '            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-            '            .Width = 40
-            '        End With
-            '        .Columns.Add(marketStartTimeColumn)
+            Dim marketStartTimeColumn As New DataGridViewTextBoxColumn
+            With marketStartTimeColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                ' .Name = "marketStartTime"
+                .Name = "Time"
+                .DataPropertyName = "marketStartTime" 'gets updated data from DataView
+                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+                .Width = 40
+            End With
+            .Columns.Add(marketStartTimeColumn)
 
-            '        Dim marketIdColumn As New DataGridViewTextBoxColumn
-            '        With marketIdColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "marketId"
-            '            .DataPropertyName = "marketId"
-            '            .Width = 80
-            '        End With
-            '        .Columns.Add(marketIdColumn)
+            'Dim marketIdColumn As New DataGridViewTextBoxColumn
+            'With marketIdColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "marketId"
+            '    .DataPropertyName = "marketId"
+            '    .Width = 80
+            'End With
+            '.Columns.Add(marketIdColumn)
 
-            '        Dim marketStatusColumn As New DataGridViewTextBoxColumn
-            '        With marketStatusColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "marketStatus"
-            '            .DataPropertyName = "marketStatus"
-            '            .Width = 80
-            '        End With
-            '        .Columns.Add(marketStatusColumn)
+            Dim marketStatusColumn As New DataGridViewTextBoxColumn
+            With marketStatusColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "marketStatus"
+                .DataPropertyName = "marketStatus"
+                .Width = 80
+            End With
+            .Columns.Add(marketStatusColumn)
 
-            '        Dim inPlayColumn As New DataGridViewTextBoxColumn
-            '        With inPlayColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "Country/inPlay"
-            '            '.DataPropertyName = "inPlay"
-            '            ' .DataPropertyName = "countryCode"
-            '            .DataPropertyName = "marketId"
-            '            .Width = 50
-            '        End With
-            '        .Columns.Add(inPlayColumn)
+            Dim inPlayColumn As New DataGridViewTextBoxColumn
+            With inPlayColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "Country/inPlay"
+                .DataPropertyName = "inPlay"
+                .DataPropertyName = "countryCode"
+                '.DataPropertyName = "marketId"
+                .Width = 150
+            End With
+            .Columns.Add(inPlayColumn)
 
-            '        Dim competitionColumn As New DataGridViewTextBoxColumn
-            '        With competitionColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "Competition"
-            '            .DataPropertyName = "competitionName"
-            '            '.DataPropertyName = "Country"
-            '            .Width = 100
-            '        End With
-            '        .Columns.Add(competitionColumn)
+            'Dim competitionColumn As New DataGridViewTextBoxColumn
+            'With competitionColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "Competition"
+            '    .DataPropertyName = "competitionName"
+            '    '.DataPropertyName = "Country"
+            '    .Width = 100
+            'End With
+            '.Columns.Add(competitionColumn)
 
-            '        'Dim courseColumn As New DataGridViewTextBoxColumn
-            '        'With courseColumn
-            '        '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '        '    .Name = "course"
-            '        '    .DataPropertyName = "course"
-            '        '    .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-            '        '    .Width = 200
-            '        'End With
-            '        '.Columns.Add(courseColumn)
-            '        Dim EventColumn As New DataGridViewTextBoxColumn
-            '        With EventColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "Event"
-            '            .DataPropertyName = "Event"
-            '            .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-            '            .Width = 150
-            '        End With
-            '        .Columns.Add(EventColumn)
+            'Dim courseColumn As New DataGridViewTextBoxColumn
+            'With courseColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "course"
+            '    .DataPropertyName = "course"
+            '    .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            '    .Width = 200
+            'End With
+            '.Columns.Add(courseColumn)
+            Dim EventColumn As New DataGridViewTextBoxColumn
+            With EventColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "Event"
+                .DataPropertyName = "Event"
+                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+                .Width = 150
+            End With
+            .Columns.Add(EventColumn)
 
-            '        'Dim marketNameColumn As New DataGridViewTextBoxColumn
-            '        'With marketNameColumn
-            '        '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '        '    .Name = "marketName"
-            '        '    .DataPropertyName = "marketName"
-            '        '    .DefaultCellStyle.BackColor = Color.AntiqueWhite
-            '        '    .DefaultCellStyle.SelectionBackColor = Color.Pink
-            '        '    .Width = 200
+            'Dim marketNameColumn As New DataGridViewTextBoxColumn
+            'With marketNameColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "marketName"
+            '    .DataPropertyName = "marketName"
+            '    .DefaultCellStyle.BackColor = Color.AntiqueWhite
+            '    .DefaultCellStyle.SelectionBackColor = Color.Pink
+            '    .Width = 200
 
-            '        'End With
-            '        '.Columns.Add(marketNameColumn)
+            'End With
+            '.Columns.Add(marketNameColumn)
 
-            '        Dim selectionIdColumn As New DataGridViewTextBoxColumn
-            '        With selectionIdColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "selectionId"
-            '            .DataPropertyName = "selectionId"
-            '            .Width = 60
-            '        End With
-            '        .Columns.Add(selectionIdColumn)
+            'Dim selectionIdColumn As New DataGridViewTextBoxColumn
+            'With selectionIdColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "selectionId"
+            '    .DataPropertyName = "selectionId"
+            '    .Width = 60
+            'End With
+            '.Columns.Add(selectionIdColumn)
 
-            '        Dim runnerNameColumn As New DataGridViewTextBoxColumn
-            '        With runnerNameColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "runnerName"
-            '            .DataPropertyName = "runnerName"
-            '            .Width = 110
-            '            '.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-            '        End With
-            '        .Columns.Add(runnerNameColumn)
+            Dim runnerNameColumn As New DataGridViewTextBoxColumn
+            With runnerNameColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "runnerName"
+                .DataPropertyName = "runnerName"
+                .Width = 110
+                '.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+            End With
+            .Columns.Add(runnerNameColumn)
 
-            '        Dim marketNameColumn As New DataGridViewTextBoxColumn
-            '        With marketNameColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "marketName"
-            '            .DataPropertyName = "marketName"
-            '            .Width = 120
-            '        End With
-            '        .Columns.Add(marketNameColumn)
+            Dim marketNameColumn As New DataGridViewTextBoxColumn
+            With marketNameColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "marketName"
+                .DataPropertyName = "marketName"
+                .Width = 120
+            End With
+            .Columns.Add(marketNameColumn)
 
-            '        'Dim runnerStatusColumn As New DataGridViewTextBoxColumn 'runnerstatus function disabled
-            '        'With runnerStatusColumn
-            '        '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '        '    .Name = "runnerStatus"
-            '        '    '.Name = "marketName"
-            '        '    .DataPropertyName = "runnerStatus"
-            '        '    .Width = 150
-            '        'End With
-            '        '.Columns.Add(runnerStatusColumn)
+            'Dim runnerStatusColumn As New DataGridViewTextBoxColumn 'runnerstatus function disabled
+            'With runnerStatusColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "runnerStatus"
+            '    '.Name = "marketName"
+            '    .DataPropertyName = "runnerStatus"
+            '    .Width = 150
+            'End With
+            '.Columns.Add(runnerStatusColumn)
 
-            '        Dim backColumn As New DataGridViewTextBoxColumn
-            '        With backColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "back"
-            '            .DataPropertyName = "back"
-            '            .DefaultCellStyle.BackColor = Color.LightSkyBlue
-            '            .DefaultCellStyle.SelectionBackColor = Color.LightSkyBlue
-            '            .Width = 40
-            '        End With
-            '        .Columns.Add(backColumn)
+            Dim backColumn As New DataGridViewTextBoxColumn
+            With backColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "back"
+                .DataPropertyName = "back"
+                .DefaultCellStyle.BackColor = Color.LightSkyBlue
+                .DefaultCellStyle.SelectionBackColor = Color.LightSkyBlue
+                .Width = 40
+            End With
+            .Columns.Add(backColumn)
 
-            '        Dim layColumn As New DataGridViewTextBoxColumn
-            '        With layColumn
-            '            .SortMode = DataGridViewColumnSortMode.NotSortable
-            '            .Name = "lay"
-            '            .DataPropertyName = "lay"
-            '            .DefaultCellStyle.BackColor = Color.Pink
-            '            .DefaultCellStyle.SelectionBackColor = Color.Pink
-            '            .Width = 40
-            '        End With
-            '        .Columns.Add(layColumn)
+            Dim layColumn As New DataGridViewTextBoxColumn
+            With layColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "lay"
+                .DataPropertyName = "lay"
+                .DefaultCellStyle.BackColor = Color.Pink
+                .DefaultCellStyle.SelectionBackColor = Color.Pink
+                .Width = 40
+            End With
+            .Columns.Add(layColumn)
         End With
     End Sub
 
@@ -285,16 +285,16 @@ Public Class Form1
         params.filter.eventTypeIds = eventTypeIds
 
         Dim competitionIds As New List(Of String)
-        competitionIds.Add("31") 'EPL
+        competitionIds.Add("10932509") 'EPL
         competitionIds.Add("117") 'ESP
-        competitionIds.Add("2005") 'Europa League
+        'competitionIds.Add("2005") 'Europa League
         competitionIds.Add("9404054") 'Dutch Eredivisie
         competitionIds.Add("59") 'Bundesliga 1
         competitionIds.Add("81") 'Serie A
         competitionIds.Add("7129730") 'The Championship
         competitionIds.Add("99") 'Primeira Liga
         competitionIds.Add("55") 'French Ligue One
-        competitionIds.Add("89979") 'Belgian Jupiler League
+        ' competitionIds.Add("89979") 'Belgian Jupiler League
         ''competitionIds.Add("5984496") 'IT Pro Liga
         ''competitionIds.Add("7129730") 'Champ
         ''competitionIds.Add("228") 'Champions League
@@ -932,6 +932,8 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        BuildBetList
+        ' FilterNLover4pt5()
         'CheckTriggers()
         'For Each row As DataGridViewRow In DataGridView1.Rows
         '    If row.Cells.Item("marketId").Value = "1.130484378" And row.Cells.Item("selectionId").Value = "1222344" Then
@@ -943,16 +945,59 @@ Public Class Form1
         'Next
         'dataView.Filter = "inPlay = ES" & TextBox1.Text & "ES"
         'Dim filter = "inPlay = 'ES'" ' and back = '<3'"
-        Dim filter = " back  <'10' and back >'8.3' and selectionId ='3' and runnerStatus = 'Half Time Score' and inPlay = 'ES'"
+    End Sub
+    Private Sub BuildBetList()
+        'Dim MyDataRow As DataRow
+        'Dim DataTable1 As New DataTable()
+        'Dim DataTable2 As New DataTable()
+        'DataTable2.Copy = DataTable1.Clone
+        ''Dim DataView1 As New DataView()
+        'Dim DataSet1 As New DataSet()
+        ''DataTable2Copy = DataTable1.Clone
+        ''Copy from the results of a Select method.
+        'For Each MydataRow In dataSet.Tables("Runners").Select(" back  <'10' and back >'4.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'ES'")
+        '    DataTable2.ImportRow(MydataRow)
+        'Next MyDataRow
+
+        'Copy from the results of a DataView.
+        'DataView1 = DataTable1.DefaultView()
+        'dataView = dataSet.Tables("Runners")
+        'dataView.RowFilter = "inPlay = 'NL'"
+        'For I = 0 To dataView.Count - 1
+        '    DataTable2.ImportRow(dataView.Item(I).Row)
+        'Next I
+
+        Dim filter1 = " back  <'20' and back >'2.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'ES'"
+        Dim filter2 = " back > '1.0'  and runnerName = 'Over 3.5 Goals' and inPlay = 'NL'"
+        Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
+        Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
         'Dim FilteredRows As DataRow() = "inPlay = 'ES' and 'back=<3"
         ' Filter the rows using Select() method of DataTable
-        Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter)
-        DataGridView1.DataSource = FilteredRows.CopyToDataTable()
-        'For Each row As DataRow In FilteredRows
-        '    ListBox1.Items.Add(String.Format("{0},   {1},{2},{3},{4},", row("marketStartTime"), row("Event"), row("runnerStatus"), row("runnerName"), "back 7.8 to 9.8"))
-        'Next
+        'Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter1, filter2)
+        'DataGridView1.DataSource = FilteredRows.CopyToDataTable()
+        For Each row As DataRow In FilteredRows1
+            ListBox1.Items.Add(String.Format("{0},{1},{2},{3},{4},", row("marketStartTime"), row("Event"), row("runnerStatus"), row("runnerName"), "back filter1"))
+        Next
 
+        For Each row As DataRow In FilteredRows2
+            ListBox1.Items.Add(String.Format("{0},{1},{2},{3},{4},", row("marketStartTime"), row("Event"), row("runnerStatus"), row("runnerName"), "back filter2"))
+        Next
+        'Dim filter2 = " back  <'10' and back >'4' and selectionId ='3' and runnerStatus = 'Correct Score' and inPlay = 'ES'"
+        'Dim FilteredRows As DataRow() = "inPlay = 'ES' and 'back=<3"
+        ' Filter the rows using Select() method of DataTable
+        'Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter) 'filter2)
+        'DataGridView1.DataSource = FilteredRows.CopyToDataTable()
+        'Next
+        'Dim filter = " back  <'10' and back >'4' and selectionId ='3' and runnerStatus = 'Correct Score' and inPlay = 'ES'"
     End Sub
+    'Private Sub FilterNLover4pt5()
+    '    Dim filter = " back > '3.0'  and runnerName = 'Over 3.5 Goals' and inPlay = 'NL'"
+    '    Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter)
+    '    For Each row As DataRow In FilteredRows
+    '        DataGridView1.DataSource = FilteredRows.CopyToDataTable()
+    '    Next
+    'End Sub
+
     'Private Sub CheckTriggers()
 
     '    For Each row As DataGridViewRow In DataGridView1.Rows
@@ -966,6 +1011,17 @@ Public Class Form1
     Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
+
+    ' Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub AscendingButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
+ Handles AscendingButton.Click
+        ListBox1.Sorted = True
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        listBox1.Items.Clear()
+    End Sub
+
 
     'Protected Sub BuildcouponFiles()
 
