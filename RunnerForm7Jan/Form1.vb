@@ -90,9 +90,9 @@ Public Class Form1
         dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-        dataTable.Columns.Add("countryCode", GetType(System.String), Nothing) 'result.event.countryCode
+        'dataTable.Columns.Add("countryCode", GetType(System.String), Nothing) 'result.event.countryCode
         'dataTable.Columns.Add("competitionName", GetType(System.String), Nothing) 'result.competition.name
-        dataTable.Columns.Add("marketName", GetType(String), Nothing) 'result.marketName
+        'dataTable.Columns.Add("marketName", GetType(String), Nothing) 'result.marketName
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'uses marketId and selectionId as a unique pair to search the table
 
@@ -117,8 +117,8 @@ Public Class Form1
             .AllowUserToAddRows = False
             .AllowUserToResizeColumns = False
             .AllowUserToResizeRows = False
-            .AutoGenerateColumns = False
-            '.AutoGenerateColumns = True
+            '.AutoGenerateColumns = False
+            .AutoGenerateColumns = True
             .ColumnHeadersDefaultCellStyle.Font = New Font("Microsoft Sans Serif", 8, FontStyle.Regular)
 
             .ColumnHeadersVisible = True
@@ -134,21 +134,21 @@ Public Class Form1
             With marketStartTimeColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
                 ' .Name = "marketStartTime"
-                .Name = "Time"
+                .Name = "marketStartTime"
                 .DataPropertyName = "marketStartTime" 'gets updated data from DataView
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
                 .Width = 40
             End With
             .Columns.Add(marketStartTimeColumn)
 
-            'Dim marketIdColumn As New DataGridViewTextBoxColumn
-            'With marketIdColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "marketId"
-            '    .DataPropertyName = "marketId"
-            '    .Width = 80
-            'End With
-            '.Columns.Add(marketIdColumn)
+            Dim marketIdColumn As New DataGridViewTextBoxColumn
+            With marketIdColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "marketId"
+                .DataPropertyName = "marketId"
+                .Width = 80
+            End With
+            .Columns.Add(marketIdColumn)
 
             Dim marketStatusColumn As New DataGridViewTextBoxColumn
             With marketStatusColumn
@@ -159,16 +159,16 @@ Public Class Form1
             End With
             .Columns.Add(marketStatusColumn)
 
-            Dim inPlayColumn As New DataGridViewTextBoxColumn
-            With inPlayColumn
-                .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "Country/inPlay"
-                .DataPropertyName = "inPlay"
-                .DataPropertyName = "countryCode"
-                '.DataPropertyName = "marketId"
-                .Width = 150
-            End With
-            .Columns.Add(inPlayColumn)
+            'Dim inPlayColumn As New DataGridViewTextBoxColumn
+            'With inPlayColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "Country/inPlay"
+            '    .DataPropertyName = "inPlay"
+            '    .DataPropertyName = "countryCode"
+            '    '.DataPropertyName = "marketId"
+            '    .Width = 150
+            'End With
+            '.Columns.Add(inPlayColumn)
 
             'Dim competitionColumn As New DataGridViewTextBoxColumn
             'With competitionColumn
@@ -211,14 +211,14 @@ Public Class Form1
             'End With
             '.Columns.Add(marketNameColumn)
 
-            'Dim selectionIdColumn As New DataGridViewTextBoxColumn
-            'With selectionIdColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "selectionId"
-            '    .DataPropertyName = "selectionId"
-            '    .Width = 60
-            'End With
-            '.Columns.Add(selectionIdColumn)
+            Dim selectionIdColumn As New DataGridViewTextBoxColumn
+            With selectionIdColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "selectionId"
+                .DataPropertyName = "selectionId"
+                .Width = 60
+            End With
+            .Columns.Add(selectionIdColumn)
 
             Dim runnerNameColumn As New DataGridViewTextBoxColumn
             With runnerNameColumn
@@ -230,14 +230,14 @@ Public Class Form1
             End With
             .Columns.Add(runnerNameColumn)
 
-            Dim marketNameColumn As New DataGridViewTextBoxColumn
-            With marketNameColumn
-                .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "marketName"
-                .DataPropertyName = "marketName"
-                .Width = 120
-            End With
-            .Columns.Add(marketNameColumn)
+            'Dim marketNameColumn As New DataGridViewTextBoxColumn
+            'With marketNameColumn
+            '    .SortMode = DataGridViewColumnSortMode.NotSortable
+            '    .Name = "marketName"
+            '    .DataPropertyName = "marketName"
+            '    .Width = 120
+            'End With
+            '.Columns.Add(marketNameColumn)
 
             'Dim runnerStatusColumn As New DataGridViewTextBoxColumn 'runnerstatus function disabled
             'With runnerStatusColumn
@@ -469,12 +469,12 @@ Public Class Form1
 
             Dim jsonResponse As String = GetRawBook(bookRequestList.Item(n))
 
-            If CheckBox1.CheckState = 1 Then
+            'If CheckBox1.CheckState = 1 Then
 
-                Using writer As StreamWriter = File.AppendText("C:\Betfair\" & filename & ".json")
-                    writer.WriteLine(Now & "*" & jsonResponse)
-                End Using
-            End If
+            '    Using writer As StreamWriter = File.AppendText("C:\Betfair\" & filename & ".json")
+            '        writer.WriteLine(Now & "*" & jsonResponse)
+            '    End Using
+            'End If
 
             jsonResponse = ""
 
@@ -712,16 +712,16 @@ Public Class Form1
 
     Protected Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
+        'If e.ColumnIndex = 8 Then
         If e.ColumnIndex = 8 Then
-            'If e.ColumnIndex = 5 Then
-            Dim runnerForm As New RunnerForm(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
+            Dim runnerForm As New RunnerForm(DataGridView1.Item("runnerStatus", e.RowIndex).Value & "" & DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
             'runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm)
         End If
 
 
+        'If e.ColumnIndex = 9 Then
         If e.ColumnIndex = 9 Then
-            'If e.ColumnIndex = 5 Then
-            Dim runnerForm2 As New RunnerForm2(DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
+            Dim runnerForm2 As New RunnerForm2(DataGridView1.Item("runnerStatus", e.RowIndex).Value & "" & DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
 
             'runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm2)
         End If
@@ -904,39 +904,38 @@ Public Class Form1
 
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click 'Refresh button = takes a snapshot, loads prices in DGV and stores JSON response in C:\Betfair etc
-        ListBox1.Items.Clear()
+        CheckedListBox1.Items.Clear()
         ListMarketBook()
         CheckMarkets()
-        'ListBox1.Items.Clear()
         BuildBetList()
-        ListBox1.Sorted = True
+        CheckedListBox1.Sorted = True
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'Start button starts and stops Timer1 and buildsKeyfiles if Save Data button checked
-        'CheckTriggers()
-        If Button1.Text = "Start" Then
+    'Private Sub Button1_Click(sender As Object, e As EventArgs)  'Start button starts and stops Timer1 and buildsKeyfiles if Save Data button checked
+    '    'CheckTriggers()
+    '    If Button1.Text = "Start" Then
 
-            If CheckBox1.CheckState = 1 Then 'check whether "Save Data" is selected
-                BuildKeyFiles()
-                'BuildcouponFiles()
-            End If
+    '        If CheckBox1.CheckState = 1 Then 'check whether "Save Data" is selected
+    '            BuildKeyFiles()
+    '            'BuildcouponFiles()
+    '        End If
 
-            Button1.Text = "stop"
-            Timer1.Enabled = True  'loads prices (calls "listMarketBook") streams the JSON data and updates DGV1 at 5 sec intervals
-            CheckBox1.Enabled = False 'disables "Save Data" to stop it being changed whilst JSON is being recorded
+    '        Button1.Text = "stop"
+    '        Timer1.Enabled = True  'loads prices (calls "listMarketBook") streams the JSON data and updates DGV1 at 5 sec intervals
+    '        CheckBox1.Enabled = False 'disables "Save Data" to stop it being changed whilst JSON is being recorded
 
-        Else
+    '    Else
 
-            Button1.Text = "Start"
-            Timer1.Enabled = False 'stops streaming the data
-            CheckBox1.Enabled = True 'enables Start button again
+    '        Button1.Text = "Start"
+    '        Timer1.Enabled = False 'stops streaming the data
+    '        CheckBox1.Enabled = True 'enables Start button again
 
 
-        End If
-    End Sub
+    '    End If
+    'End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        BuildBetList
+        BuildBetList()
         ' FilterNLover4pt5()
         'CheckTriggers()
         'For Each row As DataGridViewRow In DataGridView1.Rows
@@ -977,8 +976,8 @@ Public Class Form1
         Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
         Dim filter5 = "back >'2.3' and back <'3.1' and runnername='Over 3.5 Goals' and inPlay='NL' " 'Holland O45 Lay
         Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and inPlay='FR' " 'France O45 Back
-        Dim filter7 = " back > '9.9'  and back <'12.9' and runnerName = '2-1' and inPlay = 'GB'"
-        Dim filter8 = " back > '8'  and back <'15.9' and runnerName = '0 - 1' and inPlay = 'DE'" 'Bund CS 2-0 back
+        Dim filter7 = " back >'9.9' and back <'12.9' and runnerName = '2 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 2-2 back
+        Dim filter8 = " back > '8'  and back <'15.9' and runnerName = '0 - 1' and inPlay = 'DE'and runnerStatus = 'Correct Score'" 'Bund CS 2-0 back
         'Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         ' Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
         Dim FilteredRows3 As DataRow() = dataSet.Tables("Runners").Select(filter3)
@@ -994,24 +993,24 @@ Public Class Form1
         '    ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.9"))
         'Next
         For Each row As DataRow In FilteredRows3
-            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Lay 5.1 - 12"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Lay 5.1 - 12"))
         Next
         For Each row As DataRow In FilteredRows4
-            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay 4.9 - 12"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay 4.9 - 12"))
         Next
         For Each row As DataRow In FilteredRows5
-            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.75"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.75"))
         Next
         For Each row As DataRow In FilteredRows6
-            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Back >8"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Back >8"))
         Next
 
         For Each row As DataRow In FilteredRows7
-            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-2 Back >11.4"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-2 Back >11.4"))
         Next
 
         For Each row As DataRow In FilteredRows8
-            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-0 Back >6.5"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-0 Back >6.5"))
         Next
 
 
@@ -1048,11 +1047,19 @@ Public Class Form1
     ' Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
     Private Sub AscendingButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
  Handles AscendingButton.Click
-        ListBox1.Sorted = True
+        CheckedListBox1.Sorted = True
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
-        listBox1.Items.Clear()
+        CheckedListBox1.Items.Clear()
+    End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub CheckedListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CheckedListBox1.SelectedIndexChanged
+
     End Sub
 
 
