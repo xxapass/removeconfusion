@@ -92,7 +92,7 @@ Public Class Form1
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
         dataTable.Columns.Add("countryCode", GetType(System.String), Nothing) 'result.event.countryCode
         'dataTable.Columns.Add("competitionName", GetType(System.String), Nothing) 'result.competition.name
-        'dataTable.Columns.Add("marketName", GetType(System.String), Nothing) 'result.marketName
+        dataTable.Columns.Add("marketName", GetType(String), Nothing) 'result.marketName
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'uses marketId and selectionId as a unique pair to search the table
 
@@ -291,7 +291,7 @@ Public Class Form1
         competitionIds.Add("9404054") 'Dutch Eredivisie
         competitionIds.Add("59") 'Bundesliga 1
         competitionIds.Add("81") 'Serie A
-        competitionIds.Add("7129730") 'The Championship
+        'competitionIds.Add("7129730") 'The Championship
         competitionIds.Add("99") 'Primeira Liga
         competitionIds.Add("55") 'French Ligue One
         ' competitionIds.Add("89979") 'Belgian Jupiler League
@@ -904,8 +904,12 @@ Public Class Form1
 
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click 'Refresh button = takes a snapshot, loads prices in DGV and stores JSON response in C:\Betfair etc
+        ListBox1.Items.Clear()
         ListMarketBook()
         CheckMarkets()
+        'ListBox1.Items.Clear()
+        BuildBetList()
+        ListBox1.Sorted = True
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click 'Start button starts and stops Timer1 and buildsKeyfiles if Save Data button checked
@@ -967,21 +971,50 @@ Public Class Form1
         '    DataTable2.ImportRow(dataView.Item(I).Row)
         'Next I
 
-        Dim filter1 = " back  <'20' and back >'2.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'ES'"
-        Dim filter2 = " back > '1.0'  and runnerName = 'Over 3.5 Goals' and inPlay = 'NL'"
-        Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
-        Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
-        'Dim FilteredRows As DataRow() = "inPlay = 'ES' and 'back=<3"
-        ' Filter the rows using Select() method of DataTable
-        'Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter1, filter2)
-        'DataGridView1.DataSource = FilteredRows.CopyToDataTable()
-        For Each row As DataRow In FilteredRows1
-            ListBox1.Items.Add(String.Format("{0},{1},{2},{3},{4},", row("marketStartTime"), row("Event"), row("runnerStatus"), row("runnerName"), "back filter1"))
+        'Dim filter1 = " back  <'10' and back >'4.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'DE'" 'Bund O45 lay
+        'Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
+        Dim filter3 = "back >'5.1' and back <'12' and runnerName='Over 3.5 Goals' and inPlay='PT'" 'Port O35 Lay
+        Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
+        Dim filter5 = "back >'2.3' and back <'3.1' and runnername='Over 3.5 Goals' and inPlay='NL' " 'Holland O45 Lay
+        Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and inPlay='FR' " 'France O45 Back
+        Dim filter7 = " back > '9.9'  and back <'12.9' and runnerName = '2-1' and inPlay = 'GB'"
+        Dim filter8 = " back > '8'  and back <'15.9' and runnerName = '0 - 1' and inPlay = 'DE'" 'Bund CS 2-0 back
+        'Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
+        ' Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
+        Dim FilteredRows3 As DataRow() = dataSet.Tables("Runners").Select(filter3)
+        Dim FilteredRows4 As DataRow() = dataSet.Tables("Runners").Select(filter4)
+        Dim FilteredRows5 As DataRow() = dataSet.Tables("Runners").Select(filter5)
+        Dim FilteredRows6 As DataRow() = dataSet.Tables("Runners").Select(filter6)
+        Dim FilteredRows7 As DataRow() = dataSet.Tables("Runners").Select(filter7)
+        Dim FilteredRows8 As DataRow() = dataSet.Tables("Runners").Select(filter8)
+        'For Each row As DataRow In FilteredRows1
+        '    ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay 4.9 - 10"))
+        'Next
+        'For Each row As DataRow In FilteredRows2
+        '    ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.9"))
+        'Next
+        For Each row As DataRow In FilteredRows3
+            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Lay 5.1 - 12"))
+        Next
+        For Each row As DataRow In FilteredRows4
+            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay 4.9 - 12"))
+        Next
+        For Each row As DataRow In FilteredRows5
+            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.75"))
+        Next
+        For Each row As DataRow In FilteredRows6
+            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Back >8"))
         Next
 
-        For Each row As DataRow In FilteredRows2
-            ListBox1.Items.Add(String.Format("{0},{1},{2},{3},{4},", row("marketStartTime"), row("Event"), row("runnerStatus"), row("runnerName"), "back filter2"))
+        For Each row As DataRow In FilteredRows7
+            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-2 Back >11.4"))
         Next
+
+        For Each row As DataRow In FilteredRows8
+            ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-0 Back >6.5"))
+        Next
+
+
         'Dim filter2 = " back  <'10' and back >'4' and selectionId ='3' and runnerStatus = 'Correct Score' and inPlay = 'ES'"
         'Dim FilteredRows As DataRow() = "inPlay = 'ES' and 'back=<3"
         ' Filter the rows using Select() method of DataTable

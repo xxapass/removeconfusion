@@ -106,13 +106,13 @@ Partial Class Form1
         'ListBox1
         '
         Me.ListBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.ListBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListBox1.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 18
+        Me.ListBox1.ItemHeight = 19
         Me.ListBox1.Location = New System.Drawing.Point(813, -60)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.ScrollAlwaysVisible = True
-        Me.ListBox1.Size = New System.Drawing.Size(899, 742)
+        Me.ListBox1.Size = New System.Drawing.Size(899, 726)
         Me.ListBox1.TabIndex = 8
         '
         'AscendingButton
