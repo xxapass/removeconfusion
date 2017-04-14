@@ -41,89 +41,89 @@
 
     End Sub
 
-    'Public Sub MonitorBets()
+    Public Sub MonitorBets()
 
-    '    control.backedLabel.Text = "£" & Form1.runnerDictionary(Me.selectionId).sumbacked & " @ " & Form1.runnerDictionary(Me.selectionId).avgBackPrice
+        '    control.backedLabel.Text = "£" & Form1.runnerDictionary(Me.selectionId).sumbacked & " @ " & Form1.runnerDictionary(Me.selectionId).avgBackPrice
 
-    '    control.laidLabel.Text = "£" & Form1.runnerDictionary(Me.selectionId).sumLaid & " @ " & Form1.runnerDictionary(Me.selectionId).avgLayPrice
-
-
-    '    control.hedgeValueLabel.Text = "£" & Form1.runnerDictionary(Me.selectionId).hedge
-
-    '    'back side stop handler
-    '    If control.backCheckBox.Checked = True Then 'hedge out
-
-    '        If Form1.runnerDictionary(Me.selectionId).backPrice >= CDbl(control.backStopTextBox.Text) Then
-    '            hedgePosition()
-    '        End If
-    '        End If
-
-    '        'lay side stop handler
-
-    '        If control.layCheckBox.Checked = True Then 'hedge out
-
-    '            If Form1.runnerDictionary(Me.selectionId).layPrice <= CDbl(control.layStopTextBox.Text) Then
-
-    '            hedgePosition()
-    '                End If
-    '            End If
-
-    '    'monitor open position handler
-    '    If openPosition = True Then
-    '        Dim lastRowIndex = control.DataGridView1.Rows.Count - 1
-    '        Dim betId = control.DataGridView1.Item("betId", lastRowIndex).Value
-
-    '        control.DataGridView1.Item("sizeMatched", lastRowIndex).Value = Form1.betDictionary(betId).sizeMatched
-
-    '        control.DataGridView1.Item("avgPriceMatched", lastRowIndex).Value = Form1.betDictionary(betId).averagePriceMatched
-
-    '        If Form1.betDictionary(betId).fillOrkill > 0 Then
-
-    '            Form1.betDictionary(betId).fillOrkill -= 1
-
-    '            control.DataGridView1.Item("fillOrkill", control.DataGridView1.Rows.Count - 1).Value = Form1.betDictionary(betId).fillOrkill
-
-    '        ElseIf Form1.betDictionary(betId).fillOrkill = 0 Then
-
-    '            Form1.CancelOrders(control.DataGridView1.Item("betId", control.DataGridView1.Rows.Count - 1).Value, Me.marketId, control.DataGridView1.Item("sizeRequested", control.DataGridView1.Rows.Count - 1).Value)
-
-    '            control.DataGridView1.Item("betId", control.DataGridView1.Rows.Count - 1).Value = "CANCELLED"
-
-    '            control.BetButton.Enabled = True
-    '            control.cancelButton.Enabled = False
-    '            openPosition = False
-
-    '        End If
-    '    End If
-
-    '    'bet matched handler
-
-    '    If Form1.betDictionary(betId).status = "EXECUTION_COMPLETE" Then
-
-    '            If Not control.returnSizeTextBox.Text = " " And Not control.returnPriceTextBox.Text = "" Then
-
-    '                If control.backRadioButton.Checked = True Then 'if backed then lay
-
-    '                    PlaceBet("LAY", CDbl(control.returnSizeTextBox.Text), CDbl(control.returnPriceTextBox.Text), -1)
-
-    '                Else 'else back
-
-    '                    PlaceBet("BACK", CDbl(control.returnPriceTextBox.Text), CDbl(control.returnPriceTextBox.Text), -1)
-
-    '                End If
-
-    '                control.BetButton.Enabled = False
-    '                control.cancelButton.Enabled = True 'enable cancel button
-    '                openPosition = True 'flag position open
-    '            End If
-    '        End If
+        '    control.laidLabel.Text = "£" & Form1.runnerDictionary(Me.selectionId).sumLaid & " @ " & Form1.runnerDictionary(Me.selectionId).avgLayPrice
 
 
-    '        control.BetButton.Enabled = True
-    '    openPosition = False
+        '    control.hedgeValueLabel.Text = "£" & Form1.runnerDictionary(Me.selectionId).hedge
+
+        '    'back side stop handler
+        '    If control.backCheckBox.Checked = True Then 'hedge out
+
+        '        If Form1.runnerDictionary(Me.selectionId).backPrice >= CDbl(control.backStopTextBox.Text) Then
+        '            hedgePosition()
+        '        End If
+        '        End If
+
+        '        'lay side stop handler
+
+        '        If control.layCheckBox.Checked = True Then 'hedge out
+
+        '            If Form1.runnerDictionary(Me.selectionId).layPrice <= CDbl(control.layStopTextBox.Text) Then
+
+        '            hedgePosition()
+        '                End If
+        '            End If
+
+        '    'monitor open position handler
+        If openPosition = True Then
+            Dim lastRowIndex = control.DataGridView1.Rows.Count - 1
+            Dim betId = control.DataGridView1.Item("betId", lastRowIndex).Value
+
+            control.DataGridView1.Item("sizeMatched", lastRowIndex).Value = Form1.betDictionary(betId).sizeMatched
+
+            control.DataGridView1.Item("avgPriceMatched", lastRowIndex).Value = Form1.betDictionary(betId).averagePriceMatched
+
+            '        If Form1.betDictionary(betId).fillOrkill > 0 Then
+
+            '            Form1.betDictionary(betId).fillOrkill -= 1
+
+            '            control.DataGridView1.Item("fillOrkill", control.DataGridView1.Rows.Count - 1).Value = Form1.betDictionary(betId).fillOrkill
+
+            '        ElseIf Form1.betDictionary(betId).fillOrkill = 0 Then
+
+            '            Form1.CancelOrders(control.DataGridView1.Item("betId", control.DataGridView1.Rows.Count - 1).Value, Me.marketId, control.DataGridView1.Item("sizeRequested", control.DataGridView1.Rows.Count - 1).Value)
+
+            '            control.DataGridView1.Item("betId", control.DataGridView1.Rows.Count - 1).Value = "CANCELLED"
+
+            '            control.BetButton.Enabled = True
+            '            control.cancelButton.Enabled = False
+            '            openPosition = False
+
+        End If
+        '    End If
+
+        '    'bet matched handler
+
+        If Form1.betDictionary(betId).status = "EXECUTION_COMPLETE" Then
+
+                '            If Not control.returnSizeTextBox.Text = " " And Not control.returnPriceTextBox.Text = "" Then
+
+                '                If control.backRadioButton.Checked = True Then 'if backed then lay
+
+                '                    PlaceBet("LAY", CDbl(control.returnSizeTextBox.Text), CDbl(control.returnPriceTextBox.Text), -1)
+
+                '                Else 'else back
+
+                '                    PlaceBet("BACK", CDbl(control.returnPriceTextBox.Text), CDbl(control.returnPriceTextBox.Text), -1)
+
+                '                End If
+
+                control.BetButton.Enabled = False
+                control.cancelButton.Enabled = True 'enable cancel button
+                openPosition = True 'flag position open
+                'End If
+            End If
 
 
-    'End Sub
+            control.BetButton.Enabled = True
+        openPosition = False
+
+
+    End Sub
 
     'Private Function betId() As String
     '    Throw New NotImplementedException()

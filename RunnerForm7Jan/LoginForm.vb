@@ -1,6 +1,8 @@
 ﻿Public Class LoginForm
+
     Private ssoid As String
     Private Sub WebBrowser1_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles WebBrowser1.DocumentCompleted
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Dim cookieArray As String() = WebBrowser1.Document.Cookie.Split(";")
         If WebBrowser1.Document.Cookie.Count > 0 Then
             For Each cookie In cookieArray

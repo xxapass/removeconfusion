@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -39,7 +40,16 @@ Partial Class Form1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.BackgroundColor = System.Drawing.Color.OldLace
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.Linen
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
@@ -59,9 +69,11 @@ Partial Class Form1
         '
         'Label1
         '
-        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Label1.BackColor = System.Drawing.Color.DarkKhaki
+        Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(1134, 0)
+        Me.Label1.Location = New System.Drawing.Point(999, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(201, 72)
         Me.Label1.TabIndex = 2
@@ -70,42 +82,45 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(1337, 0)
+        Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.Button2.BackColor = System.Drawing.Color.Ivory
+        Me.Button2.Location = New System.Drawing.Point(1234, 0)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(206, 41)
+        Me.Button2.Size = New System.Drawing.Size(275, 41)
         Me.Button2.TabIndex = 7
         Me.Button2.Text = "Build betList"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'AscendingButton
         '
-        Me.AscendingButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.AscendingButton.Location = New System.Drawing.Point(1337, 47)
+        Me.AscendingButton.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.AscendingButton.BackColor = System.Drawing.Color.LightBlue
+        Me.AscendingButton.Location = New System.Drawing.Point(1234, 41)
         Me.AscendingButton.Name = "AscendingButton"
-        Me.AscendingButton.Size = New System.Drawing.Size(103, 23)
+        Me.AscendingButton.Size = New System.Drawing.Size(114, 31)
         Me.AscendingButton.TabIndex = 9
         Me.AscendingButton.Text = "Sort"
-        Me.AscendingButton.UseVisualStyleBackColor = True
+        Me.AscendingButton.UseVisualStyleBackColor = False
         '
         'ClearButton
         '
-        Me.ClearButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ClearButton.Location = New System.Drawing.Point(1468, 49)
+        Me.ClearButton.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.ClearButton.BackColor = System.Drawing.Color.DarkKhaki
+        Me.ClearButton.Location = New System.Drawing.Point(1380, 41)
         Me.ClearButton.Name = "ClearButton"
-        Me.ClearButton.Size = New System.Drawing.Size(75, 23)
+        Me.ClearButton.Size = New System.Drawing.Size(129, 31)
         Me.ClearButton.TabIndex = 10
         Me.ClearButton.Text = "Clear"
-        Me.ClearButton.UseVisualStyleBackColor = True
+        Me.ClearButton.UseVisualStyleBackColor = False
         '
         'CheckedListBox1
         '
-        Me.CheckedListBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CheckedListBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CheckedListBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(1022, 78)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(992, 78)
         Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(792, 688)
+        Me.CheckedListBox1.Size = New System.Drawing.Size(517, 688)
         Me.CheckedListBox1.TabIndex = 11
         '
         'Form1

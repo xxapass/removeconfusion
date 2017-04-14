@@ -14,8 +14,8 @@
         Sub New(ByVal details As String, ByVal marketId As String, ByVal selectionId As Integer)
 
             Me.FormBorderStyle = FormBorderStyle.FixedToolWindow
-            Me.Size = New Size(550, 235)
-            Me.Text = details
+        Me.Size = New Size(550, 235)
+        Me.Text = details
             Me.Show()
 
             Me.marketId = marketId
@@ -120,7 +120,19 @@
 
         End Sub
 
-        Private Sub betButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
+
+    'Public Function Calculatesize()
+    '    Dim size As Double = CDbl(control.sizeTextBox.Text)
+    '    Dim price As Double = CDbl(control.priceTextBox.Text)
+
+    '    If control.priceTextBox.Text = ">10" Then
+    '        size = CDbl(105 / control.priceTextBox.Text)
+    '        control.sizeTextBox.Text = size
+    '    Else control.sizeTextBox.Text = "10"
+    '    End If
+    '    Return size
+    'End Function
+    Private Sub betButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
 
         Dim side As String = "LAY"
 
@@ -176,23 +188,24 @@
         End Sub
 
         Private Sub hedgeButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-            hedgePosition()
-        End Sub
-
-        Private Sub hedgePosition()
-
-        If Form1.runnerDictionary(Me.selectionId).backReturn > Form1.runnerDictionary(Me.selectionId).layLiability Then
-
-            PlaceBet("LAY", Form1.runnerDictionary(Me.selectionId).hedgeStake, Form1.runnerDictionary(Me.selectionId).layPrice, -1)
-
-        End If
-
-        If Form1.runnerDictionary(Me.selectionId).layLiability > Form1.runnerDictionary(Me.selectionId).backReturn Then
-
-            PlaceBet("BACK", Form1.runnerDictionary(Me.selectionId).hedgeStake, Form1.runnerDictionary(Me.selectionId).backPrice, -1)
-
-        End If
+        'hedgePosition()
+        ' Calculatesize()
     End Sub
+
+    '    Private Sub hedgePosition()
+
+    '    If Form1.runnerDictionary(Me.selectionId).backReturn > Form1.runnerDictionary(Me.selectionId).layLiability Then
+
+    '        PlaceBet("LAY", Form1.runnerDictionary(Me.selectionId).hedgeStake, Form1.runnerDictionary(Me.selectionId).layPrice, -1)
+
+    '    End If
+
+    '    If Form1.runnerDictionary(Me.selectionId).layLiability > Form1.runnerDictionary(Me.selectionId).backReturn Then
+
+    '        PlaceBet("BACK", Form1.runnerDictionary(Me.selectionId).hedgeStake, Form1.runnerDictionary(Me.selectionId).backPrice, -1)
+
+    '    End If
+    'End Sub
 
     Private Sub RunnerForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
     End Sub

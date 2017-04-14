@@ -28,6 +28,15 @@
             End With
             .Columns.Add(sideColumn)
 
+            Dim priceRequestedColumn As New DataGridViewTextBoxColumn
+            With priceRequestedColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "priceRequested"
+                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Width = 40
+            End With
+            .Columns.Add(priceRequestedColumn)
+
             Dim sizeRequestedColumn As New DataGridViewTextBoxColumn
             With sizeRequestedColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
@@ -37,14 +46,7 @@
             End With
             .Columns.Add(sizeRequestedColumn)
 
-            Dim priceRequestedColumn As New DataGridViewTextBoxColumn
-            With priceRequestedColumn
-                .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "priceRequested"
-                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Width = 40
-            End With
-            .Columns.Add(priceRequestedColumn)
+
 
             Dim fillOrkillColumn As New DataGridViewTextBoxColumn
             With fillOrkillColumn
@@ -91,6 +93,11 @@
     Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
         Form1.ListMarketBook()
         Form1.CheckMarkets()
+        'Form1.UpdateRunnerForms()
+    End Sub
+
+    Private Sub backedLabel_Click(sender As Object, e As EventArgs)
+
     End Sub
 
 

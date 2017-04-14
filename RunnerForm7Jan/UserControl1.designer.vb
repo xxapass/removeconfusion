@@ -56,18 +56,18 @@ Partial Class UserControl1
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(121, 8)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 17)
+        Me.Label2.Size = New System.Drawing.Size(44, 17)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Size"
+        Me.Label2.Text = "Stake"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(178, 8)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(40, 17)
+        Me.Label3.Size = New System.Drawing.Size(42, 17)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Price"
+        Me.Label3.Text = "Odds"
         '
         'Label4
         '
@@ -120,7 +120,7 @@ Partial Class UserControl1
         Me.BetButton.Location = New System.Drawing.Point(501, 187)
         Me.BetButton.Name = "BetButton"
         Me.BetButton.Size = New System.Drawing.Size(103, 44)
-        Me.BetButton.TabIndex = 16
+        Me.BetButton.TabIndex = 3
         Me.BetButton.Text = "Bet"
         Me.BetButton.UseVisualStyleBackColor = True
         '
@@ -147,39 +147,40 @@ Partial Class UserControl1
         Me.GroupBox1.Size = New System.Drawing.Size(568, 77)
         Me.GroupBox1.TabIndex = 18
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Side"
+        Me.GroupBox1.Text = "Back"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(298, 24)
+        Me.Label9.Location = New System.Drawing.Point(53, 32)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(51, 20)
+        Me.Label9.Size = New System.Drawing.Size(53, 20)
         Me.Label9.TabIndex = 5
-        Me.Label9.Text = "price"
+        Me.Label9.Text = "Odds"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(75, 22)
+        Me.Label8.Location = New System.Drawing.Point(334, 29)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(44, 20)
+        Me.Label8.Size = New System.Drawing.Size(56, 20)
         Me.Label8.TabIndex = 4
-        Me.Label8.Text = "size"
+        Me.Label8.Text = "Stake"
         '
         'priceTextBox
         '
-        Me.priceTextBox.Location = New System.Drawing.Point(369, 21)
+        Me.priceTextBox.Location = New System.Drawing.Point(129, 29)
         Me.priceTextBox.Name = "priceTextBox"
         Me.priceTextBox.Size = New System.Drawing.Size(100, 27)
-        Me.priceTextBox.TabIndex = 3
+        Me.priceTextBox.TabIndex = 1
+        Me.priceTextBox.Text = "5"
         '
         'sizeTextBox
         '
         Me.sizeTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.sizeTextBox.Location = New System.Drawing.Point(146, 21)
+        Me.sizeTextBox.Location = New System.Drawing.Point(395, 26)
         Me.sizeTextBox.Name = "sizeTextBox"
         Me.sizeTextBox.Size = New System.Drawing.Size(100, 27)
         Me.sizeTextBox.TabIndex = 2

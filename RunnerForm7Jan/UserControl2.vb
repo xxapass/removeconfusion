@@ -88,14 +88,15 @@
 
         End With
     End Sub
+    'Private Function Calculatesize(ByVal size As Double)
 
-    Private Sub sizeTextBox_TextChanged(sender As Object, e As EventArgs) Handles sizeTextBox.TextChanged
+    '    Dim size As Double
 
-    End Sub
+    '    sizeTextBox.Text = (CDbl(105 / priceTextBox.Text))
+    '    'size = Math.Round(size, 2) 'round to the penny 
+    '    Return size
+    'End Function
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
-
-    End Sub
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
@@ -104,6 +105,22 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Form1.ListMarketBook()
         Form1.CheckMarkets()
+        'Calculatesize()
+        'sizeTextBox.Text = (CDbl(Size())
+    End Sub
+
+
+
+    Private Sub priceTextBox_TextChanged(sender As Object, e As EventArgs) Handles priceTextBox.TextChanged
+        'priceTextBox.Text = DataGridView1.Rows(e.RowIndex).Cells(8).Value
+    End Sub
+
+    Private Sub BetButton_Click(sender As Object, e As EventArgs) Handles BetButton.Click
+
+    End Sub
+
+    Private Sub priceComboBox_SelectedIndexChanged(sender As Object, e As EventArgs)
+
     End Sub
 End Class
 
