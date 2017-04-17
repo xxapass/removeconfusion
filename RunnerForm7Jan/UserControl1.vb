@@ -91,30 +91,18 @@
     End Sub
 
     Private Sub refreshButton_Click(sender As Object, e As EventArgs) Handles refreshButton.Click
-        Form1.ListMarketBook()
-        Form1.CheckMarkets()
+        Dim stake As Decimal
+        stake = (CDec(105 / priceComboBox.Text))
+        stake = Math.Round(stake, 2) 'round to the penny 
+        If priceComboBox.Text > 11 Then
+            sizeTextBox.Text = stake
+        Else
+            sizeTextBox.Text = 10
+        End If
+        'Form1.ListMarketBook()
+        'Form1.CheckMarkets()
         'Form1.UpdateRunnerForms()
     End Sub
 
-    Private Sub backedLabel_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-
-    'Public Sub New()
-    '    InitializeTimePicker()
-
-    'End Sub
-    'Private timePicker As DateTimePicker
-
-
-    'Private Sub InitializeTimePicker()
-    '    timePicker = New DateTimePicker()
-    '    timePicker.Format = DateTimePickerFormat.Time
-    '    timePicker.ShowUpDown = True
-    '    timePicker.Location = New Point(10, 10)
-    '    timePicker.Width = 100
-    '    Controls.Add(timePicker)
-
-    'End Sub
 End Class

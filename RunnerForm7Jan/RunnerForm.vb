@@ -6,12 +6,11 @@
 
     Private marketId As String
     Private selectionId As Integer
-    'Private backPrice As Double
-    'Private layPrice As Double
+
 
     Private openPosition As Boolean
     Private betId As String
-    'Public Property betId As String
+
 
     Sub New(ByVal details As String, ByVal marketId As String, ByVal selectionId As Integer)
 
@@ -22,8 +21,6 @@
 
         Me.marketId = marketId
         Me.selectionId = selectionId
-        'Me.backPrice = backPrice
-        'Me.layPrice = layPrice
 
         With control
             .Left = 0
@@ -125,9 +122,7 @@
 
     End Sub
 
-    'Private Function betId() As String
-    '    Throw New NotImplementedException()
-    'End Function
+
 
     Private Sub betButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
 
@@ -138,8 +133,8 @@
         'End If
 
         Dim size As Double = CDbl(control.sizeTextBox.Text)
-        Dim price As Double = CDbl(control.priceTextBox.Text)
-
+        'Dim price As Double = CDbl(control.priceTextBox.Text)
+        Dim price As Double = CDbl(control.priceComboBox.Text)
         Dim fillOrkill As Integer
 
         'If control.fillorkillTextBox.Text = "" Then
@@ -165,8 +160,8 @@
 
         control.BetButton.Enabled = False
         control.cancelButton.Enabled = True
-        control.sizeTextBox.Text = ""
-        control.priceTextBox.Text = ""
+        'control.sizeTextBox.Text = ""
+        'control.priceTextBox.Text = ""
         'control.fillorkillTextBox.Text = ""
 
         openPosition = True

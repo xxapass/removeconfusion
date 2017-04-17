@@ -587,8 +587,8 @@ Public Class Form1
         Dim limitOrder As New LimitOrder
         limitOrder.size = size
         limitOrder.price = price
-        limitOrder.persistenceType = "LAPSE"
-
+        'limitOrder.persistenceType = "LAPSE"
+        limitOrder.persistenceType = "PERSIST"
         instructions.limitOrder = limitOrder
 
         params.instructions.Add(instructions)
@@ -906,11 +906,11 @@ Public Class Form1
 
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click 'Refresh button = takes a snapshot, loads prices in DGV and stores JSON response in C:\Betfair etc
-        CheckedListBox1.Items.Clear()
+        'CheckedListBox1.Items.Clear()
         ListMarketBook()
         CheckMarkets()
-        BuildBetList()
-        CheckedListBox1.Sorted = True
+        'BuildBetList()
+        'CheckedListBox1.Sorted = True
     End Sub
 
     'Private Sub Button1_Click(sender As Object, e As EventArgs)  'Start button starts and stops Timer1 and buildsKeyfiles if Save Data button checked
@@ -973,35 +973,35 @@ Public Class Form1
         'Next I
 
         'Dim filter1 = " back  <'10' and back >'4.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'DE'" 'Bund O45 lay
-        'Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
+        Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
         Dim filter3 = "back >'5.1' and back <'12' and runnerName='Over 3.5 Goals' and inPlay='PT'" 'Port O35 Lay
         Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
         Dim filter5 = "back >'2.3' and back <'3.1' and runnername='Over 3.5 Goals' and inPlay='NL' " 'Holland O45 Lay
         Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and inPlay='FR' " 'France O45 Back
         Dim filter7 = " back >'9.9' and back <'12.9' and runnerName = '2 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 2-2 back
-        Dim filter8 = " back > '8'  and back <'15.9' and runnerName = '0 - 1' and inPlay = 'DE'and runnerStatus = 'Correct Score'" 'Bund CS 2-0 back
+        Dim filter8 = " back > '10.9'  and back <'15.9' and runnerName = '0 - 1' and inPlay = 'DE'and runnerStatus = 'Correct Score'" 'Bund CS 2-0 back
         Dim filter9 = " back > '18'  and back <'50' and runnerName = '0 - 3' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-3 back
         Dim filter10 = " back > '20'  and back <'30' and runnerName = '3 - 0' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 1-0 back
         Dim filter11 = " back > '18'  and back <'25' and runnerName = '2 - 2' and inPlay = 'ES'and runnerStatus = 'Correct Score'" 'ESP CS 1-2 back
-        Dim filter12 = " back > '50' and runnerName = '3 - 0' and inPlay = 'FE'and runnerStatus = 'Correct Score'" 'FR CS 0-1 back
+        Dim filter12 = " back > '50' and runnerName = '3 - 0' and inPlay = 'FR'and runnerStatus = 'Correct Score'" 'FR CS 0-1 back
         Dim filter13 = " back > '15.9' and back < '49.9' and runnerName = '0 - 0' and inPlay = 'NL'and runnerStatus = 'Correct Score'" 'Holland CS 1-1 back
         Dim filter14 = " back > '12.9' and back < '19.9' and runnerName = '1 - 3' and inPlay = 'PT'and runnerStatus = 'Correct Score'" 'Portugal CS 1-3 back
         Dim filter15 = " back > '3.9' and runnerName = '0 - 0' and inPlay = 'IT'and runnerStatus = 'Half Time Score'" 'Serie A HTCS 1-2 back
         Dim filter16 = " back > '3.9'  and back <'4.9' and runnerName = '1 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 1-1 back
         Dim filter17 = " back > '3.9'  and back <'4.9' and runnerName = '0 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 0-0 lay
-        Dim filter18 = " back < '3.0'  and runnerName = 'Over 1.5' and inPlay = 'DE'and runnerStatus = 'First Half Goals'" 'Bund HTCS 2-1 back
+        Dim filter18 = " back < '3.0'  and runnerName = 'Over 1.5 Goals' and inPlay = 'DE'and runnerStatus = 'First Half Goals 1.5'" 'Bund HTCS 2-1 back
         Dim filter19 = " back > '9.9'  and back < '11.9' and runnerName = 'Any Unquoted' and inPlay = 'GB'and runnerStatus = 'Half Time Score'" 'EPL HTCS 0-0 lay
         Dim filter20 = " back > '9.9'  and back < '13.9' and runnerName = '2 - 0' and inPlay = 'GB'and runnerStatus = 'Half Time Score'" 'EPL HTCS 1-0 lay
         Dim filter21 = " back < '10' and runnerName = 'Any Unquoted' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS AUQ lay
-        Dim filter22 = " back < '3.0'  and runnerName = 'Over 1.5' and inPlay = 'FR'and runnerStatus = 'First Half Goals'" 'France HTCS 2-0 back
+        Dim filter22 = " back < '3.0'  and runnerName = 'Over 1.5 Goals' and inPlay = 'FR'and runnerStatus = 'First Half Goals 1.5'" 'France HTCS 2-0 back
         Dim filter23 = " back > '6.9'  and back < '12' and runnerName = '2 - 0' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS 2-0 back
         Dim filter24 = " back > '6.9'  and back < '12' and runnerName = '2 - 0' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS 0-0 lay
-        Dim filter25 = " back < '3.5'  and runnerName = 'Over 1.5' and inPlay = 'ES'and runnerStatus = 'First Half Goals'" 'ESP HTCS AUQ lay 
+        Dim filter25 = " back < '3.5'  and runnerName = 'Any Unquoted' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS AUQ lay 
         Dim filter26 = " back > '10.9'  and back < '12.9' and runnerName = '1 - 1' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 0-0 lay
         Dim filter27 = " back > '6.9'  and back < '15.9' and runnerName = '2 - 0' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 1-0 back
         Dim filter28 = " back < '12'  and runnerName = 'Any Unquoted' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS AUQ lay
         'Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
-        ' Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
+        Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
         Dim FilteredRows3 As DataRow() = dataSet.Tables("Runners").Select(filter3)
         Dim FilteredRows4 As DataRow() = dataSet.Tables("Runners").Select(filter4)
         Dim FilteredRows5 As DataRow() = dataSet.Tables("Runners").Select(filter5)
@@ -1031,9 +1031,9 @@ Public Class Form1
         'For Each row As DataRow In FilteredRows1
         '    ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay 4.9 - 10"))
         'Next
-        'For Each row As DataRow In FilteredRows2
-        '    ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.9"))
-        'Next
+        For Each row As DataRow In FilteredRows2
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.9"))
+        Next
         For Each row As DataRow In FilteredRows3
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Lay 5.1 - 12"))
         Next
@@ -1099,7 +1099,10 @@ Public Class Form1
         For Each row As DataRow In FilteredRows23
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 2-0 Back 6.9 - 12"))
         Next
-        For Each row As DataRow In FilteredRows25
+        For Each row As DataRow In FilteredRows24
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 0-0 Lay"))
+        Next
+            For Each row As DataRow In FilteredRows25
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS AUQ Lay < 12"))
         Next
         For Each row As DataRow In FilteredRows26

@@ -35,9 +35,9 @@ Partial Class UserControl1
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.priceTextBox = New System.Windows.Forms.TextBox()
         Me.sizeTextBox = New System.Windows.Forms.TextBox()
         Me.refreshButton = New System.Windows.Forms.Button()
+        Me.priceComboBox = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -137,9 +137,9 @@ Partial Class UserControl1
         'GroupBox1
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.SkyBlue
+        Me.GroupBox1.Controls.Add(Me.priceComboBox)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.priceTextBox)
         Me.GroupBox1.Controls.Add(Me.sizeTextBox)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(67, 107)
@@ -169,14 +169,6 @@ Partial Class UserControl1
         Me.Label8.TabIndex = 4
         Me.Label8.Text = "Stake"
         '
-        'priceTextBox
-        '
-        Me.priceTextBox.Location = New System.Drawing.Point(129, 29)
-        Me.priceTextBox.Name = "priceTextBox"
-        Me.priceTextBox.Size = New System.Drawing.Size(100, 27)
-        Me.priceTextBox.TabIndex = 1
-        Me.priceTextBox.Text = "5"
-        '
         'sizeTextBox
         '
         Me.sizeTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -184,7 +176,6 @@ Partial Class UserControl1
         Me.sizeTextBox.Name = "sizeTextBox"
         Me.sizeTextBox.Size = New System.Drawing.Size(100, 27)
         Me.sizeTextBox.TabIndex = 2
-        Me.sizeTextBox.Text = "10"
         '
         'refreshButton
         '
@@ -195,6 +186,15 @@ Partial Class UserControl1
         Me.refreshButton.TabIndex = 21
         Me.refreshButton.Text = "Refresh"
         Me.refreshButton.UseVisualStyleBackColor = True
+        '
+        'priceComboBox
+        '
+        Me.priceComboBox.FormattingEnabled = True
+        Me.priceComboBox.Items.AddRange(New Object() {"3.0", "3.05", "3.1", "3.15", "3.2", "3.25", "3.3", "3.35", "3.4", "3.45", "3.5", "3.55", "3.6", "3.65", "3.7", "3.75", "3.8", "3.85", "3.9", "3.96", "4.0", "4.1", "4.2", "4.3", "4.4", "4.5", "4.6", "4.7", "4.8", "4.9", "5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5.8", "5.9", "6.0", "6.2", "6.4", "6.6", "6.8", "7.0", "7.2", "7.4", "7.6", "7.8", "8.0", "8.2", "8.4", "8.6", "8.8", "9.0", "9.2", "9.4", "9.6", "9.8", "10.0", "10.5", "11.0", "11.5", "12.0", "12.5", "13.0", "13.5", "14.0", "14.5", "15.0", "15.5", "16.0", "16.5", "17.0", "17.5", "18.0", "18.5", "19.0", "19.5", "20.0", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "32", "34", "36", "38", "40", "42", "44", "46", "48", "50", "55", "60", "65", "70", "75"})
+        Me.priceComboBox.Location = New System.Drawing.Point(114, 26)
+        Me.priceComboBox.Name = "priceComboBox"
+        Me.priceComboBox.Size = New System.Drawing.Size(121, 28)
+        Me.priceComboBox.TabIndex = 6
         '
         'UserControl1
         '
@@ -234,9 +234,9 @@ Partial Class UserControl1
     Friend WithEvents BetButton As Button
     Friend WithEvents cancelButton As Button
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents priceTextBox As TextBox
     Friend WithEvents sizeTextBox As TextBox
     Friend WithEvents refreshButton As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents priceComboBox As ComboBox
 End Class

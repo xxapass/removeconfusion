@@ -1,6 +1,5 @@
 ﻿Public Class UserControl2
 
-
     Private Sub UserControl1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         With DataGridView1
@@ -88,39 +87,29 @@
 
         End With
     End Sub
-    'Private Function Calculatesize(ByVal size As Double)
-
-    '    Dim size As Double
-
-    '    sizeTextBox.Text = (CDbl(105 / priceTextBox.Text))
-    '    'size = Math.Round(size, 2) 'round to the penny 
-    '    Return size
-    'End Function
 
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
+    'Refresh button
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Form1.ListMarketBook()
-        Form1.CheckMarkets()
-        'Calculatesize()
-        'sizeTextBox.Text = (CDbl(Size())
-    End Sub
-
-
-
-    Private Sub priceTextBox_TextChanged(sender As Object, e As EventArgs) Handles priceTextBox.TextChanged
-        'priceTextBox.Text = DataGridView1.Rows(e.RowIndex).Cells(8).Value
-    End Sub
-
-    Private Sub BetButton_Click(sender As Object, e As EventArgs) Handles BetButton.Click
+        Dim stake As Decimal
+        stake = (CDec(105 / priceComboBox.Text))
+        stake = Math.Round(stake, 2) 'round to the penny 
+        sizeTextBox.Text = stake
+        If priceComboBox.Text > 11 Then
+            sizeTextBox.Text = stake
+        Else
+            sizeTextBox.Text = 10
+        End If
+        'Form1.ListMarketBook()
+        'Form1.CheckMarkets()
 
     End Sub
+
 
     Private Sub priceComboBox_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
+
+
 End Class
 

@@ -120,18 +120,6 @@
 
         End Sub
 
-
-    'Public Function Calculatesize()
-    '    Dim size As Double = CDbl(control.sizeTextBox.Text)
-    '    Dim price As Double = CDbl(control.priceTextBox.Text)
-
-    '    If control.priceTextBox.Text = ">10" Then
-    '        size = CDbl(105 / control.priceTextBox.Text)
-    '        control.sizeTextBox.Text = size
-    '    Else control.sizeTextBox.Text = "10"
-    '    End If
-    '    Return size
-    'End Function
     Private Sub betButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
 
         Dim side As String = "LAY"
@@ -141,20 +129,20 @@
         'End If
 
         Dim size As Double = CDbl(control.sizeTextBox.Text)
-            Dim price As Double = CDbl(control.priceTextBox.Text)
+        'Dim price As Double = CDbl(control.priceTextBox.Text)
+        Dim price As Double = CDbl(control.priceComboBox.Text)
+        Dim fillOrkill As Integer
 
-            Dim fillOrkill As Integer
+        'If 'control.fillOrkillTextBox.Text = "" Then
+        ' fillOrkill = -1
+        ' Else
+        'fillOrkill = CDbl('control.fillOrkillTextBox.Text)
+        'End If
 
-            'If 'control.fillOrkillTextBox.Text = "" Then
-            ' fillOrkill = -1
-            ' Else
-            'fillOrkill = CDbl('control.fillOrkillTextBox.Text)
-            'End If
+        PlaceBet(side, size, price, fillOrkill)
+    End Sub
 
-            PlaceBet(side, size, price, fillOrkill)
-        End Sub
-
-        Private Sub PlaceBet(ByVal side As String, ByVal size As Double, ByVal price As Double, ByVal fillOrkill As Integer)
+    Private Sub PlaceBet(ByVal side As String, ByVal size As Double, ByVal price As Double, ByVal fillOrkill As Integer)
 
             Dim betId As String
 
@@ -168,11 +156,11 @@
 
             control.BetButton.Enabled = False
             control.cancelButtonlay.Enabled = True
-            control.sizeTextBox.Text = ""
-            control.priceTextBox.Text = ""
-            'control.fillOrkillTextBox.Text = ""
+        'control.sizeTextBox.Text = ""
+        'control.priceTextBox.Text = ""
+        'control.fillOrkillTextBox.Text = ""
 
-            openPosition = True
+        openPosition = True
 
         End Sub
         Private Sub cancelButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -187,10 +175,7 @@
 
         End Sub
 
-        Private Sub hedgeButton_Click(ByVal sender As Object, ByVal e As System.EventArgs)
-        'hedgePosition()
-        ' Calculatesize()
-    End Sub
+
 
     '    Private Sub hedgePosition()
 
