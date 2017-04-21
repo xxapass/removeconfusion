@@ -1,4 +1,6 @@
-﻿Imports System.IO
+﻿'Imports Microsoft.Office.Interop.Excel
+Imports System.IO
+Imports Microsoft.Office.Interop
 
 Public Class Form1
 
@@ -11,49 +13,49 @@ Public Class Form1
     Public dataView As DataView
     Public bindingSource As New BindingSource
 
-        Public Class MarketDetail
+    Public Class MarketDetail
 
         Public marketId As String
-            Public selectionId As String
-            Public status As String
-            Public inPlay As Boolean
-            Public removed As Boolean
-        End Class
+        Public selectionId As String
+        Public status As String
+        Public inPlay As Boolean
+        Public removed As Boolean
+    End Class
 
     Protected marketDictionary As New Dictionary(Of String, MarketDetail)
     Protected bookRequestList As New List(Of String)
 
     Public runnerFormDictionary As New Dictionary(Of Integer, RunnerForm)
 
-        Public Class BetDetail
+    Public Class BetDetail
 
         Public status As String
         Public averagePriceMatched As Double
-            Public sizeMatched As Double
-            Public fillOrkill As Integer
-        End Class
+        Public sizeMatched As Double
+        Public fillOrkill As Integer
+    End Class
 
-        Public betDictionary As New Dictionary(Of String, BetDetail)
+    Public betDictionary As New Dictionary(Of String, BetDetail)
 
 
     Public Class RunnerDetail
 
         Public marketId As String
-            Public selectionId As String
-            Public status As String
-            Public backPrice As Double
-            Public layPrice As Double
+        Public selectionId As String
+        Public status As String
+        Public backPrice As Double
+        Public layPrice As Double
 
-            Public sumbacked As Double
-            Public backReturn As Double
-            Public avgBackPrice As Double
+        Public sumbacked As Double
+        Public backReturn As Double
+        Public avgBackPrice As Double
 
-            Public sumLaid As Double
-            Public layLiability As Double
-            Public avgLayPrice As Double
+        Public sumLaid As Double
+        Public layLiability As Double
+        Public avgLayPrice As Double
 
-            Public hedgeStake As Double
-            Public hedge As Double
+        Public hedgeStake As Double
+        Public hedge As Double
         'Friend runnerName As Object
     End Class
 
@@ -299,7 +301,7 @@ Public Class Form1
         ' competitionIds.Add("89979") 'Belgian Jupiler League
         ''competitionIds.Add("5984496") 'IT Pro Liga
         ''competitionIds.Add("7129730") 'Champ
-        competitionIds.Add("228") 'Champions League
+        'competitionIds.Add("228") 'Champions League
         ''competitionIds.Add("61") 'Bundesliga 2
         ''competitionIds.Add("35") 'League 1
         ''competitionIds.Add("37") 'League 2
@@ -519,18 +521,18 @@ Public Class Form1
                         '    foundRow("runnerStatus") = "ACTIVE"
 
                         If .ex.availableToback.Count > 0 Then
-                                runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
-                                foundRow("back") = .ex.availableToback(0).price
-                            End If
+                            runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
+                            foundRow("back") = .ex.availableToback(0).price
+                        End If
 
-                            If .ex.availableToLay.Count > 0 Then
-                                runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
+                        If .ex.availableToLay.Count > 0 Then
+                            runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
                             foundRow("lay") = .ex.availableToLay(0).price
                         End If
 
-                            If .orders.Count > 0 Then
-                                ProcessOrders(.selectionId, .orders)
-                            End If
+                        If .orders.Count > 0 Then
+                            ProcessOrders(.selectionId, .orders)
+                        End If
                         'End If
 
                     End With
@@ -1102,7 +1104,7 @@ Public Class Form1
         For Each row As DataRow In FilteredRows24
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 0-0 Lay"))
         Next
-            For Each row As DataRow In FilteredRows25
+        For Each row As DataRow In FilteredRows25
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS AUQ Lay < 12"))
         Next
         For Each row As DataRow In FilteredRows26
@@ -1153,69 +1155,26 @@ Public Class Form1
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         CheckedListBox1.Items.Clear()
     End Sub
+    Dim oItem As Object
+    Dim OffS As Integer
+    Dim MsExcel As Excel.Application
+    Dim Wb As Excel.Workbook
+    Private Sub exportButton_Click(sender As Object, e As EventArgs) Handles exportButton.Click
+        MsExcel = CreateObject("Excel.Application")
 
-    Private Sub ListBox1_SelectedIndexChanged_1(sender As Object, e As EventArgs)
+        Wb = MsExcel.Workbooks.Open("C:\Users\simon_000\Documents\BetList")
+        OffS = 0
+        For Each oItem In CheckedListBox1.Items
+            Wb.Sheets(1).Range("A1").Offset(OffS, 0).Value = Now & "," & oItem
+            OffS = OffS + 1
+        Next oItem
 
+        Wb.SaveAs()
+        ' DoEvents
+        Wb.Close
+        'MsExcel.Visible = True
     End Sub
 
-    Private Sub CheckedListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CheckedListBox1.SelectedIndexChanged
-
-    End Sub
-
-
-    'Protected Sub BuildcouponFiles()
-
-    '    Dim market As String = ""
-
-    '    For Each row As DataGridViewRow In DataGridView1.Rows
-
-    '        Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "coupon-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
-
-    '            writer.WriteLine(row.Cells.Item("country").Value & "," & row.Cells.Item("Event").Value & row.Cells.Item("marketName").Value & "'" & row.Cells.Item("runnerName").Value)
-    '        End Using
-
-    '        'If Not row.Cells.Item("marketId").Value = market Then
-
-    '        '    Using writer As StreamWriter = File.AppendText("C:\Betfair\" & "marketKeys-" & Format(Date.Now, "yyyy-MM-dd") & ".csv")
-
-    '        '        'writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & " " & row.Cells.Item("course").Value)
-    '        '        writer.WriteLine(row.Cells.Item("marketId").Value & "," & row.Cells.Item("marketStartTime").Value & "," & row.Cells.Item("Event").Value)
-    '        '    End Using
-
-    '        '    market = row.Cells.Item("marketId").Value
-
-    '        'End If
-    '    Next
-    'End Sub
-
-
-    'Public Sub buildbetList()
-
-    '    Dim betList As New List(Of String)
-    '    Dim Country As New List(Of String)
-    '    'Dim marketCountries As New List(Of String)
-    '    Dim runnerName As New List(Of String)
-    '    'Dim marketTypeCodes As New List(Of String)
-    '    Dim backPrice As Double
-
-    '    For Each row As DataGridViewRow In DataGridView1.Rows
-
-    '        If = row.Cells.Item("country").Value = "GB" And
-    '              row.Cells.Item("runnerName").Value ="Over 4.5 Goals" And
-    '            row.Cells.Item("back").Value ="6.8" Then
-    '            TextBox1.Text = "EPL O4.5 Lay Max 6.9"
-    'Dim runner As New ChartDetail
-    '                    runner.runnerName = row.Cells.Item("runnerName").Value
-    '                    runner.selectionId = row.Cells.Item("selectionId").Value
-    '                    runner.ChartBot = False
-    '                    runnerList.Add(runner)
-    'End If
-    '    Next
-    'End Sub
-
-    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-    '    buildbetList()
-    'End Sub
 End Class
 
 
