@@ -41,6 +41,9 @@ Partial Class Form1
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Linen
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -52,13 +55,12 @@ Partial Class Form1
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1555, 906)
-        Me.DataGridView1.TabIndex = 1
+        Me.DataGridView1.Size = New System.Drawing.Size(1543, 906)
+        Me.DataGridView1.TabIndex = 0
         '
         'Timer1
         '
@@ -77,7 +79,7 @@ Partial Class Form1
         Me.Label1.Location = New System.Drawing.Point(999, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(201, 72)
-        Me.Label1.TabIndex = 2
+        Me.Label1.TabIndex = 1
         Me.Label1.Text = "Refresh"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -88,7 +90,7 @@ Partial Class Form1
         Me.Button2.Location = New System.Drawing.Point(1234, 0)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(275, 41)
-        Me.Button2.TabIndex = 7
+        Me.Button2.TabIndex = 2
         Me.Button2.Text = "Build betList"
         Me.Button2.UseVisualStyleBackColor = False
         '
@@ -99,7 +101,7 @@ Partial Class Form1
         Me.AscendingButton.Location = New System.Drawing.Point(1234, 41)
         Me.AscendingButton.Name = "AscendingButton"
         Me.AscendingButton.Size = New System.Drawing.Size(114, 31)
-        Me.AscendingButton.TabIndex = 9
+        Me.AscendingButton.TabIndex = 3
         Me.AscendingButton.Text = "Sort"
         Me.AscendingButton.UseVisualStyleBackColor = False
         '
@@ -126,10 +128,11 @@ Partial Class Form1
         '
         'exportButton
         '
-        Me.exportButton.Location = New System.Drawing.Point(1209, 786)
+        Me.exportButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.exportButton.Location = New System.Drawing.Point(1234, 786)
         Me.exportButton.Name = "exportButton"
         Me.exportButton.Size = New System.Drawing.Size(100, 34)
-        Me.exportButton.TabIndex = 12
+        Me.exportButton.TabIndex = 4
         Me.exportButton.Text = "Export"
         Me.exportButton.UseVisualStyleBackColor = True
         '
