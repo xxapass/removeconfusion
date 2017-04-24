@@ -29,11 +29,12 @@ Partial Class Form1
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.buildBetListButton = New System.Windows.Forms.Button()
         Me.AscendingButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.exportButton = New System.Windows.Forms.Button()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -83,16 +84,16 @@ Partial Class Form1
         Me.Label1.Text = "Refresh"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Button2
+        'buildBetListButton
         '
-        Me.Button2.Anchor = System.Windows.Forms.AnchorStyles.Top
-        Me.Button2.BackColor = System.Drawing.Color.Ivory
-        Me.Button2.Location = New System.Drawing.Point(1234, 0)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(275, 41)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Build betList"
-        Me.Button2.UseVisualStyleBackColor = False
+        Me.buildBetListButton.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.buildBetListButton.BackColor = System.Drawing.Color.Ivory
+        Me.buildBetListButton.Location = New System.Drawing.Point(1234, 0)
+        Me.buildBetListButton.Name = "buildBetListButton"
+        Me.buildBetListButton.Size = New System.Drawing.Size(275, 41)
+        Me.buildBetListButton.TabIndex = 2
+        Me.buildBetListButton.Text = "Build betList"
+        Me.buildBetListButton.UseVisualStyleBackColor = False
         '
         'AscendingButton
         '
@@ -129,12 +130,25 @@ Partial Class Form1
         'exportButton
         '
         Me.exportButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.exportButton.Location = New System.Drawing.Point(1234, 786)
+        Me.exportButton.Location = New System.Drawing.Point(1223, 688)
         Me.exportButton.Name = "exportButton"
         Me.exportButton.Size = New System.Drawing.Size(100, 34)
         Me.exportButton.TabIndex = 4
         Me.exportButton.Text = "Export"
         Me.exportButton.UseVisualStyleBackColor = True
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.ProgressBar1.BackColor = System.Drawing.SystemColors.Control
+        Me.ProgressBar1.Location = New System.Drawing.Point(992, 772)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(551, 23)
+        Me.ProgressBar1.Step = 12
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        Me.ProgressBar1.TabIndex = 12
+        Me.ProgressBar1.Value = 5
+        Me.ProgressBar1.Visible = False
         '
         'Form1
         '
@@ -142,11 +156,12 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ClientSize = New System.Drawing.Size(1555, 906)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.exportButton)
         Me.Controls.Add(Me.CheckedListBox1)
         Me.Controls.Add(Me.ClearButton)
         Me.Controls.Add(Me.AscendingButton)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.buildBetListButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "Form1"
@@ -159,9 +174,10 @@ Partial Class Form1
     Friend WithEvents Timer2 As Timer
     Friend WithEvents ColorDialog1 As ColorDialog
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents buildBetListButton As Button
     Friend WithEvents AscendingButton As Button
     Friend WithEvents ClearButton As Button
     Friend WithEvents CheckedListBox1 As CheckedListBox
     Friend WithEvents exportButton As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

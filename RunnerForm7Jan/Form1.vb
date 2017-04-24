@@ -495,57 +495,79 @@ Public Class Form1
 
                 For runnerCount As Integer = 0 To book(0).result(bookCount).runners.Count - 1
 
+                    'Dim Counter As Integer
+                    'Dim Workarea(250) As String
+                    ''ProgressBar1.Minimum = LBound(Workarea)
+                    ''ProgressBar1.Maximum = UBound(Workarea)
+                    'ProgressBar1.Visible = True
+
+                    'Set the Progress's Value to Min.
+                    'ProgressBar1.Value = ProgressBar1.Minimum
+
+                    ' CheckedListBox1.Items.Clear()
+                    'ListMarketBook()
+
+                    'Loop through the array.
+                    'For Counter = 0 To book(0).result(bookCount).runners.Count - 1 '= LBound(Workarea) To UBound(Workarea)
+                    '    '    'Set initial values for each item in the array.
+                    '    Workarea(Counter) = "Initial value" & Counter
+                    '    ProgressBar1.Value = Counter
+                    'Next Counter
+                    ''ProgressBar1.Visible = False
+                    ''ProgressBar1.Value = ProgressBar1.Minimum
+
+
                     With book(0).result(bookCount).runners(runnerCount)
 
-                        keys(0) = book(0).result(bookCount).marketId
-                        keys(1) = .selectionId
-                        foundRow = dataSet.Tables("Runners").Rows.Find(keys) 'looks in dataSet to find marketId&selectionId pair
+                            keys(0) = book(0).result(bookCount).marketId
+                            keys(1) = .selectionId
+                            foundRow = dataSet.Tables("Runners").Rows.Find(keys) 'looks in dataSet to find marketId&selectionId pair
 
-                        foundRow("marketStatus") = book(0).result(bookCount).status 'updates status for each pair
+                            foundRow("marketStatus") = book(0).result(bookCount).status 'updates status for each pair
 
-                        marketDictionary.Item(book(0).result(bookCount).marketId).status = book(0).result(bookCount).status
+                            marketDictionary.Item(book(0).result(bookCount).marketId).status = book(0).result(bookCount).status
 
-                        marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
+                            marketDictionary.Item(book(0).result(bookCount).marketId).inPlay = book(0).result(bookCount).inplay
 
-                        If book(0).result(bookCount).inplay = True Then
-                            foundRow("inPlay") = "inPlay"
-                        Else
-                            'foundRow("inPlay") = "" 'removes countryCode and replaces with "" (preplay)
-                        End If
+                            If book(0).result(bookCount).inplay = True Then
+                                foundRow("inPlay") = "inPlay"
+                            Else
+                                'foundRow("inPlay") = "" 'removes countryCode and replaces with "" (preplay)
+                            End If
 
-                        'foundRow("runnerStatus") = .status don't need runnerstatus, replaced with marketName except it records winning/losing status which might be useful
-                        'runnerDictionary(.selectionId).status = .status
+                            'foundRow("runnerStatus") = .status don't need runnerstatus, replaced with marketName except it records winning/losing status which might be useful
+                            'runnerDictionary(.selectionId).status = .status
 
-                        'If .status = "ACTIVE" Then
+                            'If .status = "ACTIVE" Then
 
-                        '    foundRow("runnerStatus") = "ACTIVE"
+                            '    foundRow("runnerStatus") = "ACTIVE"
 
-                        If .ex.availableToback.Count > 0 Then
-                            runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
-                            foundRow("back") = .ex.availableToback(0).price
-                        End If
+                            If .ex.availableToback.Count > 0 Then
+                                runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
+                                foundRow("back") = .ex.availableToback(0).price
+                            End If
 
-                        If .ex.availableToLay.Count > 0 Then
-                            runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
-                            foundRow("lay") = .ex.availableToLay(0).price
-                        End If
+                            If .ex.availableToLay.Count > 0 Then
+                                runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
+                                foundRow("lay") = .ex.availableToLay(0).price
+                            End If
 
-                        If .orders.Count > 0 Then
-                            ProcessOrders(.selectionId, .orders)
-                        End If
-                        'End If
+                            If .orders.Count > 0 Then
+                                ProcessOrders(.selectionId, .orders)
+                            End If
+                            'End If
 
-                    End With
+                        End With
+                    Next
+
                 Next
-
-            Next
         Next
     End Sub
 
     Protected Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick 'enabled by Start button
 
         ListMarketBook()
-        'CheckMarkets()
+        CheckMarkets()
         UpdateRunnerForms()
 
     End Sub
@@ -890,89 +912,42 @@ Public Class Form1
             End If
         Next
     End Sub
-
-    'Private Sub getData()
-    '    Format(Now, "hh:mm")
-    '    ' Dim NowFormat As String
-    '    'NowFormat = Now.GetDateTimeFormats() '.......declare now in same format as marketStartTime
-
-    '    For Each row As DataGridViewRow In DataGridView1.Rows
-
-    '        If Now = (row.Cells.Item("marketStartTime").Value) Then
-    '            ListMarketBook()
-    '            CheckMarkets()
-    '        End If
-    '    Next
-
-    'End Sub
-
-
+    'Refresh button
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click 'Refresh button = takes a snapshot, loads prices in DGV and stores JSON response in C:\Betfair etc
-        'CheckedListBox1.Items.Clear()
+        CheckedListBox1.Items.Clear()
         ListMarketBook()
-        CheckMarkets()
-        'BuildBetList()
-        'CheckedListBox1.Sorted = True
-    End Sub
 
-    'Private Sub Button1_Click(sender As Object, e As EventArgs)  'Start button starts and stops Timer1 and buildsKeyfiles if Save Data button checked
-    '    'CheckTriggers()
-    '    If Button1.Text = "Start" Then
+        'Dim Counter As Integer
+        'Dim Workarea(250) As String
+        'ProgressBar1.Minimum = LBound(Workarea)
+        'ProgressBar1.Maximum = UBound(Workarea)
+        'ProgressBar1.Visible = True
 
-    '        If CheckBox1.CheckState = 1 Then 'check whether "Save Data" is selected
-    '            BuildKeyFiles()
-    '            'BuildcouponFiles()
-    '        End If
+        ''Set the Progress's Value to Min.
+        'ProgressBar1.Value = ProgressBar1.Minimum
 
-    '        Button1.Text = "stop"
-    '        Timer1.Enabled = True  'loads prices (calls "listMarketBook") streams the JSON data and updates DGV1 at 5 sec intervals
-    '        CheckBox1.Enabled = False 'disables "Save Data" to stop it being changed whilst JSON is being recorded
+        '' CheckedListBox1.Items.Clear()
+        ''ListMarketBook()
 
-    '    Else
-
-    '        Button1.Text = "Start"
-    '        Timer1.Enabled = False 'stops streaming the data
-    '        CheckBox1.Enabled = True 'enables Start button again
-
-
-    '    End If
-    'End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ''Loop through the array.
+        'For Counter = LBound(Workarea) To UBound(Workarea)
+        '    'Set initial values for each item in the array.
+        '    Workarea(Counter) = "Initial value" & Counter
+        '    ProgressBar1.Value = Counter
+        'Next Counter
+        'ProgressBar1.Visible = False
+        'ProgressBar1.Value = ProgressBar1.Minimum
+        ' ListMarketBook()
+        'CheckMarkets()
         BuildBetList()
-        ' FilterNLover4pt5()
-        'CheckTriggers()
-        'For Each row As DataGridViewRow In DataGridView1.Rows
-        '    If row.Cells.Item("marketId").Value = "1.130484378" And row.Cells.Item("selectionId").Value = "1222344" Then
-        '        'Print("Trigger")
-        '        TextBox1.Text = "ZA back 1.24"
-        '    Else
-        '        TextBox1.Text = "no trigger"
-        '    End If
-        'Next
-        'dataView.Filter = "inPlay = ES" & TextBox1.Text & "ES"
-        'Dim filter = "inPlay = 'ES'" ' and back = '<3'"
+        CheckedListBox1.Sorted = True
     End Sub
-    Private Sub BuildBetList()
-        'Dim MyDataRow As DataRow
-        'Dim DataTable1 As New DataTable()
-        'Dim DataTable2 As New DataTable()
-        'DataTable2.Copy = DataTable1.Clone
-        ''Dim DataView1 As New DataView()
-        'Dim DataSet1 As New DataSet()
-        ''DataTable2Copy = DataTable1.Clone
-        ''Copy from the results of a Select method.
-        'For Each MydataRow In dataSet.Tables("Runners").Select(" back  <'10' and back >'4.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'ES'")
-        '    DataTable2.ImportRow(MydataRow)
-        'Next MyDataRow
 
-        'Copy from the results of a DataView.
-        'DataView1 = DataTable1.DefaultView()
-        'dataView = dataSet.Tables("Runners")
-        'dataView.RowFilter = "inPlay = 'NL'"
-        'For I = 0 To dataView.Count - 1
-        '    DataTable2.ImportRow(dataView.Item(I).Row)
-        'Next I
+
+
+
+    Private Sub BuildBetList()
+
 
         'Dim filter1 = " back  <'10' and back >'4.9' and runnerName = 'Over 4.5 Goals' and inPlay = 'DE'" 'Bund O45 lay
         Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
@@ -1081,7 +1056,7 @@ Public Class Form1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 1-1 Back > 7.5"))
         Next
         For Each row As DataRow In FilteredRows17
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 0-0 Back 3.9 - 4.9"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 0-0 Lay 3.9 - 4.9"))
         Next
         For Each row As DataRow In FilteredRows18
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS 2-1 Back 14 - 40"))
@@ -1116,45 +1091,18 @@ Public Class Form1
         For Each row As DataRow In FilteredRows28
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS AUQ Lay < 12"))
         Next
-        'Dim filter2 = " back  <'10' and back >'4' and selectionId ='3' and runnerStatus = 'Correct Score' and inPlay = 'ES'"
-        'Dim FilteredRows As DataRow() = "inPlay = 'ES' and 'back=<3"
-        ' Filter the rows using Select() method of DataTable
-        'Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter) 'filter2)
-        'DataGridView1.DataSource = FilteredRows.CopyToDataTable()
-        'Next
-        'Dim filter = " back  <'10' and back >'4' and selectionId ='3' and runnerStatus = 'Correct Score' and inPlay = 'ES'"
-    End Sub
-    'Private Sub FilterNLover4pt5()
-    '    Dim filter = " back > '3.0'  and runnerName = 'Over 3.5 Goals' and inPlay = 'NL'"
-    '    Dim FilteredRows As DataRow() = dataSet.Tables("Runners").Select(filter)
-    '    For Each row As DataRow In FilteredRows
-    '        DataGridView1.DataSource = FilteredRows.CopyToDataTable()
-    '    Next
-    'End Sub
-
-    'Private Sub CheckTriggers()
-
-    '    For Each row As DataGridViewRow In DataGridView1.Rows
-    '        If "inPlay" = "ZA" And "runnerStatus" = "Correct Score" Then
-    '            'Print("Trigger")
-    '            TextBox1.Text = "ZA back Correct Score"
-    '        End If
-    '    Next
-    'End Sub
-
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
-
-    ' Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    'sort listbox button
     Private Sub AscendingButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
  Handles AscendingButton.Click
         CheckedListBox1.Sorted = True
     End Sub
-
+    'clear listbox
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         CheckedListBox1.Items.Clear()
     End Sub
+    'export listbox
     Dim oItem As Object
     Dim OffS As Integer
     Dim MsExcel As Excel.Application
@@ -1162,7 +1110,7 @@ Public Class Form1
     Private Sub exportButton_Click(sender As Object, e As EventArgs) Handles exportButton.Click
         MsExcel = CreateObject("Excel.Application")
 
-        Wb = MsExcel.Workbooks.Open("C:\Users\simon_000\Documents\BetList")
+        Wb = MsExcel.Workbooks.Open("C:\Users\simon_000\Desktop\BuildBetList.xlsx")
         OffS = 0
         For Each oItem In CheckedListBox1.Items
             Wb.Sheets(1).Range("A1").Offset(OffS, 0).Value = Now & "," & oItem
@@ -1170,11 +1118,14 @@ Public Class Form1
         Next oItem
 
         Wb.SaveAs()
-        ' DoEvents
-        Wb.Close
+        'DoEvents
+        Wb.Close()
         'MsExcel.Visible = True
     End Sub
 
+    Private Sub buildBetListButton_Click(sender As Object, e As EventArgs) Handles buildBetListButton.Click
+        BuildBetList()
+    End Sub
 End Class
 
 
