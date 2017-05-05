@@ -80,6 +80,7 @@ Public Class Form1
         BuildDataTable() 'build dataTable
         ListMarketCatalogue() 'get events
         BuildListMarketBookRequests() 'get prices
+        Accountbalance()
         'Timer1.Enabled = True Button1 now used to start and stop 
     End Sub
     Public Sub BuildDataTable() 'a logical representation of a DataSet in memory from which DGV can be updated
@@ -740,6 +741,7 @@ Public Class Form1
 
         'If e.ColumnIndex = 8 Then
         If e.ColumnIndex = 8 Then
+            Accountbalance()
             Dim runnerForm As New RunnerForm(DataGridView1.Item("back", e.RowIndex).Value & "/" & DataGridView1.Item("lay", e.RowIndex).Value & " " & DataGridView1.Item("runnerStatus", e.RowIndex).Value & " " & DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
 
         End If
@@ -747,6 +749,7 @@ Public Class Form1
 
         'If e.ColumnIndex = 9 Then
         If e.ColumnIndex = 9 Then
+            Accountbalance()
             Dim runnerForm2 As New RunnerForm2(DataGridView1.Item("back", e.RowIndex).Value & "/" & DataGridView1.Item("lay", e.RowIndex).Value & " " & DataGridView1.Item("runnerStatus", e.RowIndex).Value & "" & DataGridView1.Item("runnerName", e.RowIndex).Value & " - " & DataGridView1.Item("marketStartTime", e.RowIndex).Value & " " & DataGridView1.Item("Event", e.RowIndex).Value, DataGridView1.Item("marketId", e.RowIndex).Value, DataGridView1.Item("selectionId", e.RowIndex).Value)
 
             'runnerFormDictionary.Add(DataGridView1.Item("selectionId", e.RowIndex).Value, runnerForm2)
@@ -1129,8 +1132,8 @@ Public Class Form1
     End Sub
     Private Sub Accountbalance()
         Dim balance() As AccountBalanceResponse = DeserializeAccountBalanceResponse("[{""jsonrpc"":""2.0"",""method"":""AccountAPING/v1.0/getAccountFunds"",""params"":{},""id"":1}]")
-        TextBox2.Text = ("Balance" & "£" & balance(0).result.availableToBetBalance)
-        TextBox3.Text = ("Exposure" & "£" & balance(0).result.exposure)
+        TextBox2.Text = ("Balance" & "" & "-" & "£" & balance(0).result.availableToBetBalance)
+        TextBox3.Text = ("Exposure" & "" & "-" & "£" & balance(0).result.exposure)
     End Sub
 
     Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
