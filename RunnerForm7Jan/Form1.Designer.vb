@@ -23,7 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -35,6 +35,9 @@ Partial Class Form1
         Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
         Me.exportButton = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,14 +50,14 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Linen
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
@@ -69,7 +72,7 @@ Partial Class Form1
         '
         'Timer2
         '
-        Me.Timer2.Interval = 5000
+        Me.Timer2.Interval = 3000000
         '
         'Label1
         '
@@ -150,12 +153,48 @@ Partial Class Form1
         Me.ProgressBar1.Value = 5
         Me.ProgressBar1.Visible = False
         '
+        'TextBox1
+        '
+        Me.TextBox1.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(1110, 632)
+        Me.TextBox1.Multiline = True
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 46)
+        Me.TextBox1.TabIndex = 13
+        Me.TextBox1.Text = "Alive"
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox2.Location = New System.Drawing.Point(1330, 623)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(163, 27)
+        Me.TextBox2.TabIndex = 14
+        Me.TextBox2.Text = "£"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox3.ForeColor = System.Drawing.Color.Red
+        Me.TextBox3.Location = New System.Drawing.Point(1330, 656)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(163, 27)
+        Me.TextBox3.TabIndex = 15
+        Me.TextBox3.Text = "£"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
         Me.ClientSize = New System.Drawing.Size(1555, 906)
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.exportButton)
         Me.Controls.Add(Me.CheckedListBox1)
@@ -167,6 +206,7 @@ Partial Class Form1
         Me.Name = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents DataGridView1 As DataGridView
@@ -180,4 +220,7 @@ Partial Class Form1
     Friend WithEvents CheckedListBox1 As CheckedListBox
     Friend WithEvents exportButton As Button
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
 End Class

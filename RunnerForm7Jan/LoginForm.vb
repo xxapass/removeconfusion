@@ -21,6 +21,7 @@
         If Not ssoid = "" Then
             'Form1.Print(ssoid)
             SportsAPI.ssoid = ssoid 'copy ssoid to SportsAPI module
+            AccountsAPI.ssoid = ssoid 'copy ssoid to AccountsAPI module
             Form1.Initialise()
             Me.Close()
         End If

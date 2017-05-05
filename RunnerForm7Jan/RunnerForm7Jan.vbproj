@@ -103,6 +103,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountsAPI.vb" />
     <Compile Include="ChartBotForm.vb">
       <SubType>Form</SubType>
     </Compile>

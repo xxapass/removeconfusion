@@ -914,6 +914,7 @@ Public Class Form1
     End Sub
     'Refresh button
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click 'Refresh button = takes a snapshot, loads prices in DGV and stores JSON response in C:\Betfair etc
+        Accountbalance()
         CheckedListBox1.Items.Clear()
         ListMarketBook()
 
@@ -1125,6 +1126,15 @@ Public Class Form1
 
     Private Sub buildBetListButton_Click(sender As Object, e As EventArgs) Handles buildBetListButton.Click
         BuildBetList()
+    End Sub
+    Private Sub Accountbalance()
+        Dim balance() As AccountBalanceResponse = DeserializeAccountBalanceResponse("[{""jsonrpc"":""2.0"",""method"":""AccountAPING/v1.0/getAccountFunds"",""params"":{},""id"":1}]")
+        TextBox2.Text = ("Balance" & "£" & balance(0).result.availableToBetBalance)
+        TextBox3.Text = ("Exposure" & "£" & balance(0).result.exposure)
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        KeepAlive()
     End Sub
 End Class
 
