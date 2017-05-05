@@ -2,56 +2,56 @@
 
 Public Class Form1
 
-        Private filename As String = Format(Date.Now, "yyyy-MM-dd")
+    Private filename As String = Format(Date.Now, "yyyy-MM-dd")
 
-        Public dataSet As DataSet = New DataSet("RaceData")
+    Public dataSet As DataSet = New DataSet("RaceData")
     Protected dataTable As DataTable = dataSet.Tables.Add("Runners")
     Protected dataView As DataView
     Public bindingSource As New BindingSource
 
-        Public Class MarketDetail
+    Public Class MarketDetail
 
         Public marketId As String
-            Public selectionId As String
-            Public status As String
-            Public inPlay As Boolean
-            Public removed As Boolean
-        End Class
+        Public selectionId As String
+        Public status As String
+        Public inPlay As Boolean
+        Public removed As Boolean
+    End Class
 
     Protected marketDictionary As New Dictionary(Of String, MarketDetail)
     Protected bookRequestList As New List(Of String)
 
     Public runnerFormDictionary As New Dictionary(Of Integer, RunnerForm)
 
-        Public Class BetDetail
+    Public Class BetDetail
 
         Public status As String
         Public averagePriceMatched As Double
-            Public sizeMatched As Double
-            Public fillOrkill As Integer
-        End Class
+        Public sizeMatched As Double
+        Public fillOrkill As Integer
+    End Class
 
-        Public betDictionary As New Dictionary(Of String, BetDetail)
+    Public betDictionary As New Dictionary(Of String, BetDetail)
 
 
     Public Class RunnerDetail
 
         Public marketId As String
-            Public selectionId As String
-            Public status As String
-            Public backPrice As Double
-            Public layPrice As Double
+        Public selectionId As String
+        Public status As String
+        Public backPrice As Double
+        Public layPrice As Double
 
-            Public sumbacked As Double
-            Public backReturn As Double
-            Public avgBackPrice As Double
+        Public sumbacked As Double
+        Public backReturn As Double
+        Public avgBackPrice As Double
 
-            Public sumLaid As Double
-            Public layLiability As Double
-            Public avgLayPrice As Double
+        Public sumLaid As Double
+        Public layLiability As Double
+        Public avgLayPrice As Double
 
-            Public hedgeStake As Double
-            Public hedge As Double
+        Public hedgeStake As Double
+        Public hedge As Double
         'Friend runnerName As Object
     End Class
 
@@ -956,7 +956,10 @@ Public Class Form1
     '        End If
     '    Next
     'End Sub
-
+    Private Sub Accountbalance()
+        Dim balance() As AccountBalanceResponse = DeserializeAccountBalanceResponse("[{""jsonrpc"":""2.0"",""method"":""AccountAPING/v1.0/getAccountFunds"",""params"":{},""id"":1}]")
+        TextBox1.Text = ("£" & balance(0).result.availableToBetBalance)
+    End Sub
 
 End Class
 
