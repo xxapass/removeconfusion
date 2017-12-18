@@ -1,6 +1,5 @@
 ﻿Public Class UserControl2
 
-
     Private Sub UserControl1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         With DataGridView1
@@ -89,21 +88,28 @@
         End With
     End Sub
 
-    Private Sub sizeTextBox_TextChanged(sender As Object, e As EventArgs) Handles sizeTextBox.TextChanged
 
-    End Sub
-
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
-
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
+    'Refresh button
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Form1.ListMarketBook()
-        Form1.CheckMarkets()
+        Dim stake As Decimal
+        stake = (CDec(105 / priceComboBox.Text))
+        stake = Math.Round(stake, 2) 'round to the penny 
+        sizeTextBox.Text = stake
+        If priceComboBox.Text > 11 Then
+            sizeTextBox.Text = stake
+        Else
+            sizeTextBox.Text = 10
+        End If
+        'Form1.ListMarketBook()
+        'Form1.CheckMarkets()
+
     End Sub
+
+
+    Private Sub priceComboBox_SelectedIndexChanged(sender As Object, e As EventArgs)
+
+    End Sub
+
+
 End Class
 
