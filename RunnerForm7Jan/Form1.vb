@@ -80,11 +80,11 @@ Public Class Form1
         BuildDataTable() 'build dataTable
         ListMarketCatalogue() 'get events
         BuildListMarketBookRequests() 'get prices
-        Accountbalance()
-        CheckedListBox1.Items.Clear()
-        ListMarketBook()
-        BuildBetList()
-        CheckedListBox1.Sorted = True
+        ' Accountbalance()
+        ' CheckedListBox1.Items.Clear()
+        'ListMarketBook()
+        'BuildBetList()
+        'CheckedListBox1.Sorted = True
         'Timer1.Enabled = True Button1 now used to start and stop 
     End Sub
     Public Sub BuildDataTable() 'a logical representation of a DataSet in memory from which DGV can be updated
@@ -907,8 +907,6 @@ Public Class Form1
     End Sub
 
 
-
-
     Private Sub BuildBetList()
 
 
@@ -940,8 +938,10 @@ Public Class Form1
         'Dim filter26 = " back > '10.9'  and back < '12.9' and runnerName = '1 - 1' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 0-0 lay
         'Dim filter27 = " back > '6.9'  and back < '15.9' and runnerName = '2 - 0' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 1-0 back
         'Dim filter28 = " back < '12'  and runnerName = 'Any Unquoted' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS AUQ lay
-        Dim filter29 = " back > '22'  and back <'40' and runnerName = '3 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-0 back
+        'Dim filter29 = " back > '22'  and back <'40' and runnerName = '3 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-0 back
         Dim filter30 = " back > '26'  and runnerName = '2 - 0' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 1-1 lay
+        Dim filter31 = " back < '11'  and runnerName = '1 - 2' and inPlay = 'NL'and runnerStatus = 'Correct Score'" 'Holland back 0-2
+        Dim filter32 = " back > '14' and back <'28'  and runnerName = '1 - 2' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 2-1 Lay
 
         'Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
@@ -949,6 +949,7 @@ Public Class Form1
         'Dim FilteredRows4 As DataRow() = dataSet.Tables("Runners").Select(filter4)
         Dim FilteredRows5 As DataRow() = dataSet.Tables("Runners").Select(filter5)
         'Dim FilteredRows6 As DataRow() = dataSet.Tables("Runners").Select(filter6)
+        Dim FilteredRows7 As DataRow() = dataSet.Tables("Runners").Select(filter7)
         'Dim FilteredRows8 As DataRow() = dataSet.Tables("Runners").Select(filter8)
         Dim FilteredRows9 As DataRow() = dataSet.Tables("Runners").Select(filter9)
         'Dim FilteredRows10 As DataRow() = dataSet.Tables("Runners").Select(filter10)
@@ -970,9 +971,10 @@ Public Class Form1
         'Dim FilteredRows26 As DataRow() = dataSet.Tables("Runners").Select(filter26)
         'Dim FilteredRows27 As DataRow() = dataSet.Tables("Runners").Select(filter27)
         'Dim FilteredRows28 As DataRow() = dataSet.Tables("Runners").Select(filter28)
-        Dim FilteredRows29 As DataRow() = dataSet.Tables("Runners").Select(filter29)
+        'Dim FilteredRows29 As DataRow() = dataSet.Tables("Runners").Select(filter29)
         Dim FilteredRows30 As DataRow() = dataSet.Tables("Runners").Select(filter30)
-        Dim FilteredRows7 As DataRow() = dataSet.Tables("Runners").Select(filter7)
+        Dim FilteredRows31 As DataRow() = dataSet.Tables("Runners").Select(filter31)
+        Dim FilteredRows32 As DataRow() = dataSet.Tables("Runners").Select(filter32)
         'For Each row As DataRow In FilteredRows1
         '    ListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay 4.9 - 10"))
         'Next
@@ -1059,13 +1061,18 @@ Public Class Form1
         'For Each row As DataRow In FilteredRows28
         '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "HTCS AUQ Lay < 12"))
         'Next
-        For Each row As DataRow In FilteredRows29
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-0 Back >7"))
-        Next
+        'For Each row As DataRow In FilteredRows29
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-0 Back >7"))
+        'Next
         For Each row As DataRow In FilteredRows30
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 1-1 Lay"))
         Next
-
+        For Each row As DataRow In FilteredRows31
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-2 Back"))
+        Next
+        For Each row As DataRow In FilteredRows32
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-1 Lay"))
+        Next
     End Sub
     'sort listbox button
     Private Sub AscendingButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
