@@ -74,7 +74,7 @@ Imports System.Text
             End Using
 
         Catch ex As Exception
-            Form1.TextBox1.Text = ("KeepAlive Error " & ex.Message)
+            'Form1.TextBox1.Text = ("KeepAlive Error " & ex.Message)
         End Try
 
     End Sub
