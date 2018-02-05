@@ -87,21 +87,22 @@ Public Class Form1
         'CheckedListBox1.Sorted = True
         'Timer1.Enabled = True Button1 now used to start and stop 
     End Sub
+
     Public Sub BuildDataTable() 'a logical representation of a DataSet in memory from which DGV can be updated
 
         dataTable.Columns.Add("marketStartTime", GetType(System.String), Nothing) 'adds columns to DataTable in memory and defines data type for each column
         dataTable.Columns.Add("marketId", GetType(System.String), Nothing) 'result.marketId
         dataTable.Columns.Add("marketStatus", GetType(System.String), Nothing)
-        dataTable.Columns.Add("inPlay", GetType(System.String), Nothing)
+        dataTable.Columns.Add("Competition", GetType(System.String), Nothing)
         dataTable.Columns.Add("Event", GetType(System.String), Nothing) 'result.event.name
         dataTable.Columns.Add("selectionId", GetType(System.String), Nothing) 'allMarkets(0).result(n).runners.Item(m).selectionId
         dataTable.Columns.Add("runnerName", GetType(System.String), Nothing)
-        dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
+        dataTable.Columns.Add("marketName", GetType(System.String), Nothing)
         dataTable.Columns.Add("back", GetType(System.Double), Nothing)
         dataTable.Columns.Add("lay", GetType(System.Double), Nothing)
-        'dataTable.Columns.Add("countryCode", GetType(System.String), Nothing) 'result.event.countryCode
-        'dataTable.Columns.Add("competitionName", GetType(System.String), Nothing) 'result.competition.name
-        'dataTable.Columns.Add("marketName", GetType(String), Nothing) 'result.marketName
+        dataTable.Columns.Add("inPlay", GetType(System.String), Nothing)
+        dataTable.Columns.Add("runnerStatus", GetType(System.String), Nothing)
+
 
         dataTable.PrimaryKey = New DataColumn() {dataTable.Columns("marketId"), dataTable.Columns("selectionId")} 'uses marketId and selectionId as a unique pair to search the table
 
@@ -110,6 +111,7 @@ Public Class Form1
 
         'dataView.Sort = "marketStartTime" 'sort data by time
         dataView.Sort = "Event" 'sort Event alphabetically 
+        'dataView.Sort = "selectionId" 'sort  
         'dataView.Sort = "course"
         bindingSource = New BindingSource
 
@@ -118,6 +120,7 @@ Public Class Form1
         bindingSource.DataSource = dataView
 
     End Sub
+
     Protected Sub BuildDataGridView()
 
 
@@ -139,6 +142,8 @@ Public Class Form1
             .RowTemplate.Height = 19
             .ShowCellToolTips = False
 
+
+
             Dim marketStartTimeColumn As New DataGridViewTextBoxColumn
             With marketStartTimeColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
@@ -146,14 +151,14 @@ Public Class Form1
                 .Name = "marketStartTime"
                 .DataPropertyName = "marketStartTime" 'gets updated data from DataView
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Width = 40
+                .Width = 60
             End With
             .Columns.Add(marketStartTimeColumn)
 
             Dim marketIdColumn As New DataGridViewTextBoxColumn
             With marketIdColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
-                .Name = "marketId"
+                .Name = "MarketId"
                 .DataPropertyName = "marketId"
                 .Width = 80
             End With
@@ -168,36 +173,16 @@ Public Class Form1
             End With
             .Columns.Add(marketStatusColumn)
 
-            'Dim inPlayColumn As New DataGridViewTextBoxColumn
-            'With inPlayColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "Country/inPlay"
-            '    .DataPropertyName = "inPlay"
-            '    .DataPropertyName = "countryCode"
-            '    '.DataPropertyName = "marketId"
-            '    .Width = 150
-            'End With
-            '.Columns.Add(inPlayColumn)
+            Dim CompetitionColumn As New DataGridViewTextBoxColumn
+            With CompetitionColumn
+                .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "Competition"
+                .DataPropertyName = "Competition"
+                .Width = 200
+            End With
+            .Columns.Add(CompetitionColumn)
 
-            'Dim competitionColumn As New DataGridViewTextBoxColumn
-            'With competitionColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "Competition"
-            '    .DataPropertyName = "competitionName"
-            '    '.DataPropertyName = "Country"
-            '    .Width = 100
-            'End With
-            '.Columns.Add(competitionColumn)
-
-            'Dim courseColumn As New DataGridViewTextBoxColumn
-            'With courseColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "course"
-            '    .DataPropertyName = "course"
-            '    .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft
-            '    .Width = 200
-            'End With
-            '.Columns.Add(courseColumn)
             Dim EventColumn As New DataGridViewTextBoxColumn
             With EventColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
@@ -207,18 +192,6 @@ Public Class Form1
                 .Width = 150
             End With
             .Columns.Add(EventColumn)
-
-            'Dim marketNameColumn As New DataGridViewTextBoxColumn
-            'With marketNameColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "marketName"
-            '    .DataPropertyName = "marketName"
-            '    .DefaultCellStyle.BackColor = Color.AntiqueWhite
-            '    .DefaultCellStyle.SelectionBackColor = Color.Pink
-            '    .Width = 200
-
-            'End With
-            '.Columns.Add(marketNameColumn)
 
             Dim selectionIdColumn As New DataGridViewTextBoxColumn
             With selectionIdColumn
@@ -239,24 +212,16 @@ Public Class Form1
             End With
             .Columns.Add(runnerNameColumn)
 
-            'Dim marketNameColumn As New DataGridViewTextBoxColumn
-            'With marketNameColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "marketName"
-            '    .DataPropertyName = "marketName"
-            '    .Width = 120
-            'End With
-            '.Columns.Add(marketNameColumn)
-
-            'Dim runnerStatusColumn As New DataGridViewTextBoxColumn 'runnerstatus function disabled
-            'With runnerStatusColumn
-            '    .SortMode = DataGridViewColumnSortMode.NotSortable
-            '    .Name = "runnerStatus"
-            '    '.Name = "marketName"
-            '    .DataPropertyName = "runnerStatus"
-            '    .Width = 150
-            'End With
-            '.Columns.Add(runnerStatusColumn)
+            Dim marketNameColumn As New DataGridViewTextBoxColumn
+            With marketNameColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "marketName"
+                .DataPropertyName = "marketName"
+                .DefaultCellStyle.BackColor = Color.AntiqueWhite
+                .DefaultCellStyle.SelectionBackColor = Color.Pink
+                .Width = 150
+            End With
+            .Columns.Add(marketNameColumn)
 
             Dim backColumn As New DataGridViewTextBoxColumn
             With backColumn
@@ -279,6 +244,26 @@ Public Class Form1
                 .Width = 40
             End With
             .Columns.Add(layColumn)
+
+            Dim inPlayColumn As New DataGridViewTextBoxColumn
+            With inPlayColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "inPlay"
+                .DataPropertyName = "inPlay"
+                .Width = 80
+            End With
+            .Columns.Add(inPlayColumn)
+
+            Dim runnerStatusColumn As New DataGridViewTextBoxColumn
+            With runnerStatusColumn
+                .SortMode = DataGridViewColumnSortMode.NotSortable
+                .Name = "runnerStatus"
+                .DataPropertyName = "runnerStatus"
+                .Width = 80
+            End With
+            .Columns.Add(runnerStatusColumn)
+
+
         End With
     End Sub
 
@@ -337,6 +322,7 @@ Public Class Form1
 
         Dim marketTypeCodes As New List(Of String)
         ' marketTypeCodes.Add("MATCH_ODDS")
+        marketTypeCodes.Add("OVER_UNDER_25")
         marketTypeCodes.Add("OVER_UNDER_35")
         marketTypeCodes.Add("OVER_UNDER_45")
         'marketTypeCodes.Add("WIN")
@@ -383,22 +369,10 @@ Public Class Form1
 
                 course = Split(allMarkets(0).result(n).event.name)
 
-
-                'Print(Format(allMarkets(0).result(n).marketStartTime, "Short Time") & " " & course(0) & " " & allMarkets(0).result(n).marketName & " " & allMarkets(0).result(n).runners.Item(m).runnerName)
-
-                'Event = Split(allMarkets(0).result(n).event.name)
-                'Dim competitionIds As String
-                'competitionIds = (allMarkets(0).result(n).competitionIds)
-
                 Try 'add runner to dataTable
-                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", course(0) & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
 
-                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName)
-                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name & " " & allMarkets(0).result(n).marketName, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
-                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
-                    ' dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName, allMarkets(0).result(n).competitionName)
-                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName) ', allMarkets(0).result(n).competitionName)
-                    'dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", "", allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).event.countryCode, allMarkets(0).result(n).competitionName) ', allMarkets(0).result(n).marketName)
+                    dataTable.Rows.Add(Format(allMarkets(0).result(n).marketStartTime, "Short Time"), allMarkets(0).result(n).marketId, "", allMarkets(0).result(n).competition.name, allMarkets(0).result(n).event.name, allMarkets(0).result(n).runners.Item(m).selectionId, allMarkets(0).result(n).runners.Item(m).runnerName, allMarkets(0).result(n).marketName)
+
 
                     If Not runnerDictionary.ContainsKey(allMarkets(0).result(n).runners.Item(m).selectionId) Then
                         Dim data As New RunnerDetail
@@ -409,8 +383,8 @@ Public Class Form1
                 Catch ex As Exception
                 End Try
 
-            Next
-        Next
+    Next
+    Next
     End Sub
     Protected Sub BuildListMarketBookRequests()
 
@@ -516,30 +490,30 @@ Public Class Form1
                         If book(0).result(bookCount).inplay = True Then
                             foundRow("inPlay") = "inPlay"
                         Else
-                            'foundRow("inPlay") = "" 'removes countryCode and replaces with "" (preplay)
+                            foundRow("inPlay") = ""
                         End If
 
-                        'foundRow("runnerStatus") = .status don't need runnerstatus, replaced with marketName except it records winning/losing status which might be useful
-                        'runnerDictionary(.selectionId).status = .status
+                        foundRow("runnerStatus") = .status 'don't need runnerstatus, replaced with marketName except it records winning/losing status which might be useful
+                        runnerDictionary(.selectionId).status = .status
 
-                        'If .status = "ACTIVE" Then
+                        If .status = "ACTIVE" Then
 
-                        '    foundRow("runnerStatus") = "ACTIVE"
+                            foundRow("runnerStatus") = "ACTIVE"
 
-                        If .ex.availableToback.Count > 0 Then
-                            runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
-                            foundRow("back") = .ex.availableToback(0).price
+                            If .ex.availableToback.Count > 0 Then
+                                runnerDictionary(.selectionId).backPrice = .ex.availableToback(0).price
+                                foundRow("back") = .ex.availableToback(0).price
+                            End If
+
+                            If .ex.availableToLay.Count > 0 Then
+                                runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
+                                foundRow("lay") = .ex.availableToLay(0).price
+                            End If
+
+                            If .orders.Count > 0 Then
+                                ProcessOrders(.selectionId, .orders)
+                            End If
                         End If
-
-                        If .ex.availableToLay.Count > 0 Then
-                            runnerDictionary(.selectionId).layPrice = .ex.availableToLay(0).price
-                            foundRow("lay") = .ex.availableToLay(0).price
-                        End If
-
-                        If .orders.Count > 0 Then
-                            ProcessOrders(.selectionId, .orders)
-                        End If
-                        'End If
 
                     End With
                 Next
@@ -911,19 +885,19 @@ Public Class Form1
     Private Sub BuildBetList()
 
 
-        Dim filter1 = " back  >'50' and runnerName = '3 - 2' and inPlay = 'DE' and runnerStatus = 'Correct Score'" 'Bund O45 lay
+        Dim filter1 = " back  >'50' and runnerName = '3 - 2' and Competition = 'German Bundesliga 1' and marketName = 'Correct Score'" 'Bund O45 lay
         'Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
         'Dim filter3 = "back >'5.1' and back <'12' and runnerName='Over 3.5 Goals' and inPlay='PT'" 'Port O35 Lay
         'Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
-        Dim filter5 = "back >'19' and back <'25' and runnername='0 - 0' and inPlay='NL' and runnerStatus = 'Correct Score'" 'Holland O45 Lay
-        Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and inPlay='FR' " 'France O35 Back
-        Dim filter7 = " back <'12.9' and runnerName = '2 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 2-2 back
-        Dim filter8 = " back <'9' and runnerName = '1 - 0' and inPlay = 'DE'and runnerStatus = 'Correct Score'" 'Bund CS 2-0 back
-        Dim filter9 = " back > '16.9'  and back <'50' and runnerName = '0 - 3' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-3 back
-        Dim filter10 = " back > '20'  and back <'30' and runnerName = '3 - 0' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 1-0 back
+        Dim filter5 = "back >'19' and back <'25' and runnername='0 - 0' and Competition ='Dutch Eredivisie' and marketName = 'Correct Score'" 'Holland O45 Lay
+        Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and Competition ='French Ligue 1' and marketName = 'Over/Under 3.5 Goals'" 'France O35 Back
+        Dim filter7 = " back <'12.9' and runnerName = '2 - 1' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-2 back
+        Dim filter8 = " back <'9' and runnerName = '1 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
+        Dim filter9 = " back > '16.9'  and back <'50' and runnerName = '0 - 3' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 0-3 back
+        Dim filter10 = " back > '20'  and back <'30' and runnerName = '3 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-0 back
         'Dim filter11 = " back > '18'  and back <'25' and runnerName = '2 - 2' and inPlay = 'ES'and runnerStatus = 'Correct Score'" 'ESP CS 1-2 back
         'Dim filter12 = " back > '50' and runnerName = '3 - 0' and inPlay = 'FR'and runnerStatus = 'Correct Score'" 'FR CS 0-1 back
-        Dim filter13 = " back > '15.9' and back < '49.9' and runnerName = '0 - 0' and inPlay = 'NL'and runnerStatus = 'Correct Score'" 'Holland CS 1-1 back
+        Dim filter13 = " back > '15.9' and back < '49.9' and runnerName = '0 - 0' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland CS 1-1 back
         'Dim filter14 = " back > '12.9' and back < '19.9' and runnerName = '1 - 3' and inPlay = 'PT'and runnerStatus = 'Correct Score'" 'Portugal CS 1-3 back
         'Dim filter15 = " back > '3.9' and runnerName = '0 - 0' and inPlay = 'IT'and runnerStatus = 'Half Time Score'" 'Serie A HTCS 1-2 back
         'Dim filter16 = " back > '3.9'  and back <'4.9' and runnerName = '1 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 1-1 back
@@ -940,15 +914,15 @@ Public Class Form1
         'Dim filter27 = " back > '6.9'  and back < '15.9' and runnerName = '2 - 0' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 1-0 back
         'Dim filter28 = " back < '12'  and runnerName = 'Any Unquoted' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS AUQ lay
         'Dim filter29 = " back > '22'  and back <'40' and runnerName = '3 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-0 back
-        Dim filter30 = " back > '26'  and runnerName = '2 - 0' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 1-1 lay
-        Dim filter31 = " back < '11'  and runnerName = '1 - 2' and inPlay = 'NL'and runnerStatus = 'Correct Score'" 'Holland back 0-2
-        Dim filter32 = " back > '14' and back <'28'  and runnerName = '1 - 2' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 2-1 Lay
-        Dim filter33 = " back > '17' and back <'21'  and runnerName = '1 - 2' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'Champ O3.5 Lay
-        Dim filter34 = " back > '50' and runnerName = '0 - 3' and inPlay = 'PT'and runnerStatus = 'Correct Score'" 'Portugal back O25
-        Dim filter35 = " back > '15' and back <'45' and runnerName = '1 - 3' and inPlay = 'IT' and runnerStatus = 'Correct Score'" 'Serie A Back 1-3
-        Dim filter36 = " back > '9' and runnerName = '1 - 1' and inPlay = 'IT'and runnerStatus = 'Correct Score'" 'Serie A Back 3-1
-        Dim filter37 = " back < '9' and runnerName = '1 - 1' and inPlay = 'BE'and runnerStatus = 'Correct Score'" 'Belgium Back 1-0
-        Dim filter38 = " back > '50' and runnerName = '0 - 3' and inPlay = 'TR'and runnerStatus = 'Correct Score'" 'Turkey Back 2-1
+        Dim filter30 = " back > '26'  and runnerName = '2 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-1 lay
+        Dim filter31 = " back < '11'  and runnerName = '1 - 2' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland back 0-2
+        Dim filter32 = " back > '14' and back <'28'  and runnerName = '1 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-1 Lay
+        Dim filter33 = " back > '17' and back <'21'  and runnerName = '1 - 2' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O3.5 Lay
+        Dim filter34 = " back > '50' and runnerName = '0 - 3' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O25
+        Dim filter35 = " back > '15' and back <'45' and runnerName = '1 - 3' and Competition = 'Italian Serie A' and marketName = 'Correct Score'" 'Serie A Back 1-3
+        Dim filter36 = " back > '9' and runnerName = '1 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back 3-1
+        Dim filter37 = " back < '9' and runnerName = '1 - 1' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
+        Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)

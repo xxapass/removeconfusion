@@ -106,8 +106,8 @@ Module SportsAPI
         Public totalMatched As Double
         Public runners As New List(Of Runners)()
         Public [event] As New [Event]
-        Public competitionName As String
-        'Public competition As String
+        Public [competition] As New [competition]
+
     End Class
 
     Public Class Runners
@@ -125,9 +125,11 @@ Module SportsAPI
         Public venue As String
         Public openDate As String
         Public competitionName As String
-        'Public competition As String
     End Class
-
+    Public Class [Competition]
+        Public id As Integer
+        Public name As String
+    End Class
     Function DeserializeMarketCatalogueResponse(ByVal jsonResponse As String)
 
         Return JsonConvert.DeserializeObject(Of MarketCatalogueResponse())(SendSportsReq(jsonResponse))
