@@ -104,5 +104,10 @@
         'Form1.UpdateRunnerForms()
     End Sub
 
-
+    'Private Sub priceComboBox_SelectedIndexChanged(sender As Object, e As DataGridViewCellEventArgs) Handles priceComboBox.SelectedIndexChanged
+    '    Dim txtSubject As Object = Nothing
+    '    'Text = DataGridView1.Item("back", e.RowIndex).Value
+    '    'txtSubject.DataBindings.Add("Text", DataTable.("back"))
+    '    Text = "back"
+    'End Sub
 End Class

@@ -197,7 +197,11 @@
 
         End If
     End Sub
-
+    'Public Sub BindpriceComboBox()
+    '    'Dim dataset As System.Data.DataSet.Tables("Runners")
+    '    UserControl1.priceComboBox.DataSource = Form1.dataSet.Tables("Runners")
+    '    priceComboBox.DisplayMember = "back"
+    'End Sub
     Private Sub RunnerForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         Form1.runnerFormDictionary.Remove(Me.selectionId)
 

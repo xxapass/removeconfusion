@@ -383,8 +383,8 @@ Public Class Form1
                 Catch ex As Exception
                 End Try
 
-    Next
-    Next
+            Next
+        Next
     End Sub
     Protected Sub BuildListMarketBookRequests()
 
@@ -518,7 +518,7 @@ Public Class Form1
                     End With
                 Next
 
-                Next
+            Next
         Next
     End Sub
 
@@ -892,7 +892,7 @@ Public Class Form1
         Dim filter5 = "back >'19' and back <'25' and runnername='0 - 0' and Competition ='Dutch Eredivisie' and marketName = 'Correct Score'" 'Holland O45 Lay
         Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and Competition ='French Ligue 1' and marketName = 'Over/Under 3.5 Goals'" 'France O35 Back
         Dim filter7 = " back <'12.9' and runnerName = '2 - 1' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-2 back
-        Dim filter8 = " back <'9' and runnerName = '1 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
+        Dim filter8 = " back <'19.9' and runnerName = '0 - 2' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-1 back
         Dim filter9 = " back > '16.9'  and back <'50' and runnerName = '0 - 3' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 0-3 back
         Dim filter10 = " back > '20'  and back <'30' and runnerName = '3 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-0 back
         'Dim filter11 = " back > '18'  and back <'25' and runnerName = '2 - 2' and inPlay = 'ES'and runnerStatus = 'Correct Score'" 'ESP CS 1-2 back
@@ -987,7 +987,7 @@ Public Class Form1
         Next
 
         For Each row As DataRow In FilteredRows8
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-0 Back"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-1 Back"))
         Next
         For Each row As DataRow In FilteredRows9
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-3 Back 17 - 50"))
@@ -1123,7 +1123,9 @@ Public Class Form1
         KeepAlive()
     End Sub
 
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs)
 
+    End Sub
 End Class
 
 

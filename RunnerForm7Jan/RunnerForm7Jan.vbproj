@@ -193,6 +193,21 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\ChartBotForm.datasource" />
+    <None Include="My Project\DataSources\Form1.BetDetail.datasource" />
+    <None Include="My Project\DataSources\Form1.ChartDetail.datasource" />
+    <None Include="My Project\DataSources\Form1.datasource" />
+    <None Include="My Project\DataSources\Form1.MarketDetail.datasource" />
+    <None Include="My Project\DataSources\Form1.RunnerDetail.datasource" />
+    <None Include="My Project\DataSources\LoginForm.datasource" />
+    <None Include="My Project\DataSources\MarketForm.datasource" />
+    <None Include="My Project\DataSources\RunnerForm.datasource" />
+    <None Include="My Project\DataSources\RunnerForm2.datasource" />
+    <None Include="My Project\DataSources\RunnerForm7Jan.Microsoft.Office.datasource" />
+    <None Include="My Project\DataSources\RunnerForm7Jan.My.MyApplication.datasource" />
+    <None Include="My Project\DataSources\RunnerForm7Jan.My.MySettings.datasource" />
+    <None Include="My Project\DataSources\UserControl1.datasource" />
+    <None Include="My Project\DataSources\UserControl2.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
