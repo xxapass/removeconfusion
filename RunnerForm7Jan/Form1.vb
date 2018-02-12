@@ -923,6 +923,7 @@ Public Class Form1
         Dim filter36 = " back > '9' and runnerName = '1 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back 3-1
         Dim filter37 = " back < '9' and runnerName = '1 - 1' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
         Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
+        Dim filter39 = " back <'9' and runnerName = '1 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
@@ -962,6 +963,7 @@ Public Class Form1
         Dim FilteredRows36 As DataRow() = dataSet.Tables("Runners").Select(filter36)
         Dim FilteredRows37 As DataRow() = dataSet.Tables("Runners").Select(filter37)
         Dim FilteredRows38 As DataRow() = dataSet.Tables("Runners").Select(filter38)
+        Dim FilteredRows39 As DataRow() = dataSet.Tables("Runners").Select(filter39)
 
         For Each row As DataRow In FilteredRows1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
@@ -1078,6 +1080,9 @@ Public Class Form1
         Next
         For Each row As DataRow In FilteredRows38
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 2-1"))
+        Next
+        For Each row As DataRow In FilteredRows39
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 2-0"))
         Next
     End Sub
     'sort listbox button
