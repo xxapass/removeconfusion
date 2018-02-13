@@ -112,7 +112,7 @@ Public Class Form1
         'dataView.Sort = "marketStartTime" 'sort data by time
         dataView.Sort = "Event" 'sort Event alphabetically 
         'dataView.Sort = "selectionId" 'sort  
-        'dataView.Sort = "course"
+
         bindingSource = New BindingSource
 
         DataGridView1.DataSource = bindingSource 'binds DataView to DGV so that any changes to DataSet are matched in DGV
@@ -147,7 +147,6 @@ Public Class Form1
             Dim marketStartTimeColumn As New DataGridViewTextBoxColumn
             With marketStartTimeColumn
                 .SortMode = DataGridViewColumnSortMode.NotSortable
-                ' .Name = "marketStartTime"
                 .Name = "marketStartTime"
                 .DataPropertyName = "marketStartTime" 'gets updated data from DataView
                 .DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -493,7 +492,7 @@ Public Class Form1
                             foundRow("inPlay") = ""
                         End If
 
-                        foundRow("runnerStatus") = .status 'don't need runnerstatus, replaced with marketName except it records winning/losing status which might be useful
+                        foundRow("runnerStatus") = .status
                         runnerDictionary(.selectionId).status = .status
 
                         If .status = "ACTIVE" Then
@@ -924,6 +923,7 @@ Public Class Form1
         Dim filter37 = " back < '9' and runnerName = '1 - 1' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
         Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
         Dim filter39 = " back <'9' and runnerName = '1 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
+        Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
@@ -964,6 +964,7 @@ Public Class Form1
         Dim FilteredRows37 As DataRow() = dataSet.Tables("Runners").Select(filter37)
         Dim FilteredRows38 As DataRow() = dataSet.Tables("Runners").Select(filter38)
         Dim FilteredRows39 As DataRow() = dataSet.Tables("Runners").Select(filter39)
+        Dim FilteredRows40 As DataRow() = dataSet.Tables("Runners").Select(filter40)
 
         For Each row As DataRow In FilteredRows1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
@@ -1084,6 +1085,9 @@ Public Class Form1
         For Each row As DataRow In FilteredRows39
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 2-0"))
         Next
+        For Each row As DataRow In FilteredRows40
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 0-1"))
+        Next
     End Sub
     'sort listbox button
     Private Sub AscendingButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
@@ -1094,26 +1098,26 @@ Public Class Form1
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         CheckedListBox1.Items.Clear()
     End Sub
-    'export listbox
-    Dim oItem As Object
-    Dim OffS As Integer
-    Dim MsExcel As Excel.Application
-    Dim Wb As Excel.Workbook
-    Private Sub exportButton_Click(sender As Object, e As EventArgs)
-        MsExcel = CreateObject("Excel.Application")
+    ''export listbox
+    'Dim oItem As Object
+    'Dim OffS As Integer
+    'Dim MsExcel As Excel.Application
+    'Dim Wb As Excel.Workbook
+    'Private Sub exportButton_Click(sender As Object, e As EventArgs)
+    '    MsExcel = CreateObject("Excel.Application")
 
-        Wb = MsExcel.Workbooks.Open("C:\Users\simon_000\Desktop\BuildBetList.xlsx")
-        OffS = 0
-        For Each oItem In CheckedListBox1.Items
-            Wb.Sheets(1).Range("A1").Offset(OffS, 0).Value = Now & "," & oItem
-            OffS = OffS + 1
-        Next oItem
+    '    Wb = MsExcel.Workbooks.Open("C:\Users\simon_000\Desktop\BuildBetList.xlsx")
+    '    OffS = 0
+    '    For Each oItem In CheckedListBox1.Items
+    '        Wb.Sheets(1).Range("A1").Offset(OffS, 0).Value = Now & "," & oItem
+    '        OffS = OffS + 1
+    '    Next oItem
 
-        Wb.SaveAs()
-        'DoEvents
-        Wb.Close()
-        'MsExcel.Visible = True
-    End Sub
+    '    Wb.SaveAs()
+    '    'DoEvents
+    '    Wb.Close()
+    '    'MsExcel.Visible = True
+    'End Sub
 
     Private Sub buildBetListButton_Click(sender As Object, e As EventArgs) Handles buildBetListButton.Click
         BuildBetList()

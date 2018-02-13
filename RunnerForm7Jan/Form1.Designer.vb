@@ -23,7 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -47,21 +47,21 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Linen
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("MS Reference Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(1543, 906)
+        Me.DataGridView1.Size = New System.Drawing.Size(1157, 736)
         Me.DataGridView1.TabIndex = 0
         '
         'Timer1
@@ -79,9 +79,10 @@ Partial Class Form1
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(999, 0)
+        Me.Label1.Location = New System.Drawing.Point(749, 0)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(201, 71)
+        Me.Label1.Size = New System.Drawing.Size(151, 58)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Refresh"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -90,10 +91,10 @@ Partial Class Form1
         '
         Me.buildBetListButton.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.buildBetListButton.BackColor = System.Drawing.Color.Ivory
-        Me.buildBetListButton.Location = New System.Drawing.Point(1235, 0)
-        Me.buildBetListButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.buildBetListButton.Location = New System.Drawing.Point(926, 0)
+        Me.buildBetListButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.buildBetListButton.Name = "buildBetListButton"
-        Me.buildBetListButton.Size = New System.Drawing.Size(275, 41)
+        Me.buildBetListButton.Size = New System.Drawing.Size(206, 33)
         Me.buildBetListButton.TabIndex = 2
         Me.buildBetListButton.Text = "Build betList"
         Me.buildBetListButton.UseVisualStyleBackColor = False
@@ -102,10 +103,10 @@ Partial Class Form1
         '
         Me.AscendingButton.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.AscendingButton.BackColor = System.Drawing.Color.LightBlue
-        Me.AscendingButton.Location = New System.Drawing.Point(1235, 41)
-        Me.AscendingButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.AscendingButton.Location = New System.Drawing.Point(926, 33)
+        Me.AscendingButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.AscendingButton.Name = "AscendingButton"
-        Me.AscendingButton.Size = New System.Drawing.Size(115, 31)
+        Me.AscendingButton.Size = New System.Drawing.Size(86, 25)
         Me.AscendingButton.TabIndex = 3
         Me.AscendingButton.Text = "Sort"
         Me.AscendingButton.UseVisualStyleBackColor = False
@@ -114,10 +115,10 @@ Partial Class Form1
         '
         Me.ClearButton.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.ClearButton.BackColor = System.Drawing.Color.DarkKhaki
-        Me.ClearButton.Location = New System.Drawing.Point(1380, 41)
-        Me.ClearButton.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.ClearButton.Location = New System.Drawing.Point(1035, 33)
+        Me.ClearButton.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.ClearButton.Name = "ClearButton"
-        Me.ClearButton.Size = New System.Drawing.Size(129, 31)
+        Me.ClearButton.Size = New System.Drawing.Size(97, 25)
         Me.ClearButton.TabIndex = 10
         Me.ClearButton.Text = "Clear"
         Me.ClearButton.UseVisualStyleBackColor = False
@@ -127,20 +128,20 @@ Partial Class Form1
         Me.CheckedListBox1.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.CheckedListBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Location = New System.Drawing.Point(992, 78)
-        Me.CheckedListBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.CheckedListBox1.Location = New System.Drawing.Point(744, 63)
+        Me.CheckedListBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(551, 821)
+        Me.CheckedListBox1.Size = New System.Drawing.Size(414, 788)
         Me.CheckedListBox1.TabIndex = 11
         '
         'TextBox2
         '
         Me.TextBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(1063, 496)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox2.Location = New System.Drawing.Point(806, 581)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(179, 27)
+        Me.TextBox2.Size = New System.Drawing.Size(135, 23)
         Me.TextBox2.TabIndex = 14
         Me.TextBox2.Text = "£"
         '
@@ -149,19 +150,19 @@ Partial Class Form1
         Me.TextBox3.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox3.ForeColor = System.Drawing.Color.Red
-        Me.TextBox3.Location = New System.Drawing.Point(1292, 496)
-        Me.TextBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.TextBox3.Location = New System.Drawing.Point(970, 581)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(179, 27)
+        Me.TextBox3.Size = New System.Drawing.Size(135, 23)
         Me.TextBox3.TabIndex = 15
         Me.TextBox3.Text = "£"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.ClientSize = New System.Drawing.Size(1555, 906)
+        Me.ClientSize = New System.Drawing.Size(1166, 736)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.CheckedListBox1)
@@ -170,7 +171,7 @@ Partial Class Form1
         Me.Controls.Add(Me.buildBetListButton)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
