@@ -884,16 +884,16 @@ Public Class Form1
     Private Sub BuildBetList()
 
 
-        Dim filter1 = " back  >'50' and runnerName = '3 - 2' and Competition = 'German Bundesliga 1' and marketName = 'Correct Score'" 'Bund O45 lay
+        Dim filter1 = " back <'18.9' and runnerName = '0 - 1' and Competition = 'German Bundesliga 1' and marketName = 'Correct Score'" 'Bund O45 lay
         'Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
         'Dim filter3 = "back >'5.1' and back <'12' and runnerName='Over 3.5 Goals' and inPlay='PT'" 'Port O35 Lay
         'Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
         Dim filter5 = "back >'19' and back <'25' and runnername='0 - 0' and Competition ='Dutch Eredivisie' and marketName = 'Correct Score'" 'Holland O45 Lay
         Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and Competition ='French Ligue 1' and marketName = 'Over/Under 3.5 Goals'" 'France O35 Back
         Dim filter7 = " back <'12.9' and runnerName = '2 - 1' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-2 back
-        Dim filter8 = " back <'19.9' and runnerName = '0 - 2' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-1 back
-        Dim filter9 = " back > '16.9'  and back <'50' and runnerName = '0 - 3' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 0-3 back
-        Dim filter10 = " back > '20'  and back <'30' and runnerName = '3 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-0 back
+        Dim filter8 = " back >'49.9' and runnerName = '3 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-1 back
+        Dim filter9 = " back > '15.9'  and back <'50' and runnerName = '0 - 3' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 0-3 back
+        Dim filter10 = " back > '7'  and back <'9.9' and runnerName = '0 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-0 back
         'Dim filter11 = " back > '18'  and back <'25' and runnerName = '2 - 2' and inPlay = 'ES'and runnerStatus = 'Correct Score'" 'ESP CS 1-2 back
         'Dim filter12 = " back > '50' and runnerName = '3 - 0' and inPlay = 'FR'and runnerStatus = 'Correct Score'" 'FR CS 0-1 back
         Dim filter13 = " back > '15.9' and back < '49.9' and runnerName = '0 - 0' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland CS 1-1 back
@@ -922,8 +922,12 @@ Public Class Form1
         Dim filter36 = " back > '9' and runnerName = '1 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back 3-1
         Dim filter37 = " back < '9' and runnerName = '1 - 1' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
         Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
-        Dim filter39 = " back <'9' and runnerName = '1 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
+        Dim filter39 = " back <'9.9' and runnerName = '0 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
         Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
+        Dim filter41 = " back > '50' and runnerName = '0 - 2' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O35
+        Dim filter42 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal CS 0-1 back 
+
+
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
@@ -965,6 +969,9 @@ Public Class Form1
         Dim FilteredRows38 As DataRow() = dataSet.Tables("Runners").Select(filter38)
         Dim FilteredRows39 As DataRow() = dataSet.Tables("Runners").Select(filter39)
         Dim FilteredRows40 As DataRow() = dataSet.Tables("Runners").Select(filter40)
+        Dim FilteredRows41 As DataRow() = dataSet.Tables("Runners").Select(filter41)
+        Dim FilteredRows42 As DataRow() = dataSet.Tables("Runners").Select(filter42)
+
 
         For Each row As DataRow In FilteredRows1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
@@ -1086,6 +1093,12 @@ Public Class Form1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 2-0"))
         Next
         For Each row As DataRow In FilteredRows40
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 0-1"))
+        Next
+        For Each row As DataRow In FilteredRows41
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        Next
+        For Each row As DataRow In FilteredRows42
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 0-1"))
         Next
     End Sub
