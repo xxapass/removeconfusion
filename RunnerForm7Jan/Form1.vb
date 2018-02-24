@@ -920,7 +920,7 @@ Public Class Form1
         Dim filter34 = " back > '50' and runnerName = '0 - 3' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O25
         Dim filter35 = " back > '15' and back <'45' and runnerName = '1 - 3' and Competition = 'Italian Serie A' and marketName = 'Correct Score'" 'Serie A Back 1-3
         Dim filter36 = " back > '9' and runnerName = '1 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back 3-1
-        Dim filter37 = " back < '9' and runnerName = '1 - 1' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
+        Dim filter37 = " back > '49.9' and runnerName = '0 - 3' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
         Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
         Dim filter39 = " back <'9.9' and runnerName = '0 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
         Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
