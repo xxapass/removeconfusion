@@ -290,7 +290,7 @@ Public Class Form1
         competitionIds.Add("89979") 'Belgian Jupiler League
         competitionIds.Add("194215") 'Turkish Super League
         competitionIds.Add("101") 'Russian Prem
-        ''competitionIds.Add("7129730") 'Champ
+        competitionIds.Add("97") 'Polish Ekstraklasa
         'competitionIds.Add("228") 'Champions League
         ''competitionIds.Add("61") 'Bundesliga 2
         ''competitionIds.Add("35") 'League 1
@@ -928,6 +928,12 @@ Public Class Form1
         Dim filter42 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal CS 0-1 back 
         Dim filter43 = " back <'9.9' and runnerName = '0 - 1' and Competition = 'English Premier League' and marketName = 'Correct Score'" 'EPL O45 lay
         Dim filter44 = " back >'49.9' and runnerName = '1 - 3' and Competition = 'Russian Premier League' and marketName = 'Correct Score'" 'RUS O15 lay
+        Dim filter45 = " back <'9.9' and runnerName = '2 - 1' and Competition = 'Polish Ekstraklasa' and marketName = 'Correct Score'" 'Poland CS 0-0 Back
+        Dim filter46 = " back > '49.9' and runnerName = '1 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-0
+        Dim filter47 = " back > '49.9' and runnerName = '3 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O3.5
+        Dim filter48 = " back > '15.9' and back <'18.9' and runnerName = '2 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O4.5
+
+
 
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
@@ -974,6 +980,10 @@ Public Class Form1
         Dim FilteredRows42 As DataRow() = dataSet.Tables("Runners").Select(filter42)
         Dim FilteredRows43 As DataRow() = dataSet.Tables("Runners").Select(filter43)
         Dim FilteredRows44 As DataRow() = dataSet.Tables("Runners").Select(filter44)
+        Dim FilteredRows45 As DataRow() = dataSet.Tables("Runners").Select(filter45)
+        Dim FilteredRows46 As DataRow() = dataSet.Tables("Runners").Select(filter46)
+        Dim FilteredRows47 As DataRow() = dataSet.Tables("Runners").Select(filter47)
+        Dim FilteredRows48 As DataRow() = dataSet.Tables("Runners").Select(filter48)
 
         For Each row As DataRow In FilteredRows1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
@@ -1080,34 +1090,46 @@ Public Class Form1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back if 1-0 >8"))
         Next
         For Each row As DataRow In FilteredRows35
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 1-3"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "1-3 back"))
         Next
         For Each row As DataRow In FilteredRows36
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 3-1 if LESS THAN 25"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "3-1 Back if LESS THAN 25"))
         Next
         For Each row As DataRow In FilteredRows37
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 1-0"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "1-0 Back"))
         Next
         For Each row As DataRow In FilteredRows38
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 2-1"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-1 Back"))
         Next
         For Each row As DataRow In FilteredRows39
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 2-0"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-0 Back"))
         Next
         For Each row As DataRow In FilteredRows40
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 0-1"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-1 Back"))
         Next
         For Each row As DataRow In FilteredRows41
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
         Next
         For Each row As DataRow In FilteredRows42
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 0-1"))
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-1 Back"))
         Next
         For Each row As DataRow In FilteredRows43
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
         Next
         For Each row As DataRow In FilteredRows44
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
+        Next
+        For Each row As DataRow In FilteredRows45
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-0 Back"))
+        Next
+        For Each row As DataRow In FilteredRows46
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-0 Back"))
+        Next
+        For Each row As DataRow In FilteredRows47
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        Next
+        For Each row As DataRow In FilteredRows48
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Back"))
         Next
     End Sub
     'sort listbox button
