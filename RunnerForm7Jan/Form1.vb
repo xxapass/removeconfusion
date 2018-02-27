@@ -279,7 +279,7 @@ Public Class Form1
 
         Dim competitionIds As New List(Of String)
         competitionIds.Add("10932509") 'EPL
-        'competitionIds.Add("117") 'ESP
+        competitionIds.Add("117") 'ESP
         'competitionIds.Add("2005") 'Europa League
         competitionIds.Add("9404054") 'Dutch Eredivisie
         competitionIds.Add("59") 'Bundesliga 1
@@ -932,9 +932,10 @@ Public Class Form1
         Dim filter46 = " back > '49.9' and runnerName = '1 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-0
         Dim filter47 = " back > '49.9' and runnerName = '3 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O3.5
         Dim filter48 = " back > '15.9' and back <'18.9' and runnerName = '2 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O4.5
-
-
-
+        Dim filter49 = " back > '9.9' and back <'12.9' and runnerName = '0 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP 3-1 Back 
+        Dim filter50 = " back > '49.9' and runnerName = '2 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O1.5 Back 
+        Dim filter51 = " back < '9.9' and runnerName = '3 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O1.5 Lay 
+        Dim filter52 = " back > '12.9' and back <'15.9' and runnerName = '0 - 1' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O2.5 Back 
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
@@ -984,6 +985,10 @@ Public Class Form1
         Dim FilteredRows46 As DataRow() = dataSet.Tables("Runners").Select(filter46)
         Dim FilteredRows47 As DataRow() = dataSet.Tables("Runners").Select(filter47)
         Dim FilteredRows48 As DataRow() = dataSet.Tables("Runners").Select(filter48)
+        Dim FilteredRows49 As DataRow() = dataSet.Tables("Runners").Select(filter49)
+        Dim FilteredRows50 As DataRow() = dataSet.Tables("Runners").Select(filter50)
+        Dim FilteredRows51 As DataRow() = dataSet.Tables("Runners").Select(filter51)
+        Dim FilteredRows52 As DataRow() = dataSet.Tables("Runners").Select(filter52)
 
         For Each row As DataRow In FilteredRows1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
@@ -1130,6 +1135,18 @@ Public Class Form1
         Next
         For Each row As DataRow In FilteredRows48
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Back"))
+        Next
+        For Each row As DataRow In FilteredRows49
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "3-1 Back"))
+        Next
+        For Each row As DataRow In FilteredRows50
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Back"))
+        Next
+        For Each row As DataRow In FilteredRows51
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
+        Next
+        For Each row As DataRow In FilteredRows52
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back"))
         Next
     End Sub
     'sort listbox button
