@@ -289,7 +289,7 @@ Public Class Form1
         competitionIds.Add("55") 'French Ligue One
         competitionIds.Add("89979") 'Belgian Jupiler League
         competitionIds.Add("194215") 'Turkish Super League
-        ''competitionIds.Add("5984496") 'IT Pro Liga
+        competitionIds.Add("101") 'Russian Prem
         ''competitionIds.Add("7129730") 'Champ
         'competitionIds.Add("228") 'Champions League
         ''competitionIds.Add("61") 'Bundesliga 2
@@ -913,7 +913,7 @@ Public Class Form1
         'Dim filter27 = " back > '6.9'  and back < '15.9' and runnerName = '2 - 0' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 1-0 back
         'Dim filter28 = " back < '12'  and runnerName = 'Any Unquoted' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS AUQ lay
         'Dim filter29 = " back > '22'  and back <'40' and runnerName = '3 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-0 back
-        Dim filter30 = " back > '26'  and runnerName = '2 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-1 lay
+        Dim filter30 = " back > '18.9'  and back < '21.9' and runnerName = '2 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-1 lay
         Dim filter31 = " back < '11'  and runnerName = '1 - 2' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland back 0-2
         Dim filter32 = " back > '14' and back <'28'  and runnerName = '1 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-1 Lay
         Dim filter33 = " back > '17' and back <'21'  and runnerName = '1 - 2' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O3.5 Lay
@@ -926,7 +926,8 @@ Public Class Form1
         Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
         Dim filter41 = " back > '50' and runnerName = '0 - 2' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O35
         Dim filter42 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal CS 0-1 back 
-
+        Dim filter43 = " back <'9.9' and runnerName = '0 - 1' and Competition = 'English Premier League' and marketName = 'Correct Score'" 'EPL O45 lay
+        Dim filter44 = " back >'49.9' and runnerName = '1 - 3' and Competition = 'Russian Premier League' and marketName = 'Correct Score'" 'RUS O15 lay
 
 
         Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
@@ -971,7 +972,8 @@ Public Class Form1
         Dim FilteredRows40 As DataRow() = dataSet.Tables("Runners").Select(filter40)
         Dim FilteredRows41 As DataRow() = dataSet.Tables("Runners").Select(filter41)
         Dim FilteredRows42 As DataRow() = dataSet.Tables("Runners").Select(filter42)
-
+        Dim FilteredRows43 As DataRow() = dataSet.Tables("Runners").Select(filter43)
+        Dim FilteredRows44 As DataRow() = dataSet.Tables("Runners").Select(filter44)
 
         For Each row As DataRow In FilteredRows1
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
@@ -1100,6 +1102,12 @@ Public Class Form1
         Next
         For Each row As DataRow In FilteredRows42
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "Back 0-1"))
+        Next
+        For Each row As DataRow In FilteredRows43
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
+        Next
+        For Each row As DataRow In FilteredRows44
+            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
         Next
     End Sub
     'sort listbox button
