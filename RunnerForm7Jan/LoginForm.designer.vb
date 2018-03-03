@@ -23,29 +23,44 @@ Partial Class LoginForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
+        Me.timeTextBox = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'WebBrowser1
         '
         Me.WebBrowser1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.WebBrowser1.Location = New System.Drawing.Point(0, 0)
-        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.WebBrowser1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.WebBrowser1.MinimumSize = New System.Drawing.Size(15, 16)
         Me.WebBrowser1.Name = "WebBrowser1"
-        Me.WebBrowser1.Size = New System.Drawing.Size(282, 253)
+        Me.WebBrowser1.Size = New System.Drawing.Size(212, 206)
         Me.WebBrowser1.TabIndex = 0
         Me.WebBrowser1.Url = New System.Uri("https://identitysso.betfair.com/view/login", System.UriKind.Absolute)
         '
+        'timeTextBox
+        '
+        Me.timeTextBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timeTextBox.Location = New System.Drawing.Point(8, 8)
+        Me.timeTextBox.Name = "timeTextBox"
+        Me.timeTextBox.Size = New System.Drawing.Size(100, 24)
+        Me.timeTextBox.TabIndex = 1
+        Me.timeTextBox.Text = "23:00"
+        '
         'LoginForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(282, 253)
+        Me.ClientSize = New System.Drawing.Size(212, 206)
+        Me.Controls.Add(Me.timeTextBox)
         Me.Controls.Add(Me.WebBrowser1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "LoginForm"
         Me.Text = "LoginForm"
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents WebBrowser1 As WebBrowser
+    Friend WithEvents timeTextBox As TextBox
 End Class

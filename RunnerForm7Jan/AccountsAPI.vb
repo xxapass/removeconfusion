@@ -12,8 +12,8 @@ Imports System.Text
             Dim request As WebRequest = WebRequest.Create("https://api.betfair.com/exchange/account/json-rpc/v1/")
 
             Dim byteArray As Byte() = Encoding.UTF8.GetBytes(jsonString)
-
-            request.Method = "POST"
+        'Try
+        request.Method = "POST"
             request.ContentType = "application/json"
             request.ContentLength = byteArray.Length
             request.Headers.Add("X-Application: DVxEQHLHgSQC27rz")
@@ -28,9 +28,14 @@ Imports System.Text
             Dim reader As New StreamReader(dataStream)
             Dim responseFromServer As String = reader.ReadToEnd()
 
+
+            'Catch ex As WebException 'Exception
+            '    'Form1.Print("SendSportsReq Error: " & ex.Message)
+            'End Try
+
             Return responseFromServer
 
-        End Function
+    End Function
 
         'Classes for getAccountBalance Response 
         Public Class AccountBalanceResponse

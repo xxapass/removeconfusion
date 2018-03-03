@@ -66,8 +66,6 @@ Public Class Form1
         Public ChartBot As Boolean
     End Class
 
-    'Public Property YourGridViewBindingSource As Object
-
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         LoginForm.Show()
@@ -345,7 +343,9 @@ Public Class Form1
 
         End If
 
-        marketStartTime.to = Today.ToString("u").Replace(" ", "T").Replace("00:00", "23:00")
+        marketStartTime.to = Today.ToString("u").Replace(" ", "T").Replace("00:00", LoginForm.timeTextBox.Text)
+
+        'marketStartTime.to = Today.ToString("u").Replace(" ", "T").Replace("00:00", "23:00")
         params.filter.marketStartTime = marketStartTime
 
         request.params = params
@@ -383,8 +383,8 @@ Public Class Form1
                 Catch ex As Exception
                 End Try
 
-    Next
-    Next
+            Next
+        Next
     End Sub
     Protected Sub BuildListMarketBookRequests()
 
@@ -518,7 +518,7 @@ Public Class Form1
                     End With
                 Next
 
-                Next
+            Next
         Next
     End Sub
 
