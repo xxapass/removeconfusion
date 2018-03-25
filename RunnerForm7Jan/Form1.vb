@@ -885,72 +885,72 @@ Public Class Form1
     Private Sub BuildBetList()
 
 
-        Dim filter1 = " back <'18.9' and runnerName = '0 - 1' and Competition = 'German Bundesliga 1' and marketName = 'Correct Score'" 'Bund O45 lay
-        'Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
-        'Dim filter3 = "back >'5.1' and back <'12' and runnerName='Over 3.5 Goals' and inPlay='PT'" 'Port O35 Lay
-        'Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
+        'Dim filter1 = " back <'18.9' and runnerName = '0 - 1' and Competition = 'German Bundesliga 1' and marketName = 'Correct Score'" 'Bund O45 lay
+        ''Dim filter2 = " back > '2.9'  and back <'3.31' and runnerName = 'Over 3.5 Goals' and inPlay = 'GB'" 'EPL O45 Lay
+        ''Dim filter3 = "back >'5.1' and back <'12' and runnerName='Over 3.5 Goals' and inPlay='PT'" 'Port O35 Lay
+        ''Dim filter4 = "back >'4.9' and back <'10' and runnername='Over 4.5 Goals' and inPlay='ES' " 'ESP O45 Lay
         Dim filter5 = "back >'19' and back <'25' and runnername='0 - 0' and Competition ='Dutch Eredivisie' and marketName = 'Correct Score'" 'Holland O45 Lay
-        Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and Competition ='French Ligue 1' and marketName = 'Over/Under 3.5 Goals'" 'France O35 Back
+        'Dim filter6 = "back >'3.9' and back <'4.5' and runnername='Over 3.5 Goals' and Competition ='French Ligue 1' and marketName = 'Over/Under 3.5 Goals'" 'France O35 Back
         Dim filter7 = " back <'12.9' and runnerName = '2 - 1' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-2 back
-        Dim filter8 = " back >'49.9' and runnerName = '3 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-1 back
+        'Dim filter8 = " back >'49.9' and runnerName = '3 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-1 back
         Dim filter9 = " back > '15.9'  and back <'50' and runnerName = '0 - 3' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 0-3 back
         Dim filter10 = " back > '7'  and back <'9.9' and runnerName = '0 - 0' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-0 back
-        'Dim filter11 = " back > '18'  and back <'25' and runnerName = '2 - 2' and inPlay = 'ES'and runnerStatus = 'Correct Score'" 'ESP CS 1-2 back
-        'Dim filter12 = " back > '50' and runnerName = '3 - 0' and inPlay = 'FR'and runnerStatus = 'Correct Score'" 'FR CS 0-1 back
+        ''Dim filter11 = " back > '18'  and back <'25' and runnerName = '2 - 2' and inPlay = 'ES'and runnerStatus = 'Correct Score'" 'ESP CS 1-2 back
+        ''Dim filter12 = " back > '50' and runnerName = '3 - 0' and inPlay = 'FR'and runnerStatus = 'Correct Score'" 'FR CS 0-1 back
         Dim filter13 = " back > '15.9' and back < '49.9' and runnerName = '0 - 0' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland CS 1-1 back
-        'Dim filter14 = " back > '12.9' and back < '19.9' and runnerName = '1 - 3' and inPlay = 'PT'and runnerStatus = 'Correct Score'" 'Portugal CS 1-3 back
-        'Dim filter15 = " back > '3.9' and runnerName = '0 - 0' and inPlay = 'IT'and runnerStatus = 'Half Time Score'" 'Serie A HTCS 1-2 back
-        'Dim filter16 = " back > '3.9'  and back <'4.9' and runnerName = '1 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 1-1 back
-        'Dim filter17 = " back > '3.9'  and back <'4.9' and runnerName = '0 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 0-0 lay
-        'Dim filter18 = " back < '3.0'  and runnerName = 'Over 1.5 Goals' and inPlay = 'DE'and runnerStatus = 'First Half Goals 1.5'" 'Bund HTCS 2-1 back
-        'Dim filter19 = " back > '9.9'  and back < '11.9' and runnerName = 'Any Unquoted' and inPlay = 'GB'and runnerStatus = 'Half Time Score'" 'EPL HTCS 0-0 lay
-        'Dim filter20 = " back > '9.9'  and back < '13.9' and runnerName = '2 - 0' and inPlay = 'GB'and runnerStatus = 'Half Time Score'" 'EPL HTCS 1-0 lay
-        'Dim filter21 = " back < '10' and runnerName = 'Any Unquoted' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS AUQ lay
-        'Dim filter22 = " back < '3.0'  and runnerName = 'Over 1.5 Goals' and inPlay = 'FR'and runnerStatus = 'First Half Goals 1.5'" 'France HTCS 2-0 back
-        'Dim filter23 = " back > '6.9'  and back < '12' and runnerName = '2 - 0' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS 2-0 back
-        'Dim filter24 = " back > '6.9'  and back < '12' and runnerName = '2 - 0' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS 0-0 lay
-        'Dim filter25 = " back < '3.5'  and runnerName = 'Any Unquoted' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS AUQ lay 
-        'Dim filter26 = " back > '10.9'  and back < '12.9' and runnerName = '1 - 1' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 0-0 lay
-        'Dim filter27 = " back > '6.9'  and back < '15.9' and runnerName = '2 - 0' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 1-0 back
-        'Dim filter28 = " back < '12'  and runnerName = 'Any Unquoted' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS AUQ lay
-        'Dim filter29 = " back > '22'  and back <'40' and runnerName = '3 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-0 back
-        Dim filter30 = " back > '18.9'  and back < '21.9' and runnerName = '2 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-1 lay
-        Dim filter31 = " back < '11'  and runnerName = '1 - 2' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland back 0-2
-        Dim filter32 = " back > '14' and back <'28'  and runnerName = '1 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-1 Lay
-        Dim filter33 = " back > '17' and back <'21'  and runnerName = '1 - 2' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O3.5 Lay
-        Dim filter34 = " back > '50' and runnerName = '0 - 3' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O25
-        Dim filter35 = " back > '15' and back <'45' and runnerName = '1 - 3' and Competition = 'Italian Serie A' and marketName = 'Correct Score'" 'Serie A Back 1-3
-        Dim filter36 = " back < '15.9' and runnerName = '3 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back 3-1
-        Dim filter37 = " back > '49.9' and runnerName = '0 - 3' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
-        Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
-        Dim filter39 = " back <'9.9' and runnerName = '0 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
-        Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
-        Dim filter41 = " back > '50' and runnerName = '0 - 2' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O35
-        Dim filter42 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal CS 0-1 back 
-        Dim filter43 = " back <'9.9' and runnerName = '0 - 1' and Competition = 'English Premier League' and marketName = 'Correct Score'" 'EPL O45 lay
-        Dim filter44 = " back >'49.9' and runnerName = '1 - 3' and Competition = 'Russian Premier League' and marketName = 'Correct Score'" 'RUS O15 lay
+        ''Dim filter14 = " back > '12.9' and back < '19.9' and runnerName = '1 - 3' and inPlay = 'PT'and runnerStatus = 'Correct Score'" 'Portugal CS 1-3 back
+        ''Dim filter15 = " back > '3.9' and runnerName = '0 - 0' and inPlay = 'IT'and runnerStatus = 'Half Time Score'" 'Serie A HTCS 1-2 back
+        ''Dim filter16 = " back > '3.9'  and back <'4.9' and runnerName = '1 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 1-1 back
+        ''Dim filter17 = " back > '3.9'  and back <'4.9' and runnerName = '0 - 0' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS 0-0 lay
+        ''Dim filter18 = " back < '3.0'  and runnerName = 'Over 1.5 Goals' and inPlay = 'DE'and runnerStatus = 'First Half Goals 1.5'" 'Bund HTCS 2-1 back
+        ''Dim filter19 = " back > '9.9'  and back < '11.9' and runnerName = 'Any Unquoted' and inPlay = 'GB'and runnerStatus = 'Half Time Score'" 'EPL HTCS 0-0 lay
+        ''Dim filter20 = " back > '9.9'  and back < '13.9' and runnerName = '2 - 0' and inPlay = 'GB'and runnerStatus = 'Half Time Score'" 'EPL HTCS 1-0 lay
+        ''Dim filter21 = " back < '10' and runnerName = 'Any Unquoted' and inPlay = 'DE'and runnerStatus = 'Half Time Score'" 'Bund HTCS AUQ lay
+        ''Dim filter22 = " back < '3.0'  and runnerName = 'Over 1.5 Goals' and inPlay = 'FR'and runnerStatus = 'First Half Goals 1.5'" 'France HTCS 2-0 back
+        ''Dim filter23 = " back > '6.9'  and back < '12' and runnerName = '2 - 0' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS 2-0 back
+        ''Dim filter24 = " back > '6.9'  and back < '12' and runnerName = '2 - 0' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS 0-0 lay
+        ''Dim filter25 = " back < '3.5'  and runnerName = 'Any Unquoted' and inPlay = 'ES'and runnerStatus = 'Half Time Score'" 'ESP HTCS AUQ lay 
+        ''Dim filter26 = " back > '10.9'  and back < '12.9' and runnerName = '1 - 1' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 0-0 lay
+        ''Dim filter27 = " back > '6.9'  and back < '15.9' and runnerName = '2 - 0' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS 1-0 back
+        ''Dim filter28 = " back < '12'  and runnerName = 'Any Unquoted' and inPlay = 'PT'and runnerStatus = 'Half Time Score'" 'PT HTCS AUQ lay
+        ''Dim filter29 = " back > '22'  and back <'40' and runnerName = '3 - 1' and inPlay = 'GB'and runnerStatus = 'Correct Score'" 'EPL CS 0-0 back
+        'Dim filter30 = " back > '18.9'  and back < '21.9' and runnerName = '2 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 1-1 lay
+        'Dim filter31 = " back < '11'  and runnerName = '1 - 2' and Competition = 'Dutch Eredivisie'and marketName = 'Correct Score'" 'Holland back 0-2
+        'Dim filter32 = " back > '14' and back <'28'  and runnerName = '1 - 2' and Competition = 'English Premier League'and marketName = 'Correct Score'" 'EPL CS 2-1 Lay
+        'Dim filter33 = " back > '17' and back <'21'  and runnerName = '1 - 2' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O3.5 Lay
+        'Dim filter34 = " back > '50' and runnerName = '0 - 3' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O25
+        'Dim filter35 = " back > '15' and back <'45' and runnerName = '1 - 3' and Competition = 'Italian Serie A' and marketName = 'Correct Score'" 'Serie A Back 1-3
+        'Dim filter36 = " back < '15.9' and runnerName = '3 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back 3-1
+        'Dim filter37 = " back > '49.9' and runnerName = '0 - 3' and Competition = 'Belgian First Division A'and marketName = 'Correct Score'" 'Belgium Back 1-0
+        'Dim filter38 = " back > '50' and runnerName = '0 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 2-1
+        'Dim filter39 = " back <'9.9' and runnerName = '0 - 0' and Competition = 'German Bundesliga 1'and marketName = 'Correct Score'" 'Bund CS 2-0 back
+        'Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
+        'Dim filter41 = " back > '50' and runnerName = '0 - 2' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O35
+        'Dim filter42 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal CS 0-1 back 
+        'Dim filter43 = " back <'9.9' and runnerName = '0 - 1' and Competition = 'English Premier League' and marketName = 'Correct Score'" 'EPL O45 lay
+        'Dim filter44 = " back >'49.9' and runnerName = '1 - 3' and Competition = 'Russian Premier League' and marketName = 'Correct Score'" 'RUS O15 lay
         Dim filter45 = " back <'9.9' and runnerName = '2 - 1' and Competition = 'Polish Ekstraklasa' and marketName = 'Correct Score'" 'Poland CS 0-0 Back
-        Dim filter46 = " back > '49.9' and runnerName = '1 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-0
-        Dim filter47 = " back > '49.9' and runnerName = '3 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O3.5
+        'Dim filter46 = " back > '49.9' and runnerName = '1 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-0
+        'Dim filter47 = " back > '49.9' and runnerName = '3 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O3.5
         Dim filter48 = " back > '15.9' and back <'18.9' and runnerName = '2 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back O4.5
-        Dim filter49 = " back > '9.9' and back <'12.9' and runnerName = '0 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP 3-1 Back 
-        Dim filter50 = " back > '49.9' and runnerName = '2 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O1.5 Back 
-        Dim filter51 = " back < '9.9' and runnerName = '3 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O1.5 Lay 
-        Dim filter52 = " back > '12.9' and back <'15.9' and runnerName = '0 - 1' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O2.5 Back 
-        Dim filter53 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back O2.5
-        Dim filter54 = " back > '49.9' and runnerName = '3 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back O3.5
-        Dim filter55 = " back > '9.9' and back <'12.9'  and runnerName = '0 - 0' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ CS 2-1 Back
-        Dim filter56 = " back > '33.9' and back <'36.9'  and runnerName = '1 - 3' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O1.5 Back
-        Dim filter57 = " back < '15.9' and runnerName = '2 - 2' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O3.5 Back
+        'Dim filter49 = " back > '9.9' and back <'12.9' and runnerName = '0 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP 3-1 Back 
+        'Dim filter50 = " back > '49.9' and runnerName = '2 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O1.5 Back 
+        'Dim filter51 = " back < '9.9' and runnerName = '3 - 0' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O1.5 Lay 
+        'Dim filter52 = " back > '12.9' and back <'15.9' and runnerName = '0 - 1' and Competition = 'Spanish La Liga'and marketName = 'Correct Score'" 'ESP O2.5 Back 
+        'Dim filter53 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back O2.5
+        'Dim filter54 = " back > '49.9' and runnerName = '3 - 1' and Competition = 'Italian Serie A'and marketName = 'Correct Score'" 'Serie A Back O3.5
+        'Dim filter55 = " back > '9.9' and back <'12.9'  and runnerName = '0 - 0' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ CS 2-1 Back
+        'Dim filter56 = " back > '33.9' and back <'36.9'  and runnerName = '1 - 3' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O1.5 Back
+        'Dim filter57 = " back < '15.9' and runnerName = '2 - 2' and Competition = 'English Championship'and marketName = 'Correct Score'" 'Champ O3.5 Back
 
-        Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
+        'Dim FilteredRows1 As DataRow() = dataSet.Tables("Runners").Select(filter1)
         'Dim FilteredRows2 As DataRow() = dataSet.Tables("Runners").Select(filter2)
         'Dim FilteredRows3 As DataRow() = dataSet.Tables("Runners").Select(filter3)
         'Dim FilteredRows4 As DataRow() = dataSet.Tables("Runners").Select(filter4)
         Dim FilteredRows5 As DataRow() = dataSet.Tables("Runners").Select(filter5)
-        Dim FilteredRows6 As DataRow() = dataSet.Tables("Runners").Select(filter6)
+        'Dim FilteredRows6 As DataRow() = dataSet.Tables("Runners").Select(filter6)
         Dim FilteredRows7 As DataRow() = dataSet.Tables("Runners").Select(filter7)
-        Dim FilteredRows8 As DataRow() = dataSet.Tables("Runners").Select(filter8)
+        'Dim FilteredRows8 As DataRow() = dataSet.Tables("Runners").Select(filter8)
         Dim FilteredRows9 As DataRow() = dataSet.Tables("Runners").Select(filter9)
         Dim FilteredRows10 As DataRow() = dataSet.Tables("Runners").Select(filter10)
         'Dim FilteredRows11 As DataRow() = dataSet.Tables("Runners").Select(filter11)
@@ -972,38 +972,38 @@ Public Class Form1
         'Dim FilteredRows27 As DataRow() = dataSet.Tables("Runners").Select(filter27)
         'Dim FilteredRows28 As DataRow() = dataSet.Tables("Runners").Select(filter28)
         'Dim FilteredRows29 As DataRow() = dataSet.Tables("Runners").Select(filter29)
-        Dim FilteredRows30 As DataRow() = dataSet.Tables("Runners").Select(filter30)
-        Dim FilteredRows31 As DataRow() = dataSet.Tables("Runners").Select(filter31)
-        Dim FilteredRows32 As DataRow() = dataSet.Tables("Runners").Select(filter32)
-        Dim FilteredRows33 As DataRow() = dataSet.Tables("Runners").Select(filter33)
-        Dim FilteredRows34 As DataRow() = dataSet.Tables("Runners").Select(filter34)
-        Dim FilteredRows35 As DataRow() = dataSet.Tables("Runners").Select(filter35)
-        Dim FilteredRows36 As DataRow() = dataSet.Tables("Runners").Select(filter36)
-        Dim FilteredRows37 As DataRow() = dataSet.Tables("Runners").Select(filter37)
-        Dim FilteredRows38 As DataRow() = dataSet.Tables("Runners").Select(filter38)
-        Dim FilteredRows39 As DataRow() = dataSet.Tables("Runners").Select(filter39)
-        Dim FilteredRows40 As DataRow() = dataSet.Tables("Runners").Select(filter40)
-        Dim FilteredRows41 As DataRow() = dataSet.Tables("Runners").Select(filter41)
-        Dim FilteredRows42 As DataRow() = dataSet.Tables("Runners").Select(filter42)
-        Dim FilteredRows43 As DataRow() = dataSet.Tables("Runners").Select(filter43)
-        Dim FilteredRows44 As DataRow() = dataSet.Tables("Runners").Select(filter44)
+        'Dim FilteredRows30 As DataRow() = dataSet.Tables("Runners").Select(filter30)
+        'Dim FilteredRows31 As DataRow() = dataSet.Tables("Runners").Select(filter31)
+        'Dim FilteredRows32 As DataRow() = dataSet.Tables("Runners").Select(filter32)
+        'Dim FilteredRows33 As DataRow() = dataSet.Tables("Runners").Select(filter33)
+        'Dim FilteredRows34 As DataRow() = dataSet.Tables("Runners").Select(filter34)
+        'Dim FilteredRows35 As DataRow() = dataSet.Tables("Runners").Select(filter35)
+        'Dim FilteredRows36 As DataRow() = dataSet.Tables("Runners").Select(filter36)
+        'Dim FilteredRows37 As DataRow() = dataSet.Tables("Runners").Select(filter37)
+        'Dim FilteredRows38 As DataRow() = dataSet.Tables("Runners").Select(filter38)
+        'Dim FilteredRows39 As DataRow() = dataSet.Tables("Runners").Select(filter39)
+        'Dim FilteredRows40 As DataRow() = dataSet.Tables("Runners").Select(filter40)
+        'Dim FilteredRows41 As DataRow() = dataSet.Tables("Runners").Select(filter41)
+        'Dim FilteredRows42 As DataRow() = dataSet.Tables("Runners").Select(filter42)
+        'Dim FilteredRows43 As DataRow() = dataSet.Tables("Runners").Select(filter43)
+        'Dim FilteredRows44 As DataRow() = dataSet.Tables("Runners").Select(filter44)
         Dim FilteredRows45 As DataRow() = dataSet.Tables("Runners").Select(filter45)
-        Dim FilteredRows46 As DataRow() = dataSet.Tables("Runners").Select(filter46)
-        Dim FilteredRows47 As DataRow() = dataSet.Tables("Runners").Select(filter47)
+        'Dim FilteredRows46 As DataRow() = dataSet.Tables("Runners").Select(filter46)
+        'Dim FilteredRows47 As DataRow() = dataSet.Tables("Runners").Select(filter47)
         Dim FilteredRows48 As DataRow() = dataSet.Tables("Runners").Select(filter48)
-        Dim FilteredRows49 As DataRow() = dataSet.Tables("Runners").Select(filter49)
-        Dim FilteredRows50 As DataRow() = dataSet.Tables("Runners").Select(filter50)
-        Dim FilteredRows51 As DataRow() = dataSet.Tables("Runners").Select(filter51)
-        Dim FilteredRows52 As DataRow() = dataSet.Tables("Runners").Select(filter52)
-        Dim FilteredRows53 As DataRow() = dataSet.Tables("Runners").Select(filter53)
-        Dim FilteredRows54 As DataRow() = dataSet.Tables("Runners").Select(filter54)
-        Dim FilteredRows55 As DataRow() = dataSet.Tables("Runners").Select(filter55)
-        Dim FilteredRows56 As DataRow() = dataSet.Tables("Runners").Select(filter56)
-        Dim FilteredRows57 As DataRow() = dataSet.Tables("Runners").Select(filter57)
+        'Dim FilteredRows49 As DataRow() = dataSet.Tables("Runners").Select(filter49)
+        'Dim FilteredRows50 As DataRow() = dataSet.Tables("Runners").Select(filter50)
+        'Dim FilteredRows51 As DataRow() = dataSet.Tables("Runners").Select(filter51)
+        'Dim FilteredRows52 As DataRow() = dataSet.Tables("Runners").Select(filter52)
+        'Dim FilteredRows53 As DataRow() = dataSet.Tables("Runners").Select(filter53)
+        'Dim FilteredRows54 As DataRow() = dataSet.Tables("Runners").Select(filter54)
+        'Dim FilteredRows55 As DataRow() = dataSet.Tables("Runners").Select(filter55)
+        'Dim FilteredRows56 As DataRow() = dataSet.Tables("Runners").Select(filter56)
+        'Dim FilteredRows57 As DataRow() = dataSet.Tables("Runners").Select(filter57)
 
-        For Each row As DataRow In FilteredRows1
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
-        Next
+        'For Each row As DataRow In FilteredRows1
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
+        'Next
         'For Each row As DataRow In FilteredRows2
         '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6.9"))
         'Next
@@ -1016,17 +1016,17 @@ Public Class Form1
         For Each row As DataRow In FilteredRows5
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay <6"))
         Next
-        For Each row As DataRow In FilteredRows6
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
-        Next
+        'For Each row As DataRow In FilteredRows6
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        'Next
 
         For Each row As DataRow In FilteredRows7
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-2 Back > 11.5"))
         Next
 
-        For Each row As DataRow In FilteredRows8
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-1 Back"))
-        Next
+        'For Each row As DataRow In FilteredRows8
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-1 Back"))
+        'Next
         For Each row As DataRow In FilteredRows9
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-3 Back 17 - 50"))
         Next
@@ -1090,90 +1090,90 @@ Public Class Form1
         'For Each row As DataRow In FilteredRows29
         '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-0 Back >7"))
         'Next
-        For Each row As DataRow In FilteredRows30
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 1-1 Lay"))
-        Next
-        For Each row As DataRow In FilteredRows31
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-2 Back"))
-        Next
-        For Each row As DataRow In FilteredRows32
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-1 Lay"))
-        Next
-        For Each row As DataRow In FilteredRows33
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CHAMP O3.5 Lay"))
-        Next
-        For Each row As DataRow In FilteredRows34
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back if 1-0 >8"))
-        Next
-        For Each row As DataRow In FilteredRows35
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "1-3 back"))
-        Next
-        For Each row As DataRow In FilteredRows36
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "3-1 Back if LESS THAN 25"))
-        Next
-        For Each row As DataRow In FilteredRows37
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "1-0 Back"))
-        Next
-        For Each row As DataRow In FilteredRows38
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-1 Back"))
-        Next
-        For Each row As DataRow In FilteredRows39
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-0 Back"))
-        Next
-        For Each row As DataRow In FilteredRows40
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-1 Back"))
-        Next
-        For Each row As DataRow In FilteredRows41
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
-        Next
-        For Each row As DataRow In FilteredRows42
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-1 Back"))
-        Next
-        For Each row As DataRow In FilteredRows43
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
-        Next
-        For Each row As DataRow In FilteredRows44
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
-        Next
+        'For Each row As DataRow In FilteredRows30
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 1-1 Lay"))
+        'Next
+        'For Each row As DataRow In FilteredRows31
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 0-2 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows32
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CS 2-1 Lay"))
+        'Next
+        'For Each row As DataRow In FilteredRows33
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "CHAMP O3.5 Lay"))
+        'Next
+        'For Each row As DataRow In FilteredRows34
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back if 1-0 >8"))
+        'Next
+        'For Each row As DataRow In FilteredRows35
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "1-3 back <45"))
+        'Next
+        'For Each row As DataRow In FilteredRows36
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "3-1 Back if LESS THAN 25"))
+        'Next
+        'For Each row As DataRow In FilteredRows37
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "1-0 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows38
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-1 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows39
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-0 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows40
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-1 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows41
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows42
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-1 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows43
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Lay"))
+        'Next
+        'For Each row As DataRow In FilteredRows44
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
+        'Next
         For Each row As DataRow In FilteredRows45
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-0 Back"))
         Next
-        For Each row As DataRow In FilteredRows46
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-0 Back"))
-        Next
-        For Each row As DataRow In FilteredRows47
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
-        Next
+        'For Each row As DataRow In FilteredRows46
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "0-0 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows47
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        'Next
         For Each row As DataRow In FilteredRows48
             CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O4.5 Back"))
         Next
-        For Each row As DataRow In FilteredRows49
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "3-1 Back"))
-        Next
-        For Each row As DataRow In FilteredRows50
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Back"))
-        Next
-        For Each row As DataRow In FilteredRows51
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
-        Next
-        For Each row As DataRow In FilteredRows52
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back"))
-        Next
-        For Each row As DataRow In FilteredRows53
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back"))
-        Next
-        For Each row As DataRow In FilteredRows54
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
-        Next
-        For Each row As DataRow In FilteredRows55
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-1 Back"))
-        Next
-        For Each row As DataRow In FilteredRows56
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Back"))
-        Next
-        For Each row As DataRow In FilteredRows57
-            CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
-        Next
+        'For Each row As DataRow In FilteredRows49
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "3-1 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows50
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows51
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Lay"))
+        'Next
+        'For Each row As DataRow In FilteredRows52
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows53
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O2.5 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows54
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows55
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "2-1 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows56
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O1.5 Back"))
+        'Next
+        'For Each row As DataRow In FilteredRows57
+        '    CheckedListBox1.Items.Add(String.Format("{0},{1},{2},", row("marketStartTime"), row("Event"), "O3.5 Back"))
+        'Next
     End Sub
     'sort listbox button
     Private Sub AscendingButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) _
