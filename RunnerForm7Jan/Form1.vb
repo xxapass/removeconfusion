@@ -927,7 +927,7 @@ Public Class Form1
         'Dim filter40 = " back < '13' and runnerName = '1 - 2' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-1
         'Dim filter41 = " back > '50' and runnerName = '0 - 2' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal back O35
         'Dim filter42 = " back > '49.9' and runnerName = '3 - 0' and Competition = 'Portuguese Primeira Liga'and marketName = 'Correct Score'" 'Portugal CS 0-1 back 
-        'Dim filter43 = " back <'9.9' and runnerName = '0 - 1' and Competition = 'English Premier League' and marketName = 'Correct Score'" 'EPL O45 lay
+        'Dim filter43 = " back >'49.9' and runnerName = '0 - 3' and Competition = 'English Premier League' and marketName = 'Correct Score'" 'EPL O45 lay
         'Dim filter44 = " back >'49.9' and runnerName = '1 - 3' and Competition = 'Russian Premier League' and marketName = 'Correct Score'" 'RUS O15 lay
         Dim filter45 = " back <'9.9' and runnerName = '2 - 1' and Competition = 'Polish Ekstraklasa' and marketName = 'Correct Score'" 'Poland CS 0-0 Back
         'Dim filter46 = " back > '49.9' and runnerName = '1 - 3' and Competition = 'Turkish Super League'and marketName = 'Correct Score'" 'Turkey Back 0-0
