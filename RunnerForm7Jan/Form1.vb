@@ -277,17 +277,17 @@ Public Class Form1
 
         Dim competitionIds As New List(Of String)
         competitionIds.Add("10932509") 'EPL
-        competitionIds.Add("117") 'ESP
+        'competitionIds.Add("117") 'ESP
         'competitionIds.Add("2005") 'Europa League
         competitionIds.Add("9404054") 'Dutch Eredivisie
-        competitionIds.Add("59") 'Bundesliga 1
-        competitionIds.Add("81") 'Serie A
-        competitionIds.Add("7129730") 'The Championship
-        competitionIds.Add("99") 'Primeira Liga
-        competitionIds.Add("55") 'French Ligue One
-        competitionIds.Add("89979") 'Belgian Jupiler League
+        'competitionIds.Add("59") 'Bundesliga 1
+        'competitionIds.Add("81") 'Serie A
+        'competitionIds.Add("7129730") 'The Championship
+        'competitionIds.Add("99") 'Primeira Liga
+        'competitionIds.Add("55") 'French Ligue One
+        ' competitionIds.Add("89979") 'Belgian Jupiler League
         competitionIds.Add("194215") 'Turkish Super League
-        competitionIds.Add("101") 'Russian Prem
+        'competitionIds.Add("101") 'Russian Prem
         competitionIds.Add("97") 'Polish Ekstraklasa
         'competitionIds.Add("228") 'Champions League
         ''competitionIds.Add("61") 'Bundesliga 2
