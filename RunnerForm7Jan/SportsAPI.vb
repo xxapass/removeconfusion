@@ -185,7 +185,8 @@ Module SportsAPI
         Public totalAvailable As Double
         Public crossMatching As Boolean
         Public runnersVoidable As Boolean
-        Public version As Integer
+        'Public version As Integer
+        Public version As Long
         Public runners As New List(Of MarketBookRunnerClass)
     End Class
 
